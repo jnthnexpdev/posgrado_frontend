@@ -1,0 +1,55 @@
+section{
+    width: 100%;
+    min-height: 80dvh;
+    padding: 24px;
+}
+
+form{
+    width: 25%;
+    padding: 24px;
+}
+
+h3{ color: var(--blue); }
+
+.label-form, .input-form{ width: 100%; }
+.label-form svg{
+    margin-right: 4px;
+    fill: var(--blue);
+    width: 20px;
+    height: 20px;
+}
+
+.password-form{
+    width: 100%;
+    position: relative;
+}
+.password-form button{
+    position: absolute;
+    right: 8px;
+    top: 4px;
+}
+.password-form svg{
+    fill: var(--blue);
+    width: 20px;
+    height: 20px;
+}
+.password-form button:hover{
+    cursor: pointer;
+    transform: scale(1.01);
+}
+
+.forgot-password span:nth-child(2){
+    color: var(--blue);
+}
+.forgot-password span:nth-child(2):hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+@media(min-width : 300px) and (max-width : 500px){
+    form{ width: 100%; }
+    .btn-prim{ width: 100%; }
+}
+@media(min-width : 501px){
+    form{ width: 400px; }
+}

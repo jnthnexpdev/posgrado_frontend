@@ -1,0 +1,36 @@
+footer{
+    background-color: var(--blue);
+}
+p{ color: var(--white); }
+
+section{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 16px;
+}
+section svg{
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+    fill: var(--white);
+}
+.address, .contact{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: calc(100% / 2);
+}
+.address p:nth-child(1), .contact p:nth-child(1), footer > p{ font-weight: 600; }
+.address p:nth-child(2), .contact p:nth-child(2){ width: 100%; }
+
+.tnm-logo{ width: 150px; }
+
+@media(min-width : 300px) and (max-width : 700px){
+    section{ flex-direction: column; }
+    .address, .contact{ width: 100%; }
+    .address p:nth-child(2), .contact p:nth-child(2){ margin-bottom: 16px; }
+
+}
