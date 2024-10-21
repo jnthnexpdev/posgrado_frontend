@@ -1,0 +1,39 @@
+section{
+    width: 100%;
+    padding: 24px;
+    min-height: 90dvh;
+}
+main{ width: 40%; }
+h3{ color: var(--blue); width: 100%; text-align: left; }
+
+article{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+.text-info{ width: 100%; padding: 24px 0; border-bottom: 1px dashed var(--black); }
+article span, form label, .text-info span{ font-weight: 600; }
+a, label{ word-break: break-all; }
+ span svg, .label-form svg{
+    width: 20px;
+    height: 20px;
+    fill: var(--black);
+    margin-right: 4px;
+}
+
+form{
+    width: 100%;
+}
+.label-form, .input-form{ width: 100%; }
+
+
+@media(min-width : 300px) and (max-width : 500px){
+    main{ width: 100%; }
+    article{ 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+}

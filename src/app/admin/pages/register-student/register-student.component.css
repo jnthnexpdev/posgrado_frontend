@@ -1,0 +1,64 @@
+section{ width: 100%; }
+article{ width: 25%; }
+h3{ color: var(--blue);  width: 100%; text-align: left; }
+span { width: 100%; text-align: left; }
+.btn-prim svg{
+    fill: var(--white);
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.actions{ 
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+.actions .input-search{ min-width: 400px; }
+.actions .btn-actions{
+    display: flex;
+    align-items: center;
+}
+.actions .btn-actions button:nth-child(2){
+    margin: 0 16px;
+}
+
+form{
+    width: 100%;
+}
+.label-form, .input-form{ width: 100%; }
+.label-form svg{
+    margin-right: 4px;
+    fill: var(--blue);
+    width: 20px;
+    height: 20px;
+}
+
+.password-form{
+    width: 100%;
+    position: relative;
+}
+.password-form button{
+    position: absolute;
+    right: 8px;
+    top: 4px;
+}
+.password-form svg{
+    fill: var(--blue);
+    width: 20px;
+    height: 20px;
+}
+.password-form button:hover{
+    cursor: pointer;
+    transform: scale(1.01);
+}
+.btn-options{ width: 100%; }
+
+@media(min-width : 300px) and (max-width : 500px){
+    article{ width: 100%; }
+    .btn-options{ flex-direction: column-reverse; }
+    .btn-options button{ width: 100%; }
+    .btn-options button:nth-child(2){ margin-bottom: 24px; }
+}

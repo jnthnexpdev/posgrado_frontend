@@ -1,0 +1,47 @@
+article{
+    width: 100%;
+}
+
+h3{ color: var(--blue); text-align: left; width: 100%; }
+form{
+    width: 100%;
+}
+.label-form, .input-form{ width: 100%; }
+.label-form svg{
+    margin-right: 4px;
+    fill: var(--blue);
+    width: 20px;
+    height: 20px;
+}
+
+.dropzone{
+    position: relative;
+    padding: 16px;
+    border-radius: 8px;
+    border: 2px dashed var(--blue);
+}
+.dropzone svg{
+    width: 64px;
+    height: 64px;
+    fill: var(--blue);
+}
+.dropzone input{
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.dropzone .message{ color: var(--blue); }
+.dropzone .message-error{ color: var(--red); }
+.dropzone p, .dropzone span{ text-align: center; }
+
+.btn-options{ width: 100%; }
+
+@media(min-width : 300px) and (max-width : 500px){
+    article{ width: 100%; }
+    .btn-options{ flex-direction: column-reverse; }
+    .btn-options button{ width: 100%; }
+    .btn-options button:nth-child(2){ margin-bottom: 24px; }
+}

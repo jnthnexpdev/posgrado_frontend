@@ -1,15 +1,15 @@
-import { NgClass } from '@angular/common';
 import { Component, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register-teacher',
   standalone: true,
-  imports: [NgClass, ReactiveFormsModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  imports: [ ReactiveFormsModule, MatTooltip ],
+  templateUrl: './register-teacher.component.html',
+  styleUrl: './register-teacher.component.css'
 })
-export class LoginComponent implements OnInit{
+export class RegisterTeacherComponent implements OnInit{
 
   public showPassword = signal(false);
   public loginForm !: FormGroup;

@@ -1,15 +1,10 @@
 section{
     width: 100%;
 }
-
-article h3:nth-child(2){
+article h3, .header-profile p{
+    text-align: center;
     width: 100%;
 }
-
-.header-profile{ 
-    display: flex;
-    align-items: center;
- }
 .header-profile h3{ color: var(--blue); }
 .img-profile{
     width: 128px;
@@ -31,14 +26,6 @@ article h3:nth-child(2){
 .option p{ color: var(--blue); font-weight: 500; }
 
 @media(min-width : 300px) and (max-width : 500px){
-   .header-profile{
-    flex-direction: column;
-   } 
-   .header-profile h3{ margin-top: 24px; margin-bottom: 24px; }
-   .header-profile h3, .header-profile p{
-    text-align: center;
-    width: 100%;
-   }
    .option{
     align-items: flex-start;
     flex-direction: column;

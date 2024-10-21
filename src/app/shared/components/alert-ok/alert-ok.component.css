@@ -1,0 +1,14 @@
+article{
+    padding: 24px;
+}
+svg{
+    width: 64px;
+    height: 64px;
+    margin-bottom: 24px;
+    fill: var(--blue);
+    animation: 1s bounce;
+}
+p{
+    word-break: break-all;
+    text-align: center;
+}

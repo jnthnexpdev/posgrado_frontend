@@ -1,18 +1,15 @@
 <section class="center-center-column pd-24">
     <article class="center-center-column container pd-24">
         <mat-list>
-            <div class="header-profile mb-24">
-                <img src="../../../../assets/gojo.webp" alt="user-picture" class="img-profile">
-    
-                <div class="data-profile">
-                    <h3 class="title-3 mb-16"> Jonathan Espinosa Garcia </h3>
-                    <p class="text-normal"> Estudiante de posgrado </p>
-                </div>
+            <div class="center-center-column header-profile mb-24">
+                <img src="../../../../assets/gojo.webp" alt="user-picture" class="img-profile mb-24">
+                <h3 class="title-3 mb-16"> Jonathan Espinosa Garcia </h3>
+                <p class="text-normal"> Estudiante de posgrado </p>
             </div>
 
             <mat-divider></mat-divider>
 
-            <h3 class="title-3 mt-24 mb-24"> Informacion de la cuenta </h3>
+            <h3 class="title-3 mt-24 mb-24"> Informacion personal </h3>
 
             <div class="option mb-24">
                 <p class="text-normal"> Correo: </p>
@@ -24,9 +21,18 @@
                 <span class="text-normal"> 29/05/2000 </span>
             </div>
 
-            <div class="option">
+            <div class="option mb-24">
                 <p class="text-normal"> Contraseña: </p>
-                <button class="btn-prim"> Cambiar </button>
+                <button class="btn-prim hover" (click)="openDialogPassword()"> Cambiar </button>
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <h3 class="title-3 mt-24 mb-24"> Informacion de acceso </h3>
+
+            <div class="option">
+                <p class="text-normal"> Ultimo acceso: </p>
+                <span class="text-normal"> 10-10-2024 </span>
             </div>
         </mat-list>
     </article>

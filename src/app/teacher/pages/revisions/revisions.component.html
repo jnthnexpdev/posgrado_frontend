@@ -1,0 +1,99 @@
+<section class="center-start-column" >
+    <main class="center-center-column container pd-24">
+        <h3 class="title-3 mb-24"> Revisiones </h3>
+        <span class="text-normal mb-24"> 
+            Informacion correspondiente sobre las revisiones de tesis registradas en el sistema
+        </span>
+
+        <div class="actions mb-24">
+            <div class="filters">
+                <select class="select-filter" name="" id="">
+                  <option value="" disabled selected>Estatus: </option>
+                    <option value=""> Revisadas </option>
+                    <option value=""> Pendientes </option>
+                </select>
+    
+                <select class="select-filter" name="" id="">
+                  <option value="" disabled selected>Periodo: </option>
+                    <option value=""> Enero - Junio </option>
+                    <option value=""> Agosto - Diciembre </option>
+                </select>
+            </div>
+
+            <div class="input-search">
+                <input type="text" name="" id="" placeholder="Buscar por nombre o fecha">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m21.75 20.692-5.664-5.664a8.264 8.264 0 1 0-1.06 1.061l5.664 5.664 1.06-1.06ZM3 9.753a6.75 6.75 0 1 1 6.75 6.75A6.758 6.758 0 0 1 3 9.753Z"></path>
+                </svg>
+            </div>
+        </div>
+
+        <div class="actions mb-24">
+            <div class="btn-actions">
+                <button class="btn-prim center-center-row hover">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.5 18v3h-15v-3H3v3a1.5 1.5 0 0 0 1.5 1.5h15A1.5 1.5 0 0 0 21 21v-3h-1.5Z"></path>
+                        <path d="m19.5 10.5-1.058-1.057-5.692 5.684V1.5h-1.5v13.627L5.558 9.444 4.5 10.5 12 18l7.5-7.5Z"></path>
+                    </svg>
+                    Descargar PDF
+                </button>
+                <button (click)="openDialog()" class="btn-prim center-center-row hover">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.25 18h-3v-3h-1.5v3h-3v1.5h3v3h1.5v-3h3V18Z"></path>
+                        <path d="M18.75 3.75H16.5V3A1.504 1.504 0 0 0 15 1.5H9A1.504 1.504 0 0 0 7.5 3v.75H5.25a1.504 1.504 0 0 0-1.5 1.5V21a1.504 1.504 0 0 0 1.5 1.5h7.5V21h-7.5V5.25H7.5V7.5h9V5.25h2.25V12h1.5V5.25a1.504 1.504 0 0 0-1.5-1.5ZM15 6H9V3h6v3Z"></path>
+                    </svg>
+                    Programar revision
+                </button>
+            </div>
+        </div>
+
+        <main>
+            <table class="mb-24">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nombre</th>
+                  <th>Correo</th>
+                  <th>Estatus</th>
+                  <th>Fecha</th>
+                  <th>Observaciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr (click)="viewDetails(1)">
+                  <td>1</td>
+                  <td>Juan Pérez</td>
+                  <td>juan.perezexample.com</td>
+                  <td> revisado </td>
+                  <td>2024-09-01</td>
+                  <td> Corregir formato </td>
+                </tr>
+                <tr (click)="viewDetails(2)">
+                  <td>2</td>
+                  <td>Ana García</td>
+                  <td>ana.garciaexample.com</td>
+                  <td> revisado </td>
+                  <td>2024-09-02</td>
+                  <td> Corregir fuentes y verificar formato apa </td>
+                </tr>
+                <tr (click)="viewDetails(3)">
+                  <td>3</td>
+                  <td>Mario López</td>
+                  <td>mario.lopezexample.com</td>
+                  <td> revisado </td>
+                  <td>2024-09-03</td>
+                  <td> Mejorar la redaccion y revisar las faltas ortograficas </td>
+                </tr>
+              </tbody>
+            </table>
+          </main>
+          
+          <div class="pagination center-center-row">
+              <button class="btn-prim">Ant</button>
+              <button class="btn-sec">1</button>
+              <button class="btn-sec">2</button>
+              <button class="btn-sec">3</button>
+              <button class="btn-prim">Sig</button>
+          </div>
+    </main>
+</section>

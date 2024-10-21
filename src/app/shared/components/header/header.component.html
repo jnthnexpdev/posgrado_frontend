@@ -28,6 +28,35 @@
                     </svg>
                     <a class="text-normal"> Inicio </a>
                 </li>
+                <li (click)="closeMenu()" routerLink="/coordinacion/asesores" routerLinkActive="menu-selected">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.5 10.5H18V12h1.5a2.253 2.253 0 0 1 2.25 2.25v3h1.5v-3a3.755 3.755 0 0 0-3.75-3.75Z"></path>
+                        <path d="M18 3a2.25 2.25 0 1 1 0 4.5A2.25 2.25 0 0 1 18 3Zm0-1.5A3.75 3.75 0 1 0 18 9a3.75 3.75 0 0 0 0-7.5Z"></path>
+                        <path d="M17.25 22.5h-1.5V21a2.253 2.253 0 0 0-2.25-2.25h-3A2.253 2.253 0 0 0 8.25 21v1.5h-1.5V21a3.755 3.755 0 0 1 3.75-3.75h3A3.755 3.755 0 0 1 17.25 21v1.5Z"></path>
+                        <path d="M12 9.75a2.25 2.25 0 1 1 0 4.5 2.25 2.25 0 0 1 0-4.5Zm0-1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5Z"></path>
+                        <path d="M6 10.5H4.5a3.755 3.755 0 0 0-3.75 3.75v3h1.5v-3A2.253 2.253 0 0 1 4.5 12H6v-1.5Z"></path>
+                        <path d="M6 3a2.25 2.25 0 1 1 0 4.5A2.25 2.25 0 0 1 6 3Zm0-1.5A3.75 3.75 0 1 0 6 9a3.75 3.75 0 0 0 0-7.5Z"></path>
+                    </svg>
+                    <a class="text-normal"> Asesores </a>
+                </li>
+                <li (click)="closeMenu()" routerLink="/coordinacion/estudiantes" routerLinkActive="menu-selected">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.5 22.5H18v-2.25a3.755 3.755 0 0 0-3.75-3.75h-4.5A3.755 3.755 0 0 0 6 20.25v2.25H4.5v-2.25A5.256 5.256 0 0 1 9.75 15h4.5a5.256 5.256 0 0 1 5.25 5.25v2.25Z"></path>
+                        <path d="M3.75 4.5a.75.75 0 0 0-.75.75V12h1.5V5.25a.75.75 0 0 0-.75-.75Z"></path>
+                        <path d="M3 1.5V3h3.75v5.25a5.25 5.25 0 0 0 10.5 0V3H21V1.5H3ZM8.25 3h7.5v2.25h-7.5V3ZM12 12a3.75 3.75 0 0 1-3.75-3.75v-1.5h7.5v1.5A3.75 3.75 0 0 1 12 12Z"></path>
+                    </svg>
+                    <a class="text-normal"> Estudiantes </a>
+                </li>
+                <li (click)="closeMenu()" routerLink="/asesores/revisiones" routerLinkActive="menu-selected">
+                    <svg width="46" height="46" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.5 19.414a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                        <path d="M22.333 17.609A6.48 6.48 0 0 0 16.5 13.5a6.48 6.48 0 0 0-5.833 4.109L10.5 18l.167.391A6.48 6.48 0 0 0 16.5 22.5a6.48 6.48 0 0 0 5.833-4.109L22.5 18l-.167-.391ZM16.5 21a3 3 0 1 1 0-5.999 3 3 0 0 1 0 5.999Z"></path>
+                        <path d="M18.75 7.5H3A1.502 1.502 0 0 1 1.5 6V3A1.502 1.502 0 0 1 3 1.5h15.75a1.502 1.502 0 0 1 1.5 1.5v3a1.502 1.502 0 0 1-1.5 1.5ZM3 3v3h15.75V3H3Z"></path>
+                        <path d="M9 21H3v-3h6v-1.5H3A1.502 1.502 0 0 0 1.5 18v3A1.502 1.502 0 0 0 3 22.5h6V21Z"></path>
+                        <path d="M21 9H5.25a1.502 1.502 0 0 0-1.5 1.5v3a1.502 1.502 0 0 0 1.5 1.5H9v-1.5H5.25v-3H21V12h1.5v-1.5A1.502 1.502 0 0 0 21 9Z"></path>
+                    </svg>
+                    <a class="text-normal"> Revisiones </a>
+                </li>
                 <li>
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="m19.275 6.975-5.25-5.25A.68.68 0 0 0 13.5 1.5H6c-.825 0-1.5.675-1.5 1.5v18c0 .825.675 1.5 1.5 1.5h12c.825 0 1.5-.675 1.5-1.5V7.5a.68.68 0 0 0-.225-.525ZM13.5 3.3l4.2 4.2h-4.2V3.3ZM18 21H6V3h6v4.5c0 .825.675 1.5 1.5 1.5H18v12Z"></path>
@@ -42,14 +71,14 @@
                     </svg>
                     <a class="text-normal"> Notificaciones </a>
                 </li>
-                <li routerLink="/ajustes" routerLinkActive="menu-selected">
+                <li (click)="closeMenu()" routerLink="/ajustes" routerLinkActive="menu-selected">
                     <svg  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.25 12.572v-1.148l1.44-1.26a1.5 1.5 0 0 0 .285-1.912l-1.77-3a1.5 1.5 0 0 0-1.298-.75 1.5 1.5 0 0 0-.48.075l-1.822.615a8.5 8.5 0 0 0-.983-.563l-.382-1.89a1.5 1.5 0 0 0-1.5-1.207h-3.51a1.5 1.5 0 0 0-1.5 1.207l-.383 1.89a8.61 8.61 0 0 0-.99.563l-1.785-.645a1.5 1.5 0 0 0-.48-.045 1.5 1.5 0 0 0-1.297.75l-1.77 3a1.5 1.5 0 0 0 .307 1.882l1.418 1.297v1.148l-1.418 1.26a1.5 1.5 0 0 0-.307 1.912l1.77 3a1.5 1.5 0 0 0 1.297.75 1.5 1.5 0 0 0 .48-.075l1.823-.614c.315.209.643.396.982.562l.383 1.89a1.5 1.5 0 0 0 1.5 1.207h3.54a1.5 1.5 0 0 0 1.5-1.207l.382-1.89c.342-.165.673-.353.99-.563l1.815.616a1.5 1.5 0 0 0 .48.075 1.5 1.5 0 0 0 1.298-.75l1.71-3a1.5 1.5 0 0 0-.308-1.883l-1.417-1.297Zm-1.343 5.43-2.572-.87a6.64 6.64 0 0 1-2.033 1.177l-.532 2.692h-3.54l-.533-2.662a7.018 7.018 0 0 1-2.025-1.177l-2.58.84-1.77-3 2.04-1.8a6.675 6.675 0 0 1 0-2.348l-2.04-1.852 1.77-3 2.573.87a6.645 6.645 0 0 1 2.032-1.178l.533-2.692h3.54l.532 2.662a6.98 6.98 0 0 1 2.025 1.178l2.58-.84 1.77 3-2.04 1.8a6.674 6.674 0 0 1 0 2.347l2.04 1.853-1.77 3Z"></path>
                         <path d="M12 16.5a4.5 4.5 0 1 1 4.5-4.5 4.456 4.456 0 0 1-4.5 4.5ZM12 9a2.933 2.933 0 0 0-3 3 2.933 2.933 0 0 0 3 3 2.933 2.933 0 0 0 3-3 2.933 2.933 0 0 0-3-3Z"></path>
                     </svg>
                     <a class="text-normal"> Ajustes </a>
                 </li>
-                <li routerLink="/acceso/iniciar-sesion" routerLinkActive="menu-selected">
+                <li (click)="closeMenu()" routerLink="/acceso/iniciar-sesion" routerLinkActive="menu-selected">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4.5 22.5h9A1.502 1.502 0 0 0 15 21v-2.25h-1.5V21h-9V3h9v2.25H15V3a1.502 1.502 0 0 0-1.5-1.5h-9A1.502 1.502 0 0 0 3 3v18a1.502 1.502 0 0 0 1.5 1.5Z"></path>
                         <path d="m15.44 15.44 2.689-2.69H7.5v-1.5h10.629l-2.69-2.69L16.5 7.5 21 12l-4.5 4.5-1.06-1.06Z"></path>

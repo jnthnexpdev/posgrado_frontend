@@ -1,15 +1,15 @@
-import { NgClass } from '@angular/common';
 import { Component, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-change-password',
   standalone: true,
-  imports: [NgClass, ReactiveFormsModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  imports: [ ReactiveFormsModule, MatTooltip ],
+  templateUrl: './change-password.component.html',
+  styleUrl: './change-password.component.css'
 })
-export class LoginComponent implements OnInit{
+export class ChangePasswordComponent implements OnInit{
 
   public showPassword = signal(false);
   public loginForm !: FormGroup;

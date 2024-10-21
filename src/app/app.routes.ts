@@ -7,6 +7,16 @@ export const routes: Routes = [
         loadChildren : () => import('./auth/auth.module').then(m => m.AuthModule)
     },
     {
+        path : 'coordinacion',
+        title : 'Coordinacion',
+        loadChildren : () => import('./admin/admin.module').then(m => m.AdminModule)
+    },
+    {
+        path : 'asesores',
+        title : 'Asesores',
+        loadChildren : () => import('./teacher/teacher.module').then(m => m.TeacherModule)
+    },
+    {
         path : 'ajustes',
         title : 'Ajustes',
         loadComponent : () => import('./shared/pages/settings/settings.component').then(c => c.SettingsComponent)
