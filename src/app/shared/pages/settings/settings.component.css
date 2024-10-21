@@ -1,6 +1,7 @@
 section{
     width: 100%;
 }
+article{ width: 400px; }
 article h3, .header-profile p{
     text-align: center;
     width: 100%;
