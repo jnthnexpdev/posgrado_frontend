@@ -1,0 +1,24 @@
+/* Estilos para tablas */
+
+table{ width: 100%; border-collapse: collapse; }
+table th{
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 8px 16px;
+    font-weight: 400;
+}
+table th:nth-child(1){ border-radius: 8px 0 0 0; }
+table th:nth-last-child(1){ border-radius: 0 8px 0 0; }
+table th, table td{ text-align: center; }
+table th svg{ 
+    width: 24px;
+    height: 24px;
+    fill: var(--white);
+    margin-right: 8px;
+    line-height: 1.5;
+}
+table td{ padding: 8px; }
+table tbody tr{ border-bottom: 1px solid var(--black); }
+table tbody tr:nth-child(even){ background-color: var(--ligth); color: var(--black); }
+.pagination{ width: 100%; }
+.pagination button:nth-child(even){ margin: 0 8px; }

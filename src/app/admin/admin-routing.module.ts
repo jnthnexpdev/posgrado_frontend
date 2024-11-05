@@ -19,7 +19,7 @@ const routes: Routes = [
     component : RegisterStudentComponent
   },
   {
-    path : 'estudiantes',
+    path : 'alumnos',
     component : ListStudentsComponent
   },
   {

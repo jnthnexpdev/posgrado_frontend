@@ -12,9 +12,14 @@ export const routes: Routes = [
         loadChildren : () => import('./admin/admin.module').then(m => m.AdminModule)
     },
     {
-        path : 'asesores',
+        path : 'asesor',
         title : 'Asesores',
         loadChildren : () => import('./teacher/teacher.module').then(m => m.TeacherModule)
+    },
+    {
+        path : 'alumno',
+        title : 'Alumnos',
+        loadChildren : () => import('./students/students.module').then(m => m.StudentsModule)
     },
     {
         path : 'ajustes',

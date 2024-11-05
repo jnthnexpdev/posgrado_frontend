@@ -1,5 +1,6 @@
 article{
     width: 100%;
+    background-color: var(--white);
 }
 
 h3{ color: var(--blue); text-align: left; width: 100%; }
@@ -29,10 +30,10 @@ textarea{
     position: relative;
     border-bottom: 1px solid var(--blue);
 }
-.date-field .mat-mdc-form-field-flex{ height: 28px !important; }
+.date-field .mat-mdc-form-field-flex{ height: 28px !important; background-color: var(--white); }
 .date-field span, .date-field div:nth-child(1){ min-height: 28px !important; }
 .date-field div:nth-child(1){ margin: 0 !important; }
-.date-field .mdc-text-field{ padding: 0 4px !important; }
+.date-field .mdc-text-field{ padding: 0 4px !important; background-color: var(--white);}
 #mat-input-0{ 
     position: absolute;
     top: 0 !important;

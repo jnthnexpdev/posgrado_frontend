@@ -1,0 +1,16 @@
+/* Estilos para botones */
+
+.btn-prim{
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 4px 16px;
+    border-radius: 4px;
+}
+.btn-sec{
+    background-color: transparent;
+    color: var(--blue);
+    padding: 3px 16px;
+    border: 1px solid var(--blue);
+    border-radius: 4px;
+}
+.hover:hover{ cursor: pointer; transform: scale(1.01); }

@@ -30,7 +30,7 @@ export class RevisionsComponent implements OnInit{
   }
 
   viewDetails(id : number) : void{
-    this._router.navigate([`/asesores/detalle-revision/${id}`]).then(() => {});
+    this._router.navigate([`/asesor/detalle-revision/${id}`]).then(() => {});
   }
 
 }

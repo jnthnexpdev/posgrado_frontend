@@ -27,6 +27,7 @@ h3{ color: var(--blue); }
     position: absolute;
     right: 8px;
     top: 4px;
+    background-color: transparent;
 }
 .password-form svg{
     fill: var(--blue);

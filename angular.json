@@ -26,7 +26,10 @@
             ],
             "styles": [
               "@angular/material/prebuilt-themes/azure-blue.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/app/shared/styles/buttons.css",
+              "src/app/shared/styles/tables.css",
+              "src/app/shared/styles/layouts.css"
             ],
             "scripts": []
           },
@@ -83,7 +86,10 @@
             ],
             "styles": [
               "@angular/material/prebuilt-themes/azure-blue.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/app/shared/styles/buttons.css",
+              "src/app/shared/styles/tables.css",
+              "src/app/shared/styles/layouts.css"
             ],
             "scripts": []
           }

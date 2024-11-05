@@ -1,5 +1,6 @@
 section{
     width: 100%;
+    background-color: var(--white);
 }
 article{ width: 400px; }
 article h3, .header-profile p{

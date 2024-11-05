@@ -12,8 +12,8 @@
     --sky : #40BCD8;
     --black : #1D1A05;
     --gray : #807E82;
-    --ligth : #cbcbcb;
-    --white : #F2F2F8;
+    --ligth : #E8E8E8;
+    --white : #FFFFFF;
     --red : #9A031E;
     --orange : #FFA62B;
 }
@@ -39,80 +39,14 @@
 .mb-8{ margin-bottom: 8px; }
 .mt-24{ margin-top: 24px; }
 
-/* Flex layouts */
-.center-center-row{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-}
-.center-between-row{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-}
-.center-evenly-row{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: row;
-}
-.center-start-row{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
-}
-.center-center-column{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-.center-start-column{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-}
-.start-center-column{
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-direction: column;
-}
-.center-evenly-column{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-}
 
 /* Estilos para contenedor */ 
 
 .container{
     background-color: var(--white);
     border-radius: 16px;
-    box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.1);
 }
-
-/* Estilos para botones */
-
-.btn-prim{
-    background-color: var(--blue);
-    color: var(--white);
-    padding: 4px 16px;
-    border-radius: 4px;
-}
-.btn-sec{
-    background-color: transparent;
-    color: var(--blue);
-    padding: 3px 16px;
-    border: 1px solid var(--blue);
-    border-radius: 4px;
-}
-.hover:hover{ cursor: pointer; transform: scale(1.01); }
 
 /* Estilos para inputs */
 
@@ -153,20 +87,11 @@
     text-align: center;
 }
 
-/* Estilos para tablas */
-
-table{ width: 100%; border-collapse: collapse; }
-table th{
-    background-color: var(--blue);
-    color: var(--white);
-    padding: 4px 16px;
-    font-weight: 400;
+@media(min-width : 300px) and (max-width : 500px){
+    .title-1{ font-size: 33.18px; }
+    .title-2{ font-size: 27.65px; }
+    .title-3{ font-size: 23.04px; }
+    .title-4{ font-size: 19.2px; }
+    .text-normal{ font-size: 16px; }
+    .text-small, .btn-prim, .btn-sec, .input-form, .input-search input, .select-filter, mat-form-field{ font-size: 13.33px; }
 }
-table th:nth-child(1){ border-radius: 4px 0 0 0; }
-table th:nth-last-child(1){ border-radius: 0 4px 0 0; }
-table th, table td{ text-align: center; }
-table td{ padding: 4px; }
-table tbody tr{ border-bottom: 1px solid var(--black); }
-table tbody tr:nth-child(even){ background-color: var(--ligth); color: var(--black); }
-.pagination{ width: 100%; }
-.pagination button:nth-child(even){ margin: 0 8px; }

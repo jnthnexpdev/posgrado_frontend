@@ -1,0 +1,67 @@
+section{
+    width: 100%;
+    padding: 24px;
+    min-height: 90dvh;
+}
+main{ width: 70% }
+h3{ color: var(--blue); width: 100%; text-align: left; }
+
+.actions{ 
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+.actions .filters{
+    display: flex;
+    align-items: center;
+}
+.actions .filters select{
+    margin: 0 0 0 16px;
+}
+
+article{ width: 100%; }
+article .container{ 
+    box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.1);
+}
+header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.assignment:not(:first-child){ margin-top: 16px; }
+header{ width: 100%; }
+.assignment-header > svg{
+    width: 48px;
+    height: 48px;
+    fill: var(--blue);
+}
+.data-assingment{ margin-left: 8px; }
+.data-assingment p{ font-weight: 500; }
+.details-assignment span{
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-right: 8px;
+    text-align: center;
+}
+.assignment:nth-child(1) .details-assignment span{ background-color: rgb(187 247 208); color: rgb(22 101 52); }
+.assignment:nth-child(2) .details-assignment span{ background-color: rgb(191 219 254); color: rgb(30 64 175); }
+.assignment:nth-child(3) .details-assignment span{ background-color: rgb(254 240 138); color: rgb(133 77 14); }
+.details-assignment button{ background-color: transparent; }
+.details-assignment button svg{
+    width: 24px;
+    height: 24px;
+}
+
+@media(min-width : 300px) and (max-width : 500px){
+    main{ width: 100%; }
+    .assignment-header > svg, .details-assignment button{
+        display: none;
+    }
+    .data-assingment{ margin: 0; } 
+    .details-assignment span{ margin-left: 8px; }
+}

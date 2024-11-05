@@ -1,9 +1,9 @@
 section{
     width: 100%;
     padding: 24px;
-    min-height: 90dvh;
 }
 main{ width: 40%; }
+aside{ margin-left: 24px; }
 h3{ color: var(--blue); width: 100%; text-align: left; }
 
 article{
@@ -15,21 +15,68 @@ article{
 .text-info{ width: 100%; padding: 24px 0; border-bottom: 1px dashed var(--black); }
 article span, form label, .text-info span{ font-weight: 600; }
 a, label{ word-break: break-all; }
- span svg, .label-form svg{
+span svg, .label-form svg{
     width: 20px;
     height: 20px;
     fill: var(--black);
     margin-right: 4px;
 }
 
-form{
-    width: 100%;
-}
+form{ width: 100%; }
 .label-form, .input-form{ width: 100%; }
 
+.comment{
+    width: 100%;
+    margin-top: 24px;
+}
+.comment svg{ 
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    fill: var(--black);
+}
+.author .user-commentary{ margin-right: 8px; }
+.response .user-commentary{ margin-left: 8px; }
+.author .user-commentary{
+    background-color: rgb(219, 234, 254);
+    border-radius: 8px;
+}
+.response .user-commentary{
+    background-color: var(--ligth);    
+    border-radius: 8px;
+}
+
+.add-comment{
+    margin-top: 24px;
+    width: 100%;
+}
+.add-comment textarea{ 
+    resize: vertical; 
+    min-height: 20px;
+}
+.add-comment .btn-send{
+    background-color: transparent;
+    padding: 8px;
+    border-radius: 8px;
+}
+.add-comment .btn-send svg{
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    fill: var(--blue);
+}
 
 @media(min-width : 300px) and (max-width : 500px){
-    main{ width: 100%; }
+    section{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    main, aside{ width: 100%; }
+    aside{ margin: 24px 0 0 0; }
     article{ 
         display: flex;
         align-items: center;
