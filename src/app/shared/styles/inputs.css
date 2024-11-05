@@ -1,0 +1,38 @@
+/* Estilos para inputs */
+
+.input-form{
+    background-color: var(--white);
+    padding: 4px;
+    text-align: center;
+    border-bottom: 1px solid var(--blue);
+    outline: none;
+    offset: none;
+}
+.input-search{
+    position: relative;
+}
+.input-search input{
+    border-bottom: 1px solid var(--blue);
+    padding: 4px;
+    text-align: center;
+    width: 100%;
+    background-color: var(--white);
+    outline: none;
+    offset: none;
+}
+.input-search svg{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    background-color: var(--white);
+}
+
+.select-filter{
+    padding: 4px;
+    border: 1px solid var(--blue);
+    border-radius: 4px;
+    background-color: var(--white);
+    text-align: center;
+}

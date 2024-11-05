@@ -1,4 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-assignments',
@@ -11,13 +12,20 @@ export class AssignmentsComponent implements OnInit{
 
   public expandDetails = signal(false);
 
+  constructor(
+    private _router : Router
+  ){}
+
   ngOnInit(): void {
     
   }
 
   public expandCard() : void{
     this.expandDetails.set(!this.expandDetails());
-    console.log(this.expandDetails())
+  }
+
+  viewDetails(id : number) : void{
+    this._router.navigate([`/alumno/detalles-asignacion/${id}`]).then(() => {});
   }
 
 }

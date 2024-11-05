@@ -29,7 +29,9 @@
               "src/styles.css",
               "src/app/shared/styles/buttons.css",
               "src/app/shared/styles/tables.css",
-              "src/app/shared/styles/layouts.css"
+              "src/app/shared/styles/layouts.css",
+              "src/app/shared/styles/inputs.css",
+              "src/app/shared/styles/font.css"
             ],
             "scripts": []
           },
@@ -89,7 +91,9 @@
               "src/styles.css",
               "src/app/shared/styles/buttons.css",
               "src/app/shared/styles/tables.css",
-              "src/app/shared/styles/layouts.css"
+              "src/app/shared/styles/layouts.css",
+              "src/app/shared/styles/inputs.css",
+              "src/app/shared/styles/font.css"
             ],
             "scripts": []
           }
