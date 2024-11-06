@@ -65,3 +65,12 @@ header{ width: 100%; }
     .data-assingment{ margin: 0; } 
     .details-assignment span{ margin-left: 8px; }
 }
+
+@media(min-width : 501px) and (max-width : 900px){
+    main{ width: 100%; }
+    .assignment-header > svg, .details-assignment button{
+        display: none;
+    }
+    .data-assingment{ margin: 0; } 
+    .details-assignment span{ margin-left: 8px; }
+}

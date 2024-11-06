@@ -28,6 +28,7 @@ article h3, .header-profile p{
 .option p{ color: var(--blue); font-weight: 500; }
 
 @media(min-width : 300px) and (max-width : 500px){
+    article{ width: 100%; }
    .option{
     align-items: flex-start;
     flex-direction: column;

@@ -4,8 +4,8 @@
 .title-2{ font-size: 31px; }
 .title-3{ font-size: 25px; }
 .title-4{ font-size: 21px; }
-.text-normal{ font-size: 18px; }
-.text-small, .btn-prim, .btn-sec, .input-form, .input-search input, .select-filter, mat-form-field{ font-size: 15px; }
+.text-normal, th{ font-size: 18px; }
+.text-small, .btn-prim, .btn-sec, .input-form, .input-search input, .select-filter, mat-form-field, td{ font-size: 15px; }
 .text-center{ text-align: center; }
 .text-justify{ text-align: justify; }
 
@@ -14,6 +14,6 @@
     .title-2{ font-size: 27.65px; }
     .title-3{ font-size: 23.04px; }
     .title-4{ font-size: 19.2px; }
-    .text-normal{ font-size: 16px; }
+    .text-normal, th{ font-size: 16px; }
     .text-small, .btn-prim, .btn-sec, .input-form, .input-search input, .select-filter, mat-form-field{ font-size: 13.33px; }
 }

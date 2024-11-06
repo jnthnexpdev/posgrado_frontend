@@ -68,7 +68,7 @@ form{ width: 100%; }
     fill: var(--blue);
 }
 
-@media(min-width : 300px) and (max-width : 500px){
+@media(min-width : 300px) and (max-width : 650px){
     section{
         display: flex;
         align-items: center;
@@ -83,4 +83,18 @@ form{ width: 100%; }
         justify-content: center;
         flex-direction: column;
     }
+}
+@media(min-width : 651px) and (max-width : 950px){
+    section{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    main, aside{ width: 100%; }
+    aside{ margin: 24px 0 0 0; }
+}
+@media(min-width : 951px) and (max-width : 1300px){
+    main{ width: 55%; }
+    aside{ width: 45%; }
 }
