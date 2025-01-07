@@ -10,7 +10,7 @@
             <label>Correo electronico:</label>
         </div>
 
-        <input class="input-form mb-24" type="email" placeholder="correo@dominio.com">
+        <input class="input-form mb-24" type="email" formControlName="correo" placeholder="correo@dominio.com">
 
         <div class="label-form center-start-row mb-24">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -25,6 +25,7 @@
         <div class="password-form center-start-row mb-16">
             <input 
             class="input-form" 
+            formControlName="password"
             [type]="showPassword() ? 'password' : 'text'"
             name="password" id="password" placeholder="">
 
@@ -49,6 +50,6 @@
             <span class="text-small text-justify"> Solicitar codigo  </span>
         </div>
 
-        <button class="btn-prim hover"> Iniciar sesion </button>
+        <button class="btn-prim hover" (click)="sendLoginRequest()"> Iniciar sesion </button>
     </form>
 </section>
