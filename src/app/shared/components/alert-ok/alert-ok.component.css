@@ -9,6 +9,6 @@ svg{
     animation: 1s bounce;
 }
 p{
-    word-break: break-all;
+    word-break: break-word;
     text-align: center;
 }
