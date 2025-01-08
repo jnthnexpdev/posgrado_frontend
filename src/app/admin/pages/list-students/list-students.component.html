@@ -38,150 +38,19 @@
                 <th>Nombre</th>
                 <th>Correo</th>
                 <th>Fecha</th>
-                <th>Opciones</th>
+                <th>Estatus cuenta</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Juan Pérez</td>
-                <td>juan.perezexample.com</td>
-                <td>2024-09-01</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Ana García</td>
-                <td>ana.garciaexample.com</td>
-                <td>2024-09-02</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Mario López</td>
-                <td>mario.lopezexample.com</td>
-                <td>2024-09-03</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Laura Torres</td>
-                <td>laura.torresexample.com</td>
-                <td>2024-09-04</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>Ricardo Martínez</td>
-                <td>ricardo.martinezexample.com</td>
-                <td>2024-09-05</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>Paula Díaz</td>
-                <td>paula.diazexample.com</td>
-                <td>2024-09-06</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td>Pedro Fernández</td>
-                <td>pedro.fernandezexample.com</td>
-                <td>2024-09-07</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>8</td>
-                <td>Claudia Ruiz</td>
-                <td>claudia.ruizexample.com</td>
-                <td>2024-09-08</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>9</td>
-                <td>Sofía Méndez</td>
-                <td>sofia.mendezexample.com</td>
-                <td>2024-09-09</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>10</td>
-                <td>Jorge Ramírez</td>
-                <td>jorge.ramirezexample.com</td>
-                <td>2024-09-10</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>11</td>
-                <td>Lucía Castro</td>
-                <td>lucia.castroexample.com</td>
-                <td>2024-09-11</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>12</td>
-                <td>Hugo Gómez</td>
-                <td>hugo.gomeexample.com</td>
-                <td>2024-09-12</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>13</td>
-                <td>Carla Morales</td>
-                <td>carla.moralesexample.com</td>
-                <td>2024-09-13</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>14</td>
-                <td>Felipe Ortiz</td>
-                <td>felipe.ortizexample.com</td>
-                <td>2024-09-14</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>15</td>
-                <td>Elena Ramírez</td>
-                <td>elena.ramirezexample.com</td>
-                <td>2024-09-15</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>16</td>
-                <td>Fernando Gutiérrez</td>
-                <td>fernando.gutierrezexample.com</td>
-                <td>2024-09-16</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>17</td>
-                <td>Gabriela Jiménez</td>
-                <td>gabriela.jimenezexample.com</td>
-                <td>2024-09-17</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>18</td>
-                <td>José Paredes</td>
-                <td>jose.paredesexample.com</td>
-                <td>2024-09-18</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>19</td>
-                <td>Rosa Navarro</td>
-                <td>rosa.navarroexample.com</td>
-                <td>2024-09-19</td>
-                <td>Editar | Eliminar</td>
-              </tr>
-              <tr>
-                <td>20</td>
-                <td>Andrés Herrera</td>
-                <td>andres.herreraexample.com</td>
-                <td>2024-09-20</td>
-                <td>Editar | Eliminar</td>
-              </tr>
+              @for(student of students; track $index; let i = $index){
+                <tr>
+                  <td>{{i+1}}</td>
+                  <td>{{student.nombre}}</td>
+                  <td>{{student.correo}}</td>
+                  <td>{{student.fechaRegistro}}</td>
+                  <td>{{student.estatusCuenta}}</td>
+                </tr>
+              }
             </tbody>
           </table>
         </main>
