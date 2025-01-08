@@ -1,9 +1,9 @@
 /* Escala tipografica y alineacion de texto */
 
-.title-1{ font-size: 37px; }
-.title-2{ font-size: 31px; }
-.title-3{ font-size: 25px; }
-.title-4{ font-size: 21px; }
+.title-1{ font-size: 37px; font-weight: 600; }
+.title-2{ font-size: 31px; font-weight: 600; }
+.title-3{ font-size: 25px; font-weight: 500; }
+.title-4{ font-size: 21px; font-weight: 500; }
 .text-normal, th{ font-size: 18px; }
 .text-small, .btn-prim, .btn-sec, .input-form, .input-search input, .select-filter, mat-form-field, td{ font-size: 15px; }
 .text-center{ text-align: center; }

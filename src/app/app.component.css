@@ -1,5 +1,6 @@
 main{
     z-index: 1;
     padding-top: 70px;
+    min-height: 90dvh;
     background-color: var(--white);
 }
