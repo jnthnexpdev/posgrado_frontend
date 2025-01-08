@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Pagination, Teacher } from '../../../shared/interfaces/teachers-reponse.types';
+import { Teacher } from '../../../shared/interfaces/teachers-reponse.types';
 import { TeacherService } from '../../../shared/services/teachers/teacher.service';
+import { Pagination } from '../../../shared/interfaces/pagination.interface';
 
 @Component({
   selector: 'app-list-teachers',

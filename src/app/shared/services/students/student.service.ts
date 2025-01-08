@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
 import { StudentsResponse } from '../../interfaces/students-response.types';
 
-
 @Injectable({
   providedIn: 'root'
 })

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StudentService } from '../../../shared/services/students/student.service';
 import { Student } from '../../../shared/interfaces/students-response.types';
-import { Pagination } from '../../../shared/interfaces/teachers-reponse.types';
+import { Pagination } from '../../../shared/interfaces/pagination.interface';
 
 @Component({
   selector: 'app-list-students',
