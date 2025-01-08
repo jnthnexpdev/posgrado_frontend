@@ -1,13 +1,8 @@
-export interface Pagination {
-    total : number;
-    page : number;
-    pageSize : number;
-    totalPages : number;
-}
+import { Pagination } from "./pagination.interface";
 
 export interface StudentSession {
-    ultimaSesion: string;
-    codigoAcceso: string;
+  ultimaSesion: string;
+  codigoAcceso: string;
 }
   
 export interface Student {
