@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RevisionsComponent } from './pages/revisions/revisions.component';
 import { DetailsRevisionComponent } from './pages/details-revision/details-revision.component';
-import { MentoredStudentsComponent } from './pages/mentored-students/mentored-students.component';
+import { AdvisedStudentsComponent } from './pages/advised-students/advised-students.component';
 
 const routes: Routes = [
   {
@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path : 'alumnos-asesorados',
-    component : MentoredStudentsComponent
+    component : AdvisedStudentsComponent
   },
   {
     path : 'detalle-revision/:id',

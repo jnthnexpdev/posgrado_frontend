@@ -12,7 +12,7 @@
                     </svg>
                     Descargar PDF
                 </button>
-                <button class="btn-prim center-center-row hover" (click)="addMentoredStudent()">
+                <button class="btn-prim center-center-row hover" (click)="addAdvisedStudent()">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M24 10.5h-3v-3h-1.5v3h-3V12h3v3H21v-3h3v-1.5Z"></path>
                         <path d="M9 3a3.75 3.75 0 1 1 0 7.5A3.75 3.75 0 0 1 9 3Zm0-1.5A5.25 5.25 0 1 0 9 12 5.25 5.25 0 0 0 9 1.5Z"></path>
@@ -37,46 +37,20 @@
                   <th>No</th>
                   <th>Nombre</th>
                   <th>Correo</th>
-                  <th>Nombre de Tesis</th>
-                  <th>Estatus</th>
+                  <th>Asignacion</th>
+                  <th>Periodo</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Juan Pérez</td>
-                  <td>juan.perezexample.com</td>
-                  <td>Optimización de Recursos en Redes</td>
-                  <td>Pendiente</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Ana García</td>
-                  <td>ana.garciaexample.com</td>
-                  <td>Desarrollo de Algoritmos de IA</td>
-                  <td>Aprobada</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Mario López</td>
-                  <td>mario.lopezexample.com</td>
-                  <td>Seguridad en Aplicaciones Web</td>
-                  <td>Revisada por Coordinador</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Laura Torres</td>
-                  <td>laura.torresexample.com</td>
-                  <td>Big Data en Educación</td>
-                  <td>Pendiente</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Ricardo Martínez</td>
-                  <td>ricardo.martinezexample.com</td>
-                  <td>Sistemas de Energía Sustentable</td>
-                  <td>Aprobada</td>
-                </tr>
+                @for(advised of adviseds; track $index; let i = $index){
+                  <tr>
+                    <td>{{ i + 1}}</td>
+                    <td>{{ advised.alumno.nombre }}</td>
+                    <td>{{ advised.alumno.correo }}</td>
+                    <td>{{ advised.fechaAsignacion }}</td>
+                    <td>{{ advised.periodo }}</td>
+                  </tr>
+                }
               </tbody>
             </table>
           </main>
