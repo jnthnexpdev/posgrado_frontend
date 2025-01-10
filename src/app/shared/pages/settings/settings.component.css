@@ -2,37 +2,92 @@ section{
     width: 100%;
     background-color: var(--white);
 }
-article{ width: 400px; }
-article h3, .header-profile p{
-    text-align: center;
-    width: 100%;
-}
-.header-profile h3{ color: var(--blue); }
-.img-profile{
-    width: 128px;
-    height: 128px;
-    object-fit: fill;
-    border-radius: 100%;
-    margin-right: 24px;
+article{ 
+    width: 60%; 
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: row;
 }
 
-.edit-profile{ width: 100%; }
+header{
+    width: 40%;
+}
+header svg{
+    width: 128px;
+    height: 128px;
+}
+
+.data-user{
+    width: 60%;
+}
 
 .option{ 
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     flex-direction: row;
 }
-.option p{ color: var(--blue); font-weight: 500; }
+.option p{ color: var(--blue); font-weight: 500; margin-right: 16px; }
+.option span{ text-align: justify; }
+.tesis{ width: 100%; display: flex; justify-content: center; }
 
 @media(min-width : 300px) and (max-width : 500px){
-    article{ width: 100%; }
+    article{ 
+        width: 100%; 
+        justify-content: center;
+        flex-direction: column;
+    }
+    header, .data-user{ width: 100%; }
    .option{
     align-items: flex-start;
     flex-direction: column;
    }
-   .option p{ margin-bottom: 24px; }
-   .option button{ width: 100%; }
+   .option p{ 
+    margin-bottom: 24px; 
+    }
+    .option span{ 
+        word-wrap: break-word; 
+        word-break: break-all;
+    }
+    button{ width: 100%; }
+}
+@media(min-width : 501px) and (max-width : 700px){
+    article{ 
+        width: 80%; 
+        justify-content: center;
+        flex-direction: column;
+    }
+    header, .data-user{ width: 100%; }
+   .option{
+    align-items: flex-start;
+    flex-direction: column;
+   }
+   .option p{ 
+    margin-bottom: 24px; 
+    }
+    .option span{ 
+        word-wrap: break-word; 
+        word-break: break-all;
+    }
+    button{ width: 100%; }
+}
+@media(min-width : 701px) and (max-width : 1000px){
+    article{ 
+        width: 95%; 
+    }
+    header{ padding-right: 20px; }
+}
+@media(min-width : 1001px) and (max-width : 1200px){
+    article{ 
+        width: 85%; 
+    }
+    header{ padding-right: 20px; }
+}
+@media(min-width : 1201px) and (max-width : 1400px){
+    article{ 
+        width: 75%; 
+    }
+    header{ padding-right: 20px; }
 }
