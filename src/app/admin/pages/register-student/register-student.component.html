@@ -29,6 +29,19 @@
             </div>
     
             <input class="input-form mb-24" type="text" formControlName="nombre">
+
+            <div [ngClass]="controlNumberInvalid() ? 'label-form invalid-field center-start-row mb-16'  : 'label-form center-start-row mb-16'">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 4.5v15H3v-15h18ZM21 3H3a1.5 1.5 0 0 0-1.5 1.5v15A1.5 1.5 0 0 0 3 21h18a1.5 1.5 0 0 0 1.5-1.5v-15A1.5 1.5 0 0 0 21 3Z"></path>
+                    <path d="M9.75 7.5H4.5V9h5.25V7.5Z"></path>
+                    <path d="M7.5 10.5h-3V12h3v-1.5Z"></path>
+                    <path d="M17.25 13.5h-4.5a2.25 2.25 0 0 0-2.25 2.25v1.5H12v-1.5a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 .75.75v1.5h1.5v-1.5a2.25 2.25 0 0 0-2.25-2.25Z"></path>
+                    <path d="M15 12.75a3 3 0 1 0 0-5.999 3 3 0 0 0 0 5.999Zm0-4.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"></path>
+                </svg>
+                <label>Numero de control:</label>
+            </div>
+    
+            <input class="input-form mb-24" type="text" formControlName="numeroControl">
     
             <div [ngClass]="emailInvalid() ? 'label-form invalid-field center-start-row mb-16'  : 'label-form center-start-row mb-16'">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -38,7 +51,7 @@
             </div>
     
             <input class="input-form mb-24" type="email" formControlName="correo">
-    
+
             <div [ngClass]="passwordInvalid() ? 'label-form invalid-field center-start-row mb-16'  : 'label-form center-start-row mb-16'">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16.125 6.75a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z"></path>
@@ -86,7 +99,7 @@
             <div class="password-form center-start-row mb-24">
                 <input 
                 class="input-form" 
-                formControlName="confirm_password"
+                formControlName="confirmPassword"
                 [type]="showPassword() ? 'password' : 'text'"
                 name="password" id="password"
                 matTooltip="Minimo 1 mayuscula, 1 minuscula, 1 numero y 8 caracteres de longuitud">

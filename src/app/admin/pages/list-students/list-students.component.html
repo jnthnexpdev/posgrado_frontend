@@ -47,21 +47,23 @@
           <table class="mb-24">
             <thead>
               <tr>
-                <th>No</th>
-                <th>Nombre</th>
-                <th>Correo</th>
-                <th>Fecha</th>
-                <th>Estatus cuenta</th>
+                <th class="text-normal">No</th>
+                <th class="text-normal">Nombre</th>
+                <th class="text-normal">Numero control</th>
+                <th class="text-normal">Correo</th>
+                <th class="text-normal">Fecha</th>
+                <th class="text-normal">Cuenta</th>
               </tr>
             </thead>
             <tbody>
               @for(student of students; track $index; let i = $index){
                 <tr>
-                  <td>{{i+1}}</td>
-                  <td>{{student.nombre}}</td>
-                  <td>{{student.correo}}</td>
-                  <td>{{student.fechaRegistro}}</td>
-                  <td>{{student.estatusCuenta}}</td>
+                  <td class="text-small">{{i+1}}</td>
+                  <td class="text-small">{{student.nombre}}</td>
+                  <td class="text-small">{{student.numeroControl}}</td>
+                  <td class="text-small">{{student.correo}}</td>
+                  <td class="text-small">{{student.fechaRegistro}}</td>
+                  <td class="text-small">{{student.estatusCuenta}}</td>
                 </tr>
               }
             </tbody>

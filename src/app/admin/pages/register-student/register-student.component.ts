@@ -19,6 +19,7 @@ export class RegisterStudentComponent implements OnInit{
   public showPassword = signal(false);
   public btnDisable = signal(false);
   public nameInvalid = signal(false);
+  public controlNumberInvalid = signal(false);
   public emailInvalid = signal(false);
   public passwordInvalid = signal(false);
   public password2Invalid = signal(false);
@@ -32,9 +33,10 @@ export class RegisterStudentComponent implements OnInit{
   ){
     this.registerStudentForm = this.formBuilder.group({
       nombre : ['', [Validators.required, Validators.pattern(/^[a-zA-ZÁÉÍÓÚáéíóúÑñ\s]{10,60}$/)]],
+      numeroControl : ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]{8,12}$/)]],
       correo : ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_%+-][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
       password : ['', [Validators.required, Validators.pattern(/^(?=.*[0-9])(?=.*[a-záéíóúñ])(?=.*[A-ZÁÉÍÓÚÑ])[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ]{8,25}$/)]],
-      confirm_password : ['', [Validators.required, Validators.pattern(/^(?=.*[0-9])(?=.*[a-záéíóúñ])(?=.*[A-ZÁÉÍÓÚÑ])[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ]{8,25}$/)]]
+      confirmPassword : ['', [Validators.required, Validators.pattern(/^(?=.*[0-9])(?=.*[a-záéíóúñ])(?=.*[A-ZÁÉÍÓÚÑ])[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ]{8,25}$/)]]
     });
   }
 
@@ -65,7 +67,7 @@ export class RegisterStudentComponent implements OnInit{
     this.disableBtn();
 
     if(this.registerStudentForm.valid){
-      if(this.registerStudentForm.get('password')?.value != this.registerStudentForm.get('confirm_password')?.value){
+      if(this.registerStudentForm.get('password')?.value != this.registerStudentForm.get('confirmPassword')?.value){
         this.alertService.alertError('Las contraseñas no coinciden', 5000);
         return;
       }
@@ -78,14 +80,16 @@ export class RegisterStudentComponent implements OnInit{
         if(control?.invalid){
           switch(key){
             case 'nombre' : this.nameInvalid.set(true); break;
+            case 'numeroControl' : this.controlNumberInvalid.set(true); break;
             case 'correo' : this.emailInvalid.set(true); break;
             case 'password' : this.passwordInvalid.set(true); break;
-            case 'confirm_password' : this.password2Invalid.set(true); break;
+            case 'confirmPassword' : this.password2Invalid.set(true); break;
           }
         }
 
         setTimeout(() => {
           this.nameInvalid.set(false);
+          this.controlNumberInvalid.set(false);
           this.emailInvalid.set(false);
           this.passwordInvalid.set(false);
           this.password2Invalid.set(false);

@@ -36,3 +36,12 @@
     background-color: var(--white);
     text-align: center;
 }
+
+.select-form{
+    padding: 4px;
+    border-bottom: 1px solid var(--blue);
+    background-color: var(--white);
+    text-align: center;
+    outline: none;
+    offset: none;
+}

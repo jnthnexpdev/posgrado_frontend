@@ -7,7 +7,7 @@ h3{ color: var(--blue); text-align: left; width: 100%; }
 form{
     width: 100%;
 }
-.label-form, .input-form, mat-form-field{ width: 100%; }
+.label-form, .input-form, mat-form-field, .select-form{ width: 100%; }
 .label-form svg{
     margin-right: 4px;
     fill: var(--blue);

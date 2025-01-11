@@ -4,6 +4,7 @@ import { Pagination } from "./pagination.interface";
 export interface BaseStudent {
   _id: string;
   nombre: string;
+  numeroControl: string;
   correo: string;
   tipoCuenta: string;
   estatusCuenta: string;
@@ -26,6 +27,7 @@ export interface Student extends BaseStudent {}
 export interface RegisterStudent {
   nombre: string;
   correo: string;
+  numeroControl: string;
   password: string;
 }
 
