@@ -34,21 +34,23 @@
             <table class="mb-24">
               <thead>
                 <tr>
-                  <th>No</th>
-                  <th>Nombre</th>
-                  <th>Correo</th>
-                  <th>Asignacion</th>
-                  <th>Periodo</th>
+                  <th class="text-normal">No</th>
+                  <th class="text-normal">Nombre</th>
+                  <th class="text-normal">Numero control</th>
+                  <th class="text-normal">Correo</th>
+                  <th class="text-normal">Asignacion</th>
+                  <th class="text-normal">Periodo</th>
                 </tr>
               </thead>
               <tbody>
                 @for(advised of adviseds; track $index; let i = $index){
                   <tr>
-                    <td>{{ i + 1}}</td>
-                    <td>{{ advised.alumno.nombre }}</td>
-                    <td>{{ advised.alumno.correo }}</td>
-                    <td>{{ advised.fechaAsignacion }}</td>
-                    <td>{{ advised.periodo }}</td>
+                    <td class="text-small">{{ i + 1}}</td>
+                    <td class="text-small">{{ advised.alumno.nombre }}</td>
+                    <td class="text-small">{{ advised.alumno.numeroControl }}</td>
+                    <td class="text-small">{{ advised.alumno.correo }}</td>
+                    <td class="text-small">{{ advised.fechaAsignacion }}</td>
+                    <td class="text-small">{{ advised.periodo }}</td>
                   </tr>
                 }
               </tbody>

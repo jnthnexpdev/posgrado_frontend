@@ -1,9 +1,9 @@
 <article class="center-center-column pd-24">
     <h3 class="title-3 mb-24"> Registrar nuevo alumno asesorado </h3>
 
-    <form action="">
+    <form [formGroup]="registerAdvisedForm" >
 
-        <div class="label-form center-start-row mb-16">
+        <div [ngClass]="controlNumberInvalid() ? 'invalid-field -form center-start-row mb-16' : 'label-form center-start-row mb-16'">
             <svg width="32" height="32" fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 3a3.75 3.75 0 1 1 0 7.5A3.75 3.75 0 0 1 12 3Zm0-1.5A5.25 5.25 0 1 0 12 12a5.25 5.25 0 0 0 0-10.5Z"></path>
                 <path d="M19.5 22.5H18v-3.75A3.75 3.75 0 0 0 14.25 15h-4.5A3.75 3.75 0 0 0 6 18.75v3.75H4.5v-3.75a5.25 5.25 0 0 1 5.25-5.25h4.5a5.25 5.25 0 0 1 5.25 5.25v3.75Z"></path>
@@ -11,20 +11,20 @@
             <label>Numero de control:</label>
         </div>
 
-        <input class="input-form mb-24" type="text">
+        <input class="input-form mb-24" formControlName="numeroControl" type="text">
 
-        <div class="label-form center-start-row mb-16">
+        <div [ngClass]="controlNumberInvalid() ? 'invalid-field -form center-start-row mb-16' : 'label-form center-start-row mb-16'">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19.5 3h-3V1.5H15V3H9V1.5H7.5V3h-3C3.675 3 3 3.675 3 4.5v15c0 .825.675 1.5 1.5 1.5h15c.825 0 1.5-.675 1.5-1.5v-15c0-.825-.675-1.5-1.5-1.5Zm0 16.5h-15V9h15v10.5Zm0-12h-15v-3h3V6H9V4.5h6V6h1.5V4.5h3v3Z"></path>
             </svg>
             <label>Periodo:</label>
         </div>
 
-        <select class="select-form mb-24" type="text">
+        <select class="select-form mb-24" formControlName="periodo" type="text">
             <option value="Enero - Junio 2025"> Enero - Junio 2025 </option>
         </select>
 
-        <div class="label-form center-start-row mb-16">
+        <div [ngClass]="controlNumberInvalid() ? 'invalid-field -form center-start-row mb-16' : 'label-form center-start-row mb-16'">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22.153 10.32 19.68 7.847a1.19 1.19 0 0 0-1.68 0L7.5 18.35v4.15h4.15L22.152 12a1.19 1.19 0 0 0 0-1.68ZM11.028 21H9v-2.028l7.08-7.08 2.029 2.027L11.029 21Zm8.141-8.141-2.028-2.028 1.7-1.7 2.029 2.027-1.7 1.7Z"></path>
                 <path d="M8.25 12.75h1.5V7.5H12V6H6v1.5h2.25v5.25Z"></path>
@@ -33,11 +33,11 @@
             <label>Notas:</label>
         </div>
 
-        <input class="input-form mb-24" type="text">
+        <input class="input-form mb-24" formControlName="notas" type="text">
 
         <div class="btn-options center-evenly-row">
             <button class="btn-sec hover"> Cancelar </button>
-            <button class="btn-prim hover"> Buscar </button>
+            <button class="btn-prim hover" (click)="validateForm()"> Registrar </button>
         </div>
     </form>
 </article>
