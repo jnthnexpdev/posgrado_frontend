@@ -1,3 +1,4 @@
+import { Dialog } from '@angular/cdk/dialog';
 import { Component, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -16,6 +17,7 @@ export class ChangePasswordComponent implements OnInit{
 
   constructor(
     private formBuilder : FormBuilder,
+    private dialog : Dialog
   ){
     this.loginForm = this.formBuilder.group({
       correo : ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_%+-][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
@@ -29,7 +31,11 @@ export class ChangePasswordComponent implements OnInit{
 
   public togglePassword() : void{
     this.showPassword.set(!this.showPassword());
-    console.log(this.showPassword);
   }
+
+  public closeDialog() : void{
+    this.dialog.closeAll();
+  }
+
 
 }

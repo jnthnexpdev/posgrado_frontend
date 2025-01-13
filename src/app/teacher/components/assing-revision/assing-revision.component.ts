@@ -1,3 +1,4 @@
+import { Dialog } from '@angular/cdk/dialog';
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { DateAdapter } from '@angular/material/core';
@@ -16,8 +17,16 @@ import {MatInputModule} from '@angular/material/input';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AssingRevisionComponent {
-  constructor(private dateAdapter: DateAdapter<Date>) {
+  constructor(
+    private dateAdapter: DateAdapter<Date>,
+    private dialog : Dialog
+  ){
     this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
     this.dateAdapter.getDayOfWeekNames('narrow');
   }
+
+  public closeDialog() : void{
+    this.dialog.closeAll();
+  }
+
 }

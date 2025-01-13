@@ -3,6 +3,7 @@ import { AlertService } from '../../../shared/services/alerts/alert.service';
 import { NgClass } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { AdviseService } from '../../../shared/services/advise/advise.service';
+import { Dialog } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-add-mentored-student',
@@ -21,7 +22,8 @@ export class AddMentoredStudentComponent implements OnInit{
   constructor(
     private alertService : AlertService,
     private formBuilder : FormBuilder,
-    private _adviseService : AdviseService
+    private _adviseService : AdviseService,
+    private dialog : Dialog,
   ){
     this.registerAdvisedForm = this.formBuilder.group({
       numeroControl : ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]{8,12}$/)]],
@@ -39,6 +41,10 @@ export class AddMentoredStudentComponent implements OnInit{
     setTimeout(() => {
       this.btnDisable.set(false);
     }, 3000);
+  }
+
+  public closeDialog() : void{
+    this.dialog.closeAll();
   }
 
   public validateForm() : void{

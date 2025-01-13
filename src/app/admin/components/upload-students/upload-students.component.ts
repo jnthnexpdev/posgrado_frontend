@@ -1,3 +1,4 @@
+import { Dialog } from '@angular/cdk/dialog';
 import { NgClass } from '@angular/common';
 import { Component, OnInit, signal } from '@angular/core';
 
@@ -12,6 +13,10 @@ export class UploadStudentsComponent implements OnInit{
   public fileInvalid = signal(false);
   public fileSelected : File | null = null;
 
+  constructor(
+    private dialog : Dialog
+  ){}
+
 
   ngOnInit(): void {
     
@@ -19,6 +24,10 @@ export class UploadStudentsComponent implements OnInit{
 
   onFileSelected(event: any): void {
     this.fileSelected = event.target.files[0] as File;
+  }
+
+  public closeDialog() : void{
+    this.dialog.closeAll();
   }
 
 }

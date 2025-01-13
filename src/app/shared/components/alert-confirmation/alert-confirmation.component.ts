@@ -1,3 +1,4 @@
+import { Dialog } from '@angular/cdk/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -11,11 +12,17 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class AlertConfirmationComponent implements OnInit{
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data : { message : string }
+    @Inject(MAT_DIALOG_DATA) public data : { message : string },
+    private dialog : Dialog
   ){}
 
   ngOnInit(): void {
     
   }
+
+  public closeDialog() : void{
+    this.dialog.closeAll();
+  }
+
 
 }

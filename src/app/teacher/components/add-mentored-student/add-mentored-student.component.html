@@ -36,7 +36,7 @@
         <input class="input-form mb-24" formControlName="notas" type="text">
 
         <div class="btn-options center-evenly-row">
-            <button class="btn-sec hover"> Cancelar </button>
+            <button class="btn-sec hover" (click)="closeDialog()"> Cancelar </button>
             <button class="btn-prim hover" (click)="validateForm()"> Registrar </button>
         </div>
     </form>
