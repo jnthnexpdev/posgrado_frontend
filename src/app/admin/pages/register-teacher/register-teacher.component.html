@@ -1,5 +1,5 @@
 <section class="center-center-column">
-    <form [formGroup]="loginForm" class="container center-center-column">
+    <form [formGroup]="registerTeacherForm" class="container center-center-column">
         <h3 class="title-3 mb-24 text-center"> Registrar asesor </h3>
         <span class="text-normal mb-24 text-justify"> Ingresa la informacion requerida para registrar un nuevo asesor en el sistema </span>
 
@@ -36,7 +36,7 @@
         <div class="password-form center-start-row mb-24">
             <input 
             class="input-form" 
-            [type]="showPassword() ? 'password' : 'text'"
+            [type]="showPassword() ? 'text' : 'password'"
             name="password" id="password"
             matTooltip="Minimo 1 mayuscula, 1 minuscula, 1 numero y 8 caracteres de longuitud">
 
