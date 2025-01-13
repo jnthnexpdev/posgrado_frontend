@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Teacher } from '../../../shared/interfaces/teachers-reponse.types';
+import { Teacher } from '../../../shared/interfaces/teachers.interface';
 import { TeacherService } from '../../../shared/services/teachers/teacher.service';
 import { Pagination } from '../../../shared/interfaces/pagination.interface';
 

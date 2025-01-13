@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StudentService } from '../../../shared/services/students/student.service';
-import { Student } from '../../../shared/interfaces/students-response.types';
+import { Student } from '../../../shared/interfaces/students.interface';
 import { Pagination } from '../../../shared/interfaces/pagination.interface';
 
 @Component({
