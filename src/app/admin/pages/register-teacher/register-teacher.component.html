@@ -4,7 +4,7 @@
         <span class="text-normal mb-24 text-justify"> Ingresa la informacion requerida para registrar un nuevo asesor en el sistema </span>
 
 
-        <div class="label-form center-start-row mb-16">
+        <div [ngClass]="nameInvalid() ? 'label-form invalid-field center-start-row mb-16'  : 'label-form center-start-row mb-16'">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 3a3.75 3.75 0 1 1 0 7.5A3.75 3.75 0 0 1 12 3Zm0-1.5A5.25 5.25 0 1 0 12 12a5.25 5.25 0 0 0 0-10.5Z"></path>
                 <path d="M19.5 22.5H18v-3.75A3.75 3.75 0 0 0 14.25 15h-4.5A3.75 3.75 0 0 0 6 18.75v3.75H4.5v-3.75a5.25 5.25 0 0 1 5.25-5.25h4.5a5.25 5.25 0 0 1 5.25 5.25v3.75Z"></path>
@@ -12,18 +12,18 @@
             <label>Nombre:</label>
         </div>
 
-        <input class="input-form mb-24" type="text">
+        <input class="input-form mb-24" formControlName="nombre" type="text">
 
-        <div class="label-form center-start-row mb-16">
+        <div [ngClass]="emailInvalid() ? 'label-form invalid-field center-start-row mb-16'  : 'label-form center-start-row mb-16'">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 2.252a9.69 9.69 0 0 0-9.75 9.75v.75a9.75 9.75 0 0 0 9.75 9.75h5.25v-1.5H12a8.25 8.25 0 0 1-8.25-8.25v-.75A8.205 8.205 0 0 1 12 3.752a7.98 7.98 0 0 1 8.25 8.25c0 2.693-1.05 3.75-2.745 3.75-1.185 0-1.755-.967-1.755-2.25v-6h-1.5v1.455a2.88 2.88 0 0 0-2.625-1.455 4.11 4.11 0 0 0-4.125 4.08v1.59a4.11 4.11 0 0 0 4.125 4.08 3.21 3.21 0 0 0 3-1.845 3.263 3.263 0 0 0 2.933 1.845c2.302 0 4.192-1.5 4.192-5.25A9.54 9.54 0 0 0 12 2.252Zm2.25 10.92a2.625 2.625 0 0 1-5.25 0v-1.59a2.625 2.625 0 1 1 5.25 0v1.59Z"></path>
             </svg>
             <label>Correo electronico:</label>
         </div>
 
-        <input class="input-form mb-24" type="email">
+        <input class="input-form mb-24" formControlName="correo" autocomplete="new-user" type="email">
 
-        <div class="label-form center-start-row mb-24">
+        <div [ngClass]="passwordInvalid() ? 'label-form invalid-field center-start-row mb-16'  : 'label-form center-start-row mb-16'">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M16.125 6.75a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z"></path>
                 <path d="M10.81 15H6.75v-4.06l4.523-4.523A4.03 4.03 0 0 1 11.25 6a4.5 4.5 0 1 1 4.5 4.5 3.87 3.87 0 0 1-.417-.023L10.811 15Zm-2.56-1.5h1.94l4.627-4.628.388.072a3.038 3.038 0 1 0-2.399-2.398l.072.387L8.25 11.56v1.94Z"></path>
@@ -36,8 +36,9 @@
         <div class="password-form center-start-row mb-24">
             <input 
             class="input-form" 
+            formControlName="password"
             [type]="showPassword() ? 'text' : 'password'"
-            name="password" id="password"
+            autocomplete="new-password"
             matTooltip="Minimo 1 mayuscula, 1 minuscula, 1 numero y 8 caracteres de longuitud">
 
             <button (click)="togglePassword()">
@@ -56,7 +57,7 @@
             </button>
         </div>
 
-        <div class="label-form center-start-row mb-24">
+        <div [ngClass]="password2Invalid() ? 'label-form invalid-field center-start-row mb-16'  : 'label-form center-start-row mb-16'">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M16.125 6.75a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z"></path>
                 <path d="M10.81 15H6.75v-4.06l4.523-4.523A4.03 4.03 0 0 1 11.25 6a4.5 4.5 0 1 1 4.5 4.5 3.87 3.87 0 0 1-.417-.023L10.811 15Zm-2.56-1.5h1.94l4.627-4.628.388.072a3.038 3.038 0 1 0-2.399-2.398l.072.387L8.25 11.56v1.94Z"></path>
@@ -69,12 +70,13 @@
         <div class="password-form center-start-row mb-24">
             <input 
             class="input-form" 
-            [type]="showPassword() ? 'password' : 'text'"
-            name="password" id="password"
+            [type]="showPassword2() ? 'text' : 'password'"
+            formControlName="confirmPassword"
+            autocomplete="new-password"
             matTooltip="Minimo 1 mayuscula, 1 minuscula, 1 numero y 8 caracteres de longuitud">
     
-            <button (click)="togglePassword()">
-                @if(!showPassword()){
+            <button (click)="togglePassword2()">
+                @if(!showPassword2()){
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M23.205 11.745A12.517 12.517 0 0 0 12 3.75 12.518 12.518 0 0 0 .795 11.745a.75.75 0 0 0 0 .51A12.517 12.517 0 0 0 12 20.25a12.517 12.517 0 0 0 11.205-7.995.75.75 0 0 0 0-.51ZM12 18.75c-3.975 0-8.175-2.947-9.698-6.75C3.825 8.197 8.025 5.25 12 5.25c3.975 0 8.175 2.947 9.697 6.75-1.522 3.803-5.722 6.75-9.697 6.75Z"></path>
                             <path d="M12 7.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9Zm0 7.5a3 3 0 1 1 0-5.999A3 3 0 0 1 12 15Z"></path>
@@ -91,7 +93,7 @@
 
         <div class="btn-options center-evenly-row">
             <button class="btn-sec hover"> Cancelar </button>
-            <button class="btn-prim hover"> Registrar </button>
+            <button class="btn-prim hover" (click)="validateForm()"> Registrar </button>
         </div>
     </form>
 </section>

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { TeachersResponse } from '../../interfaces/teachers.interface';
+import { RegisterTeacher, TeacherRegisterResponse, TeachersRegisterResponse } from '../../interfaces/teachers.interface';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
 
@@ -11,9 +11,14 @@ export class TeacherService {
 
   private http = inject(HttpClient);
 
-  getTeachersInfo() : Observable<TeachersResponse>{
+  registerNewStudent( student : RegisterTeacher) : Observable<TeacherRegisterResponse>{
     const options = { withCredentials : true };
-    return this.http.get<TeachersResponse>(`${environment.api}asesores/listado-asesores`, options);
+    return this.http.post<TeacherRegisterResponse>(`${environment.api}asesores/registrar-cuenta`, student, options);
+  }
+
+  getTeachersInfo() : Observable<TeachersRegisterResponse>{
+    const options = { withCredentials : true };
+    return this.http.get<TeachersRegisterResponse>(`${environment.api}asesores/listado-asesores`, options);
   }
 
 }

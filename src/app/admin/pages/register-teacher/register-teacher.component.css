@@ -11,13 +11,15 @@ form{
 
 h3{ color: var(--blue); }
 
-.label-form, .input-form{ width: 100%; }
-.label-form svg{
+.label-form, .input-form, .invalid-field{ width: 100%; }
+.label-form svg, .invalid-field svg{
     margin-right: 4px;
-    fill: var(--blue);
     width: 20px;
     height: 20px;
 }
+.label-form svg{ fill: var(--blue); }
+.invalid-field svg{ fill: var(--red); }
+.invalid-field label{ color: var(--red); }
 
 .password-form{
     width: 100%;

@@ -23,7 +23,7 @@ export interface StudentSession {
 // Interfaz para un estudiante en la lista
 export interface Student extends BaseStudent {}
 
-// Interfaz para el registro de un estudiante (agrega el password)
+// Interfaz para el registro de un estudiante
 export interface RegisterStudent {
   nombre: string;
   correo: string;

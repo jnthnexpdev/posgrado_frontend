@@ -63,7 +63,7 @@ export class RegisterStudentComponent implements OnInit{
     }, 3000);
   }
 
-  validateForm(){
+  public validateForm() : void{
     this.disableBtn();
 
     if(this.registerStudentForm.valid){

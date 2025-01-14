@@ -20,8 +20,22 @@ export interface Teacher {
   __v: number;            // Versión del documento (usada por Mongoose)
 }
 
+// Interfaz para el registro de un asesor
+export interface RegisterTeacher{
+  nombre: string;
+  correo: string;
+  password: string;
+}
+
+// Respuesta al registar un asesor
+export interface TeacherRegisterResponse {
+  success: boolean;   // Indica si la operación fue exitosa
+  httpCode: number;   // Código de estado HTTP de la respuesta
+  message: string;    // Mensaje de respuesta del servidor 
+}
+
 // Respuesta al obtener la lista de profesores
-export interface TeachersResponse {
+export interface TeachersRegisterResponse {
   success: boolean;   // Indica si la operación fue exitosa
   httpCode: number;   // Código de estado HTTP de la respuesta
   teachers: Teacher[]; // Lista de profesores
