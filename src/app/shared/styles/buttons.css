@@ -9,7 +9,7 @@
 .btn-sec{
     background-color: transparent;
     color: var(--blue);
-    padding: 6px 16px;
+    padding: 7px 16px;
     border: 1px solid var(--blue);
     border-radius: 4px;
 }

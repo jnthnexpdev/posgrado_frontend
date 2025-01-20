@@ -3,74 +3,112 @@ section{
     padding: 24px;
     min-height: 90dvh;
 }
-main{ width: 70% }
-h3{ color: var(--blue); width: 100%; text-align: left; }
+main{ width: 100% }
+h3{ color: var(--blue); }
+h3, span{ width: 100%; text-align: left; }
 
-.actions{ 
+.filters{ 
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     flex-direction: row;
 }
-.actions .filters{
-    display: flex;
-    align-items: center;
+.filters .btn-filter{
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-left: 8px;
+    text-align: center;
 }
-.actions .filters select{
-    margin: 0 0 0 16px;
+.filters .filter-selected{
+    border: 1px solid var(--black);
 }
+.filters button:nth-child(1){ background-color: rgb(187 247 208); color: rgb(22 101 52); }
+.filters button:nth-child(2){ background-color: rgb(191 219 254); color: rgb(30 64 175); }
+.filters button:nth-child(3) { background-color: rgb(254 240 138); color: rgb(133 77 14); }
 
-article{ width: 100%; }
-article .container{ 
-    box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.1);
-}
-header{
+article{
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
+    flex-wrap: wrap;
 }
-.assignment:not(:first-child){ margin-top: 16px; }
-header{ width: 100%; }
-.assignment-header > svg{
+article .assignment{
+    width: calc(50% - 8px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.1);
+}
+.assignment{ margin-top: 16px; }
+.assignment:nth-child(1){ margin-top: 0px; }
+.assignment:nth-child(2){ margin-top: 0px; }
+.assignment:nth-child(odd){ margin-right: 8px; }
+.assignment:nth-child(even){ margin-left: 8px; }
+article .assignment-title{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+article .assignment-title p{ font-weight: 500; }
+article .assignment-title > svg{
+    min-width: 24px;
+    min-height: 24px;
     width: 48px;
     height: 48px;
     fill: var(--blue);
+    margin-right: 8px;
 }
-.data-assingment{ margin-left: 8px; }
-.data-assingment p{ font-weight: 500; }
-.details-assignment span{
+article .assignment > span{ 
+    width: auto; 
     padding: 4px 8px;
     border-radius: 20px;
     font-weight: 600;
-    margin-right: 8px;
     text-align: center;
 }
-.assignment:nth-child(1) .details-assignment span{ background-color: rgb(187 247 208); color: rgb(22 101 52); }
-.assignment:nth-child(2) .details-assignment span{ background-color: rgb(191 219 254); color: rgb(30 64 175); }
-.assignment:nth-child(3) .details-assignment span{ background-color: rgb(254 240 138); color: rgb(133 77 14); }
-.details-assignment button{ background-color: transparent; }
-.details-assignment button svg{
-    width: 24px;
-    height: 24px;
-}
+
+.assignment:nth-child(1) > span{ background-color: rgb(187 247 208); color: rgb(22 101 52); }
+.assignment:nth-child(2) > span{ background-color: rgb(191 219 254); color: rgb(30 64 175); }
+.assignment:nth-child(3) > span{ background-color: rgb(254 240 138); color: rgb(133 77 14); }
+
 
 @media(min-width : 300px) and (max-width : 500px){
-    main{ width: 100%; }
-    .assignment-header > svg, .details-assignment button{
-        display: none;
+    .filters{ flex-wrap: wrap; }
+    .filters .btn-filter{ width: calc(50% - 8px); margin-left: 0; }
+    .filters button:nth-child(1), .filters button:nth-child(2){ margin-bottom: 16px; }
+    .filters button:nth-child(odd){ margin-right: 8px }
+    .filters button:nth-child(even){ margin-left: 8px }
+    article{
+        flex-wrap: nowrap;
+        flex-direction: column;
     }
-    .data-assingment{ margin: 0; } 
-    .details-assignment span{ margin-left: 8px; }
+    article .assignment{ width: 100%; align-items: flex-end; flex-direction: column; }
+    article .assignment span{ margin-top: 16px; }
+    article .assignment:nth-child(even){ margin-top: 16px; }
+    .assignment:nth-child(odd){ margin-right: 0px; }
+    .assignment:nth-child(even){ margin-left: 0px; }
 }
 
-@media(min-width : 501px) and (max-width : 900px){
-    main{ width: 100%; }
-    .assignment-header > svg, .details-assignment button{
-        display: none;
+@media(min-width : 501px) and (max-width : 700px){
+    .filters .btn-filter{ margin: 0 0 0 8px; }
+    article{
+        flex-wrap: nowrap;
+        flex-direction: column;
     }
-    .data-assingment{ margin: 0; } 
-    .details-assignment span{ margin-left: 8px; }
+    article .assignment{ width: 100%; align-items: flex-end; flex-direction: column; }
+    article .assignment span{ margin-top: 16px; }
+    article .assignment:nth-child(even){ margin-top: 16px; }
+    .assignment:nth-child(odd){ margin-right: 0px; }
+    .assignment:nth-child(even){ margin-left: 0px; }
+}
+
+@media(min-width : 701px) and (max-width : 900px){
+    article .assignment{ align-items: flex-end; flex-direction: column; }
+    article .assignment span{ margin-top: 16px; }
+    article .assignment:nth-child(even){ margin-top: 16px; }
+    .assignment:nth-child(odd){ margin-right: 0px; }
+    .assignment:nth-child(even){ margin-left: 0px; }
 }

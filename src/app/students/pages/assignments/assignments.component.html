@@ -1,21 +1,81 @@
 <section class="center-start-column">
     <main class="center-center-column container pd-24">
         <h3 class="title-3 mb-24"> Asignaciones </h3>
+        <span class="text-normal mb-24"> Revisa los detalles de tus actividades asignadas </span>
 
-        <div class="actions mb-24">
-            <div class="filters">
-                <p class="text-normal"> Estatus: </p>
-
-                <select class="select-filter" name="" id="">
-                    <option value=""> Todas </option>
-                    <option value=""> Revisadas </option>
-                    <option value=""> Entregadas </option>
-                    <option value=""> Pendientes </option>
-                </select>
-            </div>
+        <div class="filters mb-24">
+            <button class="btn-filter filter-selected text-small">Todas</button>
+            <button class="btn-filter text-small">Calificadas</button>
+            <button class="btn-filter text-small">Entregadas</button>
+            <button class="btn-filter text-small">Pedientes</button>
         </div>
 
         <article>
+            <div class="container assignment pd-16" (click)="viewDetails(1)">
+                <div class="assignment-title">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.5 17.25h-6v1.5h6v-1.5Z"></path>
+                            <path d="M9 17.25H7.5v1.5H9v-1.5Z"></path>
+                            <path d="M16.5 13.5h-6V15h6v-1.5Z"></path>
+                            <path d="M9 13.5H7.5V15H9v-1.5Z"></path>
+                            <path d="M16.5 9.75h-6v1.5h6v-1.5Z"></path>
+                            <path d="M9 9.75H7.5v1.5H9v-1.5Z"></path>
+                            <path d="M18.75 3.75H16.5V3A1.5 1.5 0 0 0 15 1.5H9A1.5 1.5 0 0 0 7.5 3v.75H5.25a1.5 1.5 0 0 0-1.5 1.5V21a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5ZM9 3h6v3H9V3Zm9.75 18H5.25V5.25H7.5V7.5h9V5.25h2.25V21Z"></path>
+                        </svg>
+        
+                        <div class="assignment-data">
+                            <p class="text-normal mb-8"> Elaboracion del marco referencial </p>
+                            <span class="text-small"> 10/11/2024 </span>
+                        </div>
+                </div>
+    
+                <span class="text-small"> Calificado </span>
+            </div>
+
+            <div class="container assignment pd-16" (click)="viewDetails(1)">
+                <div class="assignment-title">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.5 17.25h-6v1.5h6v-1.5Z"></path>
+                            <path d="M9 17.25H7.5v1.5H9v-1.5Z"></path>
+                            <path d="M16.5 13.5h-6V15h6v-1.5Z"></path>
+                            <path d="M9 13.5H7.5V15H9v-1.5Z"></path>
+                            <path d="M16.5 9.75h-6v1.5h6v-1.5Z"></path>
+                            <path d="M9 9.75H7.5v1.5H9v-1.5Z"></path>
+                            <path d="M18.75 3.75H16.5V3A1.5 1.5 0 0 0 15 1.5H9A1.5 1.5 0 0 0 7.5 3v.75H5.25a1.5 1.5 0 0 0-1.5 1.5V21a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5ZM9 3h6v3H9V3Zm9.75 18H5.25V5.25H7.5V7.5h9V5.25h2.25V21Z"></path>
+                        </svg>
+        
+                        <div class="assignment-data">
+                            <p class="text-normal mb-8"> Elaboracion del marco referencial </p>
+                            <span class="text-small"> 10/11/2024 </span>
+                        </div>
+                </div>
+    
+                <span class="text-small"> Calificado </span>
+            </div>
+
+            <div class="container assignment pd-16" (click)="viewDetails(1)">
+                <div class="assignment-title">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.5 17.25h-6v1.5h6v-1.5Z"></path>
+                            <path d="M9 17.25H7.5v1.5H9v-1.5Z"></path>
+                            <path d="M16.5 13.5h-6V15h6v-1.5Z"></path>
+                            <path d="M9 13.5H7.5V15H9v-1.5Z"></path>
+                            <path d="M16.5 9.75h-6v1.5h6v-1.5Z"></path>
+                            <path d="M9 9.75H7.5v1.5H9v-1.5Z"></path>
+                            <path d="M18.75 3.75H16.5V3A1.5 1.5 0 0 0 15 1.5H9A1.5 1.5 0 0 0 7.5 3v.75H5.25a1.5 1.5 0 0 0-1.5 1.5V21a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5ZM9 3h6v3H9V3Zm9.75 18H5.25V5.25H7.5V7.5h9V5.25h2.25V21Z"></path>
+                        </svg>
+        
+                        <div class="assignment-data">
+                            <p class="text-normal mb-8"> Elaboracion del marco referencial </p>
+                            <span class="text-small"> 10/11/2024 </span>
+                        </div>
+                </div>
+    
+                <span class="text-small"> Calificado </span>
+            </div>
+        </article>
+
+        <!-- <article>
             <div class="container assignment pd-16" (click)="viewDetails(1)">
                 <header>
                     <div class="assignment-header center-start-row">
@@ -35,82 +95,10 @@
                         </div>
                     </div>
     
-                    <div class="details-assignment center-end-row">
-                        <span class="text-small"> Calificado </span>
-                        <button class="center-center-column hover" (click)="viewDetails(1)"> 
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16.5 19.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-                                <path d="M22.333 17.609A6.48 6.48 0 0 0 16.5 13.5a6.48 6.48 0 0 0-5.833 4.109L10.5 18l.167.391A6.48 6.48 0 0 0 16.5 22.5a6.48 6.48 0 0 0 5.833-4.109L22.5 18l-.167-.391ZM16.5 21a3 3 0 1 1 0-5.999 3 3 0 0 1 0 5.999Z"></path>
-                                <path d="M9 21H5.25V5.25H7.5V7.5h9V5.25h2.25V12h1.5V5.25a1.5 1.5 0 0 0-1.5-1.5H16.5V3A1.5 1.5 0 0 0 15 1.5H9A1.5 1.5 0 0 0 7.5 3v.75H5.25a1.5 1.5 0 0 0-1.5 1.5V21a1.5 1.5 0 0 0 1.5 1.5H9V21ZM9 3h6v3H9V3Z"></path>
-                            </svg>
-                        </button>
-                    </div>
+                    <span class="text-small"> Calificado </span>
                 </header>
             </div>
 
-            <div class="container assignment pd-16" (click)="viewDetails(1)">
-                <header>
-                    <div class="assignment-header center-start-row">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16.5 17.25h-6v1.5h6v-1.5Z"></path>
-                            <path d="M9 17.25H7.5v1.5H9v-1.5Z"></path>
-                            <path d="M16.5 13.5h-6V15h6v-1.5Z"></path>
-                            <path d="M9 13.5H7.5V15H9v-1.5Z"></path>
-                            <path d="M16.5 9.75h-6v1.5h6v-1.5Z"></path>
-                            <path d="M9 9.75H7.5v1.5H9v-1.5Z"></path>
-                            <path d="M18.75 3.75H16.5V3A1.5 1.5 0 0 0 15 1.5H9A1.5 1.5 0 0 0 7.5 3v.75H5.25a1.5 1.5 0 0 0-1.5 1.5V21a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5ZM9 3h6v3H9V3Zm9.75 18H5.25V5.25H7.5V7.5h9V5.25h2.25V21Z"></path>
-                        </svg>
-        
-                        <div class="data-assingment">
-                            <p class="text-normal mb-8"> Elaboracion del desarrollo (Capitulo III y IV) </p>
-                            <span class="text-small"> 15/11/2024 </span>
-                        </div>
-                    </div>
-    
-                    <div class="details-assignment center-end-row">
-                        <span class="text-small"> Entregado </span>
-                        <button class="center-center-column hover" (click)="viewDetails(1)"> 
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16.5 19.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-                                <path d="M22.333 17.609A6.48 6.48 0 0 0 16.5 13.5a6.48 6.48 0 0 0-5.833 4.109L10.5 18l.167.391A6.48 6.48 0 0 0 16.5 22.5a6.48 6.48 0 0 0 5.833-4.109L22.5 18l-.167-.391ZM16.5 21a3 3 0 1 1 0-5.999 3 3 0 0 1 0 5.999Z"></path>
-                                <path d="M9 21H5.25V5.25H7.5V7.5h9V5.25h2.25V12h1.5V5.25a1.5 1.5 0 0 0-1.5-1.5H16.5V3A1.5 1.5 0 0 0 15 1.5H9A1.5 1.5 0 0 0 7.5 3v.75H5.25a1.5 1.5 0 0 0-1.5 1.5V21a1.5 1.5 0 0 0 1.5 1.5H9V21ZM9 3h6v3H9V3Z"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </header>
-            </div>
-
-            <div class="container assignment pd-16" (click)="viewDetails(1)">
-                <header>
-                    <div class="assignment-header center-start-row">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16.5 17.25h-6v1.5h6v-1.5Z"></path>
-                            <path d="M9 17.25H7.5v1.5H9v-1.5Z"></path>
-                            <path d="M16.5 13.5h-6V15h6v-1.5Z"></path>
-                            <path d="M9 13.5H7.5V15H9v-1.5Z"></path>
-                            <path d="M16.5 9.75h-6v1.5h6v-1.5Z"></path>
-                            <path d="M9 9.75H7.5v1.5H9v-1.5Z"></path>
-                            <path d="M18.75 3.75H16.5V3A1.5 1.5 0 0 0 15 1.5H9A1.5 1.5 0 0 0 7.5 3v.75H5.25a1.5 1.5 0 0 0-1.5 1.5V21a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5ZM9 3h6v3H9V3Zm9.75 18H5.25V5.25H7.5V7.5h9V5.25h2.25V21Z"></path>
-                        </svg>
-        
-                        <div class="data-assingment">
-                            <p class="text-normal mb-8"> Realizar las bibligrafias en formato APA 7 </p>
-                            <span class="text-small"> 25/11/2024 </span>
-                        </div>
-                    </div>
-    
-                    <div class="details-assignment center-end-row">
-                        <span class="text-small"> Pendiente </span>
-                        <button class="center-center-column hover" (click)="viewDetails(1)"> 
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16.5 19.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-                                <path d="M22.333 17.609A6.48 6.48 0 0 0 16.5 13.5a6.48 6.48 0 0 0-5.833 4.109L10.5 18l.167.391A6.48 6.48 0 0 0 16.5 22.5a6.48 6.48 0 0 0 5.833-4.109L22.5 18l-.167-.391ZM16.5 21a3 3 0 1 1 0-5.999 3 3 0 0 1 0 5.999Z"></path>
-                                <path d="M9 21H5.25V5.25H7.5V7.5h9V5.25h2.25V12h1.5V5.25a1.5 1.5 0 0 0-1.5-1.5H16.5V3A1.5 1.5 0 0 0 15 1.5H9A1.5 1.5 0 0 0 7.5 3v.75H5.25a1.5 1.5 0 0 0-1.5 1.5V21a1.5 1.5 0 0 0 1.5 1.5H9V21ZM9 3h6v3H9V3Z"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </header>
-            </div>
-        </article>
+        </article> -->
     </main>
 </section>
