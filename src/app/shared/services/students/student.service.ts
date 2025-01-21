@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
@@ -16,8 +16,15 @@ export class StudentService {
     return this.http.post<RegisterStudentsResponse>(`${environment.api}alumnos/registrar-cuenta`, student, options);
   }
 
-  getStudentsInfo() : Observable<StudentsResponse>{
-    const options = { withCredentials : true };
+  getStudentsInfo(search: string = '', page: number = 1, pageSize: number = 20) : Observable<StudentsResponse>{
+    const params = new HttpParams()
+    .set('search', search || '')
+    .set('page', page.toString())
+    .set('pageSize', pageSize.toString());
+    const options = {
+      params: params,
+      withCredentials: true
+    };
     return this.http.get<StudentsResponse>(`${environment.api}alumnos/listado-alumnos`, options);
   }
 

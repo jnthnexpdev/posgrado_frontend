@@ -50,7 +50,7 @@
                 <label>Correo electronico:</label>
             </div>
     
-            <input class="input-form mb-24" type="email" formControlName="correo">
+            <input class="input-form mb-24" type="email" autocomplete="new-user" formControlName="correo">
 
             <div [ngClass]="passwordInvalid() ? 'label-form invalid-field center-start-row mb-16'  : 'label-form center-start-row mb-16'">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -67,7 +67,7 @@
                 class="input-form" 
                 formControlName="password"
                 [type]="showPassword() ? 'text' : 'password'"
-                name="password" id="password"
+                autocomplete="new-password"
                 matTooltip="Minimo 1 mayuscula, 1 minuscula, 1 numero y 8 caracteres de longuitud">
     
                 <button (click)="togglePassword()">
@@ -101,7 +101,7 @@
                 class="input-form" 
                 formControlName="confirmPassword"
                 [type]="showPassword() ? 'text' : 'password'"
-                name="password" id="password"
+                autocomplete="new-password"
                 matTooltip="Minimo 1 mayuscula, 1 minuscula, 1 numero y 8 caracteres de longuitud">
         
                 <button (click)="togglePassword()">
