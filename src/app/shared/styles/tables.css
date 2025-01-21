@@ -21,5 +21,3 @@ table th svg{
 table td{ padding: 8px; border-bottom: 1px solid var(--ligth); }
 
 table tbody tr:nth-child(even){ background-color: var(--ligth); color: var(--black); }
-.pagination{ width: 100%; }
-.pagination button:nth-child(even){ margin: 0 8px; }

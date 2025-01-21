@@ -1,0 +1,19 @@
+.pagination{ width: 100%; }
+.pagination .btn-prim{
+    padding: 4px 6px;
+    background-color: transparent;
+    color: var(--blue);
+    font-weight: 600;
+    border: 1px solid var(--blue);
+}
+.pagination .btn-sec{
+    padding: 4px 6px;
+    border: none;
+}
+.pagination button:nth-child(even){ margin: 0 8px; }
+
+.pagination .btn-sec:hover, .pagination .btn-prim:hover{
+    cursor: pointer;
+    transform: scale(1.01);
+}
+.pagination .btn-sec:hover{ text-decoration: underline; }
