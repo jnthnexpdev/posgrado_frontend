@@ -6,6 +6,7 @@ import { UploadStudentsComponent } from '../../components/upload-students/upload
 import { NgClass } from '@angular/common';
 import { AlertService } from '../../../shared/services/alerts/alert.service';
 import { StudentService } from '../../../shared/services/students/student.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-student',
@@ -28,6 +29,7 @@ export class RegisterStudentComponent implements OnInit{
   constructor(
     private formBuilder : FormBuilder,
     private dialog : MatDialog,
+    private router : Router,
     private alertService : AlertService,
     private _studentService : StudentService
   ){
@@ -41,7 +43,10 @@ export class RegisterStudentComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    
+  }
+
+  public backToStudentsPage() : void{
+    this.router.navigate(['/coordinacion/alumnos']);
   }
 
   public togglePassword() : void{

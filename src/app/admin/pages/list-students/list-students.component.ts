@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { StudentService } from '../../../shared/services/students/student.service';
 import { Student } from '../../../shared/interfaces/students.interface';
@@ -19,6 +19,7 @@ export class ListStudentsComponent implements OnInit{
   students : Student[] = [];
   pagination : Pagination | null = null;
   private studentSubject = new Subject<String>();
+  public requestCompleted = signal(false);
 
   constructor(
     private router : Router,
@@ -62,11 +63,11 @@ export class ListStudentsComponent implements OnInit{
       next : (response) => {
         this.students = response.students;
         this.pagination = response.pagination;
-        console.log('Alumnos:', this.students);
-        console.log('Paginación:', this.pagination);
+        this.requestCompleted.set(true);
       },
       error : (err) => {
         console.error('Error al obtener la lista de alumnos: ', err.error.message);
+        this.requestCompleted.set(true);
       }
     });
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Teacher } from '../../../shared/interfaces/teachers.interface';
 import { TeacherService } from '../../../shared/services/teachers/teacher.service';
@@ -19,6 +19,7 @@ export class ListTeachersComponent implements OnInit{
   teachers : Teacher[] = [];
   pagination : Pagination | null = null;
   private teacherSubject = new Subject<String>();
+  public requestCompleted = signal(false);
 
   constructor(
     private router : Router,
@@ -62,11 +63,11 @@ export class ListTeachersComponent implements OnInit{
         next : (response) => {
           this.teachers = response.teachers;
           this.pagination = response.pagination;
-          console.log('Asesores:', this.teachers);
-          console.log('Paginación:', this.pagination);
+          this.requestCompleted.set(true);
         },
         error : (err) => {
           console.error('Error al obtener la lista de asesores: ', err.error.message);
+          this.requestCompleted.set(true);
         }
       });
   }

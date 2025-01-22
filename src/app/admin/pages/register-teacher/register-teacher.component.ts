@@ -4,6 +4,7 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { AlertService } from '../../../shared/services/alerts/alert.service';
 import { NgClass } from '@angular/common';
 import { TeacherService } from '../../../shared/services/teachers/teacher.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-teacher',
@@ -26,6 +27,7 @@ export class RegisterTeacherComponent implements OnInit{
   constructor(
     private formBuilder : FormBuilder,
     private alertService : AlertService,
+    private router : Router,
     private _teacherService : TeacherService
   )
   {
@@ -38,7 +40,10 @@ export class RegisterTeacherComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    
+  }
+
+  public backToTeachersPage() : void{
+    this.router.navigate(['/coordinacion/asesores']);
   }
 
   public togglePassword() : void{

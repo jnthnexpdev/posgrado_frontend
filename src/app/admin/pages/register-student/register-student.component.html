@@ -1,9 +1,9 @@
 <section class="center-center-column pd-24">
     <article class="center-center-column container pd-24">
-        <h3 class="title-3 mb-24"> Registro de estudiantes </h3>
+        <h3 class="title-3 mb-24"> Registro de alumnos </h3>
         <span class="text-normal mb-24">
-            Ingresa la informacion correspondiente al nuevo estudiante para registrarlo en el sistema o sube un archivo (CSV)
-            para registrar varios estudiantes.
+            Ingresa la informacion correspondiente al nuevo alumno para registrarlo en el sistema o sube un archivo (CSV)
+            para registrar varios alumnos.
         </span>
 
         <div class="actions mb-24">
@@ -121,7 +121,7 @@
             </div>
     
             <div class="btn-options center-evenly-row">
-                <button class="btn-sec hover"> Cancelar </button>
+                <button class="btn-sec hover" (click)="backToStudentsPage()"> Cancelar </button>
                 <button class="btn-prim hover" (click)="validateForm()"> Registrar </button>
             </div>
         </form>

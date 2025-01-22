@@ -13,4 +13,5 @@
     border: 1px solid var(--blue);
     border-radius: 4px;
 }
-.hover:hover{ cursor: pointer; transform: scale(1.01); }
+.hover:hover:not(:disabled){ cursor: pointer; transform: scale(1.01); }
+button:disabled{ opacity: 0.8; cursor: not-allowed;  }
