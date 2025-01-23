@@ -64,6 +64,7 @@ export class ListStudentsComponent implements OnInit{
         this.students = response.students;
         this.pagination = response.pagination;
         this.requestCompleted.set(true);
+        console.log('Paginado: ',this.pagination);
       },
       error : (err) => {
         console.error('Error al obtener la lista de alumnos: ', err.error.message);

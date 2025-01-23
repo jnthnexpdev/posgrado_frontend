@@ -13,20 +13,19 @@ span { width: 100%; text-align: left; }
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     flex-direction: row;
 }
 .actions{
     width: 60%;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     flex-direction: row;
 }
 .actions button, .actions select{ margin-right: 16px; }
-.input-search{
-    width: 40%;
-}
-
+.actions button span{ width: auto; }
+.input-search{ width: 400px; }
 main{ width: 100%; }
 
 @media(min-width : 300px) and (max-width : 500px){
@@ -37,12 +36,10 @@ main{ width: 100%; }
         overscroll-behavior-x: contain;
         scroll-snap-type: x proximity;
     }
-    .filters, .actions{
-        flex-direction: column;
-    }
-    .filters, .actions, .input-search{ width: 100%; }
-    .actions button, .actions select{ margin: 0 0 16px 0; width: 100%; }
-}
+    .filters, .actions{ flex-direction: column; width: 100%; }
+    .actions button, .actions select{ margin: 0 0 24px 0; width: 100%; }
+    .input-search{ width: 100%; }
+} 
 @media(min-width : 501px) and (max-width : 800px){
     main{
         width: 100%;
@@ -51,18 +48,15 @@ main{ width: 100%; }
         overscroll-behavior-x: contain;
         scroll-snap-type: x proximity;
     }
-    .filters{
-        flex-direction: column;
-    }
-    .actions{
-        flex-wrap: wrap;
-    }
-    .filters, .actions, .input-search{ width: 100%; }
-    .actions select{ margin: 0 0 16px 0; width: calc(50% - 8px) }
-    .actions button{ margin: 0 0 16px 0; width: calc(50% - 8px) }
-    .actions button:nth-child(1), .actions select:nth-child(3){ margin-right: 16px; }
+    .filters{ flex-direction: column; }
+    .actions{ width: 100%; margin-bottom: 24px; }
+    .actions button{ padding: 8px; }
+    .actions button span{ display: none; }
+    .actions button svg{ margin: 0; }
+    .actions button, .actions select{ margin: 0 0 0 16px; }
+    .input-search{ width: 100%; }
 }
-@media(min-width : 801px) and (max-width : 1200px){
+@media(min-width : 801px) and (max-width : 1050px){
     main{
         width: 100%;
         max-width: 100%;
@@ -70,7 +64,10 @@ main{ width: 100%; }
         overscroll-behavior-x: contain;
         scroll-snap-type: x proximity;
     }
-    .filters{ width: 100%; flex-direction: column; }
-    .actions{ width: 100%; margin-bottom: 16px; }
-    .input-search{ width: 60%; }
+    .filters{ width: 100%; }
+    .actions button, .actions select{ margin: 0 8px 0 0; }
+    .actions button{ padding: 8px; }
+    .actions button span{ display: none; }
+    .actions button svg{ margin: 0; }
+    .input-search{ width: 300px; }
 }

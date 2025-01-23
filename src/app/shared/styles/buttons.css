@@ -13,5 +13,25 @@
     border: 1px solid var(--blue);
     border-radius: 4px;
 }
+.btn-prev, .btn-next, .btn-page{
+    color: var(--black);
+    font-weight: 500;
+    padding: 4px;
+    background-color: transparent;
+}
+.btn-prev, .btn-next{
+    border: 1px solid var(--black);
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+
+.btn-page:hover:not(:disabled), .btn-next:hover:not(:disabled), .btn-prev:hover:not(:disabled){
+    cursor: pointer;
+    border-bottom: 1px solid var(--black);
+    transform: scale(1.01);
+}
+.btn-next:disabled, .btn-next:disabled{ color: var(--gray); }
+/* Estilo hover para botones que no esten deshabilitados */
 .hover:hover:not(:disabled){ cursor: pointer; transform: scale(1.01); }
 button:disabled{ opacity: 0.8; cursor: not-allowed;  }
