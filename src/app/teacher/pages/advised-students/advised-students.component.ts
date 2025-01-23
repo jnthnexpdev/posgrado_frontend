@@ -1,6 +1,10 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddMentoredStudentComponent } from '../../components/add-mentored-student/add-mentored-student.component';
+import { NgClass } from '@angular/common';
+import { debounceTime, distinctUntilChanged, filter, Subject, switchMap } from 'rxjs';
+import { FormsModule } from '@angular/forms';
+
 import { StudentsAdvised } from '../../../shared/interfaces/students-advised.types';
 import { Pagination } from '../../../shared/interfaces/pagination.interface';
 import { AdviseService } from '../../../shared/services/advise/advise.service';
@@ -8,14 +12,22 @@ import { AdviseService } from '../../../shared/services/advise/advise.service';
 @Component({
   selector: 'app-mentored-students',
   standalone: true,
-  imports: [],
+  imports: [ NgClass, FormsModule ],
   templateUrl: './advised-students.component.html',
   styleUrl: './advised-students.component.css'
 })
 export class AdvisedStudentsComponent implements OnInit{
 
   adviseds : StudentsAdvised [] = [];
-  pagination : Pagination | null = null;
+  searchTerm: string = '';
+  pagination: Pagination = {
+    total: 0,
+    page: 1,
+    pageSize: 10,
+    totalPages: 1,
+  };
+  pages : number[] = [];
+  private advisedsSubject = new Subject<String>();
   public requestCompleted = signal(false);
 
   constructor(
@@ -24,10 +36,32 @@ export class AdvisedStudentsComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+    this.advisedsSubject
+    .pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      filter((term) => term.length >= 3 || term.length < 3),
+      switchMap((term) => {
+        const searchQuery = term.length < 3 ? '' : term;
+        return this._adviseService.getStudentsAdvisedByTeacher(searchQuery.toString(), this.pagination?.page || 1 );
+      })
+    )
+    .subscribe({
+      next: (response) => {
+        this.adviseds = response.students;
+        this.pagination = response.pagination;
+        this.calculatePages();
+        console.log('Paginado: ', this.pagination);
+      },
+      error : (err) => {
+        console.error("Error al obtener la lista de asesorados: ", err.error.message);
+      },
+    });
+
     this.getStudentsAdvised();
   }
 
-  addAdvisedStudent() : void{
+  public addAdvisedStudent() : void{
     this._dialog.open(AddMentoredStudentComponent, {
       minWidth: '200px',
       width : '350px',
@@ -35,18 +69,44 @@ export class AdvisedStudentsComponent implements OnInit{
     });
   }
 
-  private getStudentsAdvised() : void{
-    this._adviseService.getStudentsAdvisedByTeacher().subscribe({
+  public onSearch(term : string) : void{
+    this.advisedsSubject.next(term);
+  }
+
+  private getStudentsAdvised(page: number = 1) : void{
+    this._adviseService.getStudentsAdvisedByTeacher('', page).subscribe({
       next : (response) => {
         this.adviseds = response.students;
         this.pagination = response.pagination;
         this.requestCompleted.set(true);
+        this.calculatePages();
+        console.log('Paginado: ', this.pagination);
       },
       error : (err) => {
-        console.error('Error al obtener la lista de alumnos: ', err.error.message);
+        console.error('Error al obtener la lista de asesorados: ', err.error.message);
         this.requestCompleted.set(true);
       }
     });
-}
+  }
+
+  changePage(page: number): void {
+    if (this.pagination && page >= 1 && page <= this.pagination.totalPages) {
+      this.getStudentsAdvised(page);
+    }
+    console.log('Cambiando de pagina: ', page);
+  }
+
+  private calculatePages(): void {
+    if (!this.pagination) return;
+
+    const currentPage = this.pagination.page;
+    const totalPages = this.pagination.totalPages;
+
+    // Mostrar hasta 3 páginas: actual -1, actual, actual +1 (dentro del rango válido)
+    this.pages = Array.from(
+      { length: Math.min(3, totalPages) },
+      (_, i) => Math.max(1, currentPage - 1) + i
+    );
+  }
 
 }

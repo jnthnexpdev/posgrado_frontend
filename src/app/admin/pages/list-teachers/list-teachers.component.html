@@ -50,7 +50,7 @@
                 <tbody>
                   @for(teacher of teachers; track $index; let i = $index){
                     <tr>
-                      <td>{{i+1}}</td>
+                      <td>{{(pagination.page - 1) * pagination.pageSize + $index + 1 }}</td>
                       <td>{{teacher.nombre}}</td>
                       <td>{{teacher.correo}}</td>
                       <td>{{teacher.fechaRegistro}}</td>
@@ -61,13 +61,26 @@
               </table>
             </main>
             
-            <div class="pagination center-center-row">
-                <button class="btn-prim">Ant</button>
-                <button class="btn-sec">1</button>
-                <button class="btn-sec">2</button>
-                <button class="btn-sec">3</button>
-                <button class="btn-prim">Sig</button>
-            </div>
+            @if(pagination.totalPages > 1){
+              <div class="pagination center-center-row">
+                <button class="btn-prev" 
+                [disabled]="pagination.page === 1" 
+                (click)="changePage(pagination.page - 1)">
+                Ant
+                </button>
+                @for (page of pages; track $index){
+                  <button [ngClass]="pagination.page === page ? 'btn-page current-page'  : 'btn-page'"
+                  (click)="changePage(page)">
+                    {{page}}
+                  </button>
+                }
+                <button class="btn-next" 
+                [disabled]="pagination.totalPages === pagination.page"
+                (click)="changePage(pagination.page + 1)">
+                Sig
+                </button>
+              </div>
+            }
           }@placeholder(minimum 2s;){
             <div class="center-center-column loading">
               <div class="loader"></div>

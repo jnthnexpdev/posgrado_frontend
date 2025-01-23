@@ -20,18 +20,21 @@
     background-color: transparent;
 }
 .btn-prev, .btn-next{
+    padding: 4px 8px;
+}
+.current-page{
     border: 1px solid var(--black);
     border-radius: 4px;
     padding: 4px 8px;
 }
-
-
+/* Estilos para botones del paginado deshabilitados */
 .btn-page:hover:not(:disabled), .btn-next:hover:not(:disabled), .btn-prev:hover:not(:disabled){
     cursor: pointer;
     border-bottom: 1px solid var(--black);
     transform: scale(1.01);
+    padding-bottom: 3px;
 }
-.btn-next:disabled, .btn-next:disabled{ color: var(--gray); }
+.btn-next:disabled, .btn-prev:disabled{ color: var(--gray); border: none;  }
 /* Estilo hover para botones que no esten deshabilitados */
 .hover:hover:not(:disabled){ cursor: pointer; transform: scale(1.01); }
 button:disabled{ opacity: 0.8; cursor: not-allowed;  }

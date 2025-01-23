@@ -16,7 +16,7 @@ export class TeacherService {
     return this.http.post<TeacherRegisterResponse>(`${environment.api}asesores/registrar-cuenta`, student, options);
   }
 
-  getTeachersInfo(search: string = '', page: number = 1, pageSize: number = 20) : Observable<TeachersRegisterResponse>{
+  getTeachersInfo(search: string = '', page: number = 1, pageSize: number = 1) : Observable<TeachersRegisterResponse>{
     const params = new HttpParams()
     .set('search', search || '')
     .set('page', page.toString())

@@ -40,7 +40,6 @@ export class SettingsComponent implements OnInit{
     this._authService.getUserInfo().subscribe({
       next : (response) => {
         this.user = response.user;
-        console.log('Información del usuario:', this.user);
       }, 
       error : (err) => {
         console.error('Error al obtener la información del usuario:', err.error.message);

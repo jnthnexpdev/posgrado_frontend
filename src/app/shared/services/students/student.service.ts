@@ -16,7 +16,7 @@ export class StudentService {
     return this.http.post<RegisterStudentsResponse>(`${environment.api}alumnos/registrar-cuenta`, student, options);
   }
 
-  getStudentsInfo(search: string = '', page: number = 1, pageSize: number = 20) : Observable<StudentsResponse>{
+  getStudentsInfo(search: string = '', page: number = 1, pageSize: number = 1) : Observable<StudentsResponse>{
     const params = new HttpParams()
     .set('search', search || '')
     .set('page', page.toString())
