@@ -28,13 +28,11 @@ export class LoginComponent implements OnInit{
     });
   }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void {  
   }
 
   public togglePassword() : void{
     this.showPassword.set(!this.showPassword());
-    console.log(this.showPassword);
   }
 
   public sendLoginRequest(){
@@ -43,8 +41,6 @@ export class LoginComponent implements OnInit{
       password : this.loginForm.get('password')?.value
     };
 
-    console.log(body);
-
     this._authService.loginUser(body).subscribe({
       next : (response) => {
         this._alertService.alertOk(`${response.message}`, 5000);
@@ -52,7 +48,7 @@ export class LoginComponent implements OnInit{
       error : (err) => {
         this._alertService.alertError(`${err.error.message}`, 5000);
       },
-    })
+    });
   }
 
 }
