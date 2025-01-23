@@ -7,6 +7,7 @@ import { environment } from '../../../../environments/environment.development';
 import { LoginRequest, LoginResponse } from '../../interfaces/auth.types';
 import { Observable } from 'rxjs';
 import { UserResponse } from '../../interfaces/user-response.types';
+import { ServerResponse } from '../../../shared/interfaces/server.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,11 @@ export class AuthService {
   getUserInfo() : Observable<UserResponse>{
     const options = { withCredentials : true };
     return this.http.get<UserResponse>(`${environment.api}usuario/informacion-usuario`, options);
+  }
+
+  changePassword(password : string) : Observable<ServerResponse>{
+    const options = { withCredentials : true };
+    return this.http.patch<ServerResponse>(`${environment.api}usuario/cambiar-password`,password, options);
   }
 
 }
