@@ -45,7 +45,7 @@ button{ display: none; }
 .menu-selected a{ color: var(--sky); }
 
 
-@media(min-width : 300px) and (max-width : 1200px){
+@media(min-width : 300px) and (max-width : 650px){
     header{ min-width: 100%; align-items: flex-start; }
     .logo{ padding: 16px; }
     .logo img{

@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AuthService } from '../../services/auth/auth.service';
 import { LoginRequest } from '../../interfaces/auth.types';
 import { AlertService } from '../../../shared/services/alerts/alert.service';
+import { UserAccountResponse } from '../../interfaces/user-response.types';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +21,7 @@ export class LoginComponent implements OnInit{
 
   constructor(
     private formBuilder : FormBuilder,
+    private router : Router,
     private _authService : AuthService,
     private _alertService : AlertService
   ){
@@ -43,12 +46,37 @@ export class LoginComponent implements OnInit{
 
     this._authService.loginUser(body).subscribe({
       next : (response) => {
-        this._alertService.alertOk(`${response.message}`, 5000);
+        this._alertService.alertOk(`${response.message}`, 2500);
+        setTimeout(() => {
+          this.redirectHomePage();
+        }), 2501;
       },
       error : (err) => {
         this._alertService.alertError(`${err.error.message}`, 5000);
       },
     });
+
+  }
+
+  private redirectHomePage() : void{
+    this._authService.getUserAccount().subscribe({
+          next : (response : UserAccountResponse) => {
+            switch(response.accountType){
+              case 'Coordinador' : 
+                this.router.navigate(['/coordinacion/asesores']).then(() => { window.location.reload(); });
+                break;
+              case 'Asesor' : 
+                this.router.navigate(['/asesor/alumnos-asesorados']).then(() => { window.location.reload(); });
+                break;
+              case 'Alumno' : 
+                this.router.navigate(['/alumno/asignaciones']).then(() => { window.location.reload(); });
+                break;
+            }
+          },
+          error : (err) => {
+            console.error(err.error.message);
+          }
+        });
   }
 
 }

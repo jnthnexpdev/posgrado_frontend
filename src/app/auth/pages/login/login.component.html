@@ -10,7 +10,11 @@
             <label>Correo electronico:</label>
         </div>
 
-        <input class="input-form mb-24" type="email" formControlName="correo" placeholder="correo@dominio.com">
+        <input 
+        class="input-form mb-24" 
+        type="email" formControlName="correo" 
+        autocomplete="username"
+        placeholder="correo@dominio.com">
 
         <div class="label-form center-start-row mb-24">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +31,8 @@
             class="input-form" 
             formControlName="password"
             [type]="showPassword() ? 'text' : 'password'"
-            name="password" id="password" placeholder="">
+            autocomplete="current-password"
+            placeholder="">
 
             <button (click)="togglePassword()">
                 @if(!showPassword()){

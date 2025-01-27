@@ -19,12 +19,12 @@ const routes: Routes = [
   },
   {
       path : '',
-      redirectTo : '/asesores/revisiones',
+      redirectTo : '/asesor/alumnos-asesorados',
       pathMatch : 'full'
   },
   {
       path : '**',
-      redirectTo : '/asesores/revisiones',
+      redirectTo : '/asesor/alumnos-asesorados',
       pathMatch : 'full'
   }
 ];
