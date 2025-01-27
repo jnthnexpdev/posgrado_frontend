@@ -20,3 +20,9 @@ export interface UserResponse {
   httpCode: number;
   user: User;
 }
+
+export interface UserAccountResponse {
+  success: boolean;
+  httpCode: number;
+  accountType: string;
+}
