@@ -25,46 +25,78 @@
 
                 <mat-divider></mat-divider>
 
-                <h3 class="title-3 mt-24 mb-24"> Informacion de tesis </h3>
-    
-                <div class="option mb-24">
-                    <p class="text-normal"> Titulo: </p>
-                    <span class="text-normal"> “SISTEMA WEB DE MONITOREO EDUCATIVO ENFOCADO A 
-                        INDICES DE REPROBACION Y DESERCION ESCOLAR”  </span>
-                </div>
-    
-                <div class="option mb-24">
-                    <p class="text-normal"> Estatus: </p>
-                    <span class="text-normal"> - </span>
-                </div>
-                    
-                <div class="tesis mb-24">
-                    <button class="btn-sec hover" (click)="openDialogPassword()"> 
-                        Editar datos tesis 
-                    </button>
-                </div>
-    
-                <mat-divider></mat-divider>
+                @if (user.tipoCuenta === 'Coordinador'){
+                    <h3 class="title-3 mt-24 mb-24"> Informacion de posgrado </h3>
 
-                <h3 class="title-3 mt-24 mb-24"> Informacion de asesor/a </h3>
+                    <div class="option mb-24">
+                        <p class="text-normal"> Asesores: </p>
+                        <span class="text-normal"> 20 </span>
+                    </div>
+                
+                    <div class="option mb-24">
+                        <p class="text-normal"> Alumnos: </p>
+                        <span class="text-normal"> 200 </span>
+                    </div>
+
+                    <div class="option mb-24">
+                        <p class="text-normal"> Periodos: </p>
+                        <span class="text-normal"> 3 </span>
+                    </div>
+                
+                    <mat-divider></mat-divider>
+                }
+                @else if(user.tipoCuenta === 'Alumno'){
+                    <h3 class="title-3 mt-24 mb-24"> Informacion de tesis </h3>
     
-                <div class="option mb-24">
-                    <p class="text-normal"> Nombre: </p>
-                    <span class="text-normal"> - </span>
-                </div>
+                    <div class="option mb-24">
+                        <p class="text-normal"> Titulo: </p>
+                        <span class="text-normal"> “SISTEMA WEB DE MONITOREO EDUCATIVO ENFOCADO A 
+                            INDICES DE REPROBACION Y DESERCION ESCOLAR”  </span>
+                    </div>
+                
+                    <div class="option mb-24">
+                        <p class="text-normal"> Estatus: </p>
+                        <span class="text-normal"> - </span>
+                    </div>
+
+                    <div class="tesis mb-24">
+                        <button class="btn-sec hover" (click)="openDialogPassword()"> 
+                            Editar datos tesis 
+                        </button>
+                    </div>
+                
+                    <mat-divider></mat-divider>
+
+                    <h3 class="title-3 mt-24 mb-24"> Informacion de asesor/a </h3>
     
-                <div class="option mb-24">
-                    <p class="text-normal"> Correo: </p>
-                    <span class="text-normal"> - </span>
-                </div>
-    
-                <div class="option mb-24">
-                    <p class="text-normal"> Fecha asignacion: </p>
-                    <span class="text-normal"> - </span>
-                </div>
-    
-                <mat-divider></mat-divider>
-    
+                    <div class="option mb-24">
+                        <p class="text-normal"> Nombre: </p>
+                        <span class="text-normal"> - </span>
+                    </div>
+                
+                    <div class="option mb-24">
+                        <p class="text-normal"> Correo: </p>
+                        <span class="text-normal"> - </span>
+                    </div>
+                
+                    <div class="option mb-24">
+                        <p class="text-normal"> Fecha asignacion: </p>
+                        <span class="text-normal"> - </span>
+                    </div>
+                
+                    <mat-divider></mat-divider>
+                }
+                @else if (user.tipoCuenta === 'Asesor'){
+                    <h3 class="title-3 mt-24 mb-24"> Informacion de asesorados </h3>
+                
+                    <div class="option mb-24">
+                        <p class="text-normal"> Alumnos asesorados: </p>
+                        <span class="text-normal"> 2 </span>
+                    </div>
+                
+                    <mat-divider></mat-divider>
+                }
+
                 <h3 class="title-3 mt-24 mb-24"> Informacion de acceso </h3>
     
                 <div class="option">

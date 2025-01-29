@@ -49,5 +49,5 @@ export interface RegisterStudentsResponse {
   success: boolean;
   httpCode: number;
   message: string;
-  studentAccount: StudentAccount; // Información detallada del estudiante registrado
+  studentId: string; // Información detallada del estudiante registrado
 }

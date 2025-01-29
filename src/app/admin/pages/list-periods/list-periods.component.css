@@ -1,0 +1,67 @@
+section{ width: 100%; }
+article{ width: 100%; }
+h3{ color: var(--blue);  width: 100%; text-align: left; }
+article > span { width: 100%; text-align: left; }
+
+.btn-prim svg{
+    fill: var(--white);
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.filters{ 
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+.actions{
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+.actions button, .actions select{ margin-right: 16px; }
+.actions button span{ width: auto; }
+.input-search{ width: 400px; }
+
+main{ width: 100%; }
+
+@media(min-width : 300px) and (max-width : 500px){
+    main{
+        width: 100%;
+        max-width: 100%;
+        overflow-x: scroll;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x proximity;
+    }
+    .filters, .actions{ flex-direction: column; width: 100%; }
+    .actions button, .actions select{ margin: 0 0 24px 0; width: 100%; }
+    .input-search{ width: 100%; }
+} 
+@media(min-width : 501px) and (max-width : 700px){
+    main{
+        width: 100%;
+        max-width: 100%;
+        overflow-x: scroll;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x proximity;
+    }
+    .filters{ flex-direction: column; }
+    .actions{ width: 100%; margin-bottom: 24px; }
+    .actions button, .actions select{ margin: 0 0 0 16px; }
+    .input-search{ width: 100%; }
+}
+@media(min-width : 701px) and (max-width : 800px){
+    main{
+        width: 100%;
+        max-width: 100%;
+        overflow-x: scroll;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x proximity;
+    }
+    .input-search{ width: 300px; }
+}

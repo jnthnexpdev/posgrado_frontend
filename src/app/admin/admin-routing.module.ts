@@ -4,6 +4,7 @@ import { ListTeachersComponent } from './pages/list-teachers/list-teachers.compo
 import { RegisterTeacherComponent } from './pages/register-teacher/register-teacher.component';
 import { ListStudentsComponent } from './pages/list-students/list-students.component';
 import { RegisterStudentComponent } from './pages/register-student/register-student.component';
+import { ListPeriodsComponent } from './pages/list-periods/list-periods.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path : 'alumnos',
     component : ListStudentsComponent
+  },
+  {
+    path : 'periodos',
+    component : ListPeriodsComponent
   },
   {
       path : '',
