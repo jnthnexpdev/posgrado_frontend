@@ -74,6 +74,26 @@ export class ListPeriodsComponent implements OnInit{
     this.periodSubject.next(term);
   }
 
+  downloadPeriods() : void{
+    // this._periodService.exportPeriods().subscribe((data : Blob) => {
+    //   const url = window.URL.createObjectURL(data);
+    //   const anchor = document.createElement('a');
+    //   anchor.href = url;
+    //   anchor.download = 'periodos.pdf';
+    //   anchor.target = '_blank';
+    //   document.body.appendChild(anchor);
+    //   anchor.click();
+    //   document.body.removeChild(anchor);
+    //   window.URL.revokeObjectURL(url);
+    // });
+
+    this.alertService.alertLoading('Generando PDF', 2500);
+
+    // setTimeout(() => {
+    //   window.location.reload();
+    // }, 5000);
+  }
+
   private getPeriodList(page: number = 1) : void{
     this._periodService.getPeriodsInfo('', page).subscribe({
       next : (response) => {

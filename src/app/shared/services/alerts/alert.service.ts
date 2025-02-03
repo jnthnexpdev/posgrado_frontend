@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AlertOkComponent } from '../../components/alert-ok/alert-ok.component';
 import { AlertErrorComponent } from '../../components/alert-error/alert-error.component';
 import { AlertConfirmationComponent } from '../../components/alert-confirmation/alert-confirmation.component';
+import { AlertLoadingComponent } from '../../components/alert-loading/alert-loading.component';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,17 @@ export class AlertService {
 
   alertOk(message : string, duration : number) : void{
     const dialogRef = this.dialog.open(AlertOkComponent, {
+      minWidth : '200px',
+      width: '200px',
+      maxWidth: 'none',
+      data : { message },
+    });
+    
+    setTimeout(() => dialogRef.close(), duration);
+  }
+
+  alertLoading(message : string, duration : number) : void{
+    const dialogRef = this.dialog.open(AlertLoadingComponent, {
       minWidth : '200px',
       width: '200px',
       maxWidth: 'none',

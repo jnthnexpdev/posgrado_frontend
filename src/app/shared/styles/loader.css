@@ -1,8 +1,9 @@
 .loading{
     min-height: 50dvh;
 }
-.loading span{ width: 100%; display: inline-block !important; }
-.loader {
+.alert-loading{ min-height: 300px; }
+.loading span, .alert-loading span{ width: 100%; display: inline-block !important; }
+.loader, .alert-loading {
     width: 60px;
     aspect-ratio: 2;
     --_g: no-repeat radial-gradient(circle closest-side,var(--blue) 90%, var(--white));

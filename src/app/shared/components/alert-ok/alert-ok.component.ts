@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogContent } from '@angular/material/dialog';
 @Component({
   selector: 'app-alert-ok',
   standalone: true,
-  imports: [MatDialogContent],
+  imports: [],
   templateUrl: './alert-ok.component.html',
   styleUrl: './alert-ok.component.css'
 })

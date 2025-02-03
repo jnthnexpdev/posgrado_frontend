@@ -37,6 +37,12 @@ export class PeriodService {
     return this.http.get<AllPeriods>(`${environment.api}periodos/listado-periodos`, options);
   }
 
+  // Exportar periodos en PDF
+  exportPeriods(){
+    return this.http.get(`${environment.api}periodos/exportar-periodos`, {responseType : 'blob', withCredentials : true});
+  }
+
+  // Eliminar periodo por id
   deletePeriodById(idPeriod : string) : Observable<ServerResponse>{
     const options = { withCredentials : true };
     return this.http.delete<ServerResponse>(`${environment.api}periodos/eliminar-periodo/${idPeriod}`, options);
