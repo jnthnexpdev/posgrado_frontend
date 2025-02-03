@@ -1,3 +1,4 @@
 .loading-alert{
     min-height: 200px;
 }
+.loading-alert span{ text-align: center; width: 100%; }
