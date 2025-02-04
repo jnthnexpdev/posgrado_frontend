@@ -4,12 +4,13 @@ article{
 svg{
     width: 64px;
     height: 64px;
-    fill: var(--orange);
+    fill: var(--red);
     animation: 1s bounce;
 }
 p{
     word-break: break-word;
     text-align: center;
 }
-.btn-options{ width: 100%; }
+.btn-options{ width: 100%; flex-direction: row-reverse; }
+.btn-prim{ background-color: var(--red); }
 button:hover{ cursor: pointer; transform: scale(1.01); }

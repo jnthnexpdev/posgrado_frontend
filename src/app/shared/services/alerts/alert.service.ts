@@ -45,12 +45,12 @@ export class AlertService {
     setTimeout(() => dialogRef.close(), duration);
   }
 
-  alertConfirmation(message : string, duration : number) : void{
+  alertConfirmation(message : string, btnText : string, duration : number) : void{
     const dialogRef = this.dialog.open(AlertConfirmationComponent, {
-      minWidth : '250px',
-      width: '250px',
+      minWidth : '280px',
+      width: '280px',
       maxWidth: 'none',
-      data : { message }
+      data : { message, btnText }
     });
 
     setTimeout(() => dialogRef.close(), duration);

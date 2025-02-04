@@ -13,6 +13,19 @@
     border: 1px solid var(--blue);
     border-radius: 4px;
 }
+.btn-icon{
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: transparent;
+    outline: none;
+    offset: none;
+    border: none;
+}
+.btn-icon svg{
+    width: 20px;
+    height: 20px;
+    fill: var(--red);
+}
 .btn-prev, .btn-next, .btn-page{
     color: var(--black);
     font-weight: 500;
@@ -35,6 +48,7 @@
     padding-bottom: 3px;
 }
 .btn-next:disabled, .btn-prev:disabled{ color: var(--gray); border: none;  }
+.btn-icon:disabled svg{ fill: var(--black); }
 /* Estilo hover para botones que no esten deshabilitados */
 .hover:hover:not(:disabled){ cursor: pointer; transform: scale(1.01); }
 button:disabled{ opacity: 0.8; cursor: not-allowed;  }

@@ -1,16 +1,19 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { Teacher } from '../../../shared/interfaces/teachers.interface';
-import { TeacherService } from '../../../shared/services/teachers/teacher.service';
-import { Pagination } from '../../../shared/interfaces/pagination.interface';
 import { FormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, Subject, switchMap } from 'rxjs';
 import { NgClass } from '@angular/common';
 
+import { Teacher } from '../../../shared/interfaces/teachers.interface';
+import { TeacherService } from '../../../shared/services/teachers/teacher.service';
+import { Pagination } from '../../../shared/interfaces/pagination.interface';
+import { AlertService } from '../../../shared/services/alerts/alert.service';
+import { MatTooltip } from '@angular/material/tooltip';
+
 @Component({
   selector: 'app-list-teachers',
   standalone: true,
-  imports: [ NgClass, FormsModule ],
+  imports: [ NgClass, FormsModule, MatTooltip ],
   templateUrl: './list-teachers.component.html',
   styleUrl: './list-teachers.component.css'
 })
@@ -30,6 +33,7 @@ export class ListTeachersComponent implements OnInit{
 
   constructor(
     private router : Router,
+    private _alertService : AlertService,
     private _teacherService : TeacherService
   ){}
 
@@ -61,6 +65,10 @@ export class ListTeachersComponent implements OnInit{
 
   redirecToRegister() : void{
     this.router.navigate(['/coordinacion/registrar-asesor']).then(() => {});
+  }
+
+  deleteTeacher(id : string) : void{
+    this._alertService.alertConfirmation('Deseas eliminar este asesor?', 'Eliminar', 20000);
   }
 
   onSearch(term : string) : void{

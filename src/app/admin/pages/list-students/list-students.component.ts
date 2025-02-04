@@ -1,11 +1,13 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { StudentService } from '../../../shared/services/students/student.service';
-import { Student } from '../../../shared/interfaces/students.interface';
-import { Pagination } from '../../../shared/interfaces/pagination.interface';
 import { debounceTime, distinctUntilChanged, filter, Subject, switchMap } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
+
+import { StudentService } from '../../../shared/services/students/student.service';
+import { Student } from '../../../shared/interfaces/students.interface';
+import { Pagination } from '../../../shared/interfaces/pagination.interface';
+import { AlertService } from '../../../shared/services/alerts/alert.service';
 
 @Component({
   selector: 'app-list-students',
@@ -30,7 +32,8 @@ export class ListStudentsComponent implements OnInit{
 
   constructor(
     private router : Router,
-    private _studentService : StudentService
+    private _studentService : StudentService,
+    private _alertService : AlertService
   ){}
 
   ngOnInit(): void {
@@ -60,6 +63,10 @@ export class ListStudentsComponent implements OnInit{
 
   redirecToRegister() : void{
     this.router.navigate(['/coordinacion/registrar-estudiantes']).then(() => {});
+  }
+
+  deleteStudent(id : string) : void{
+    this._alertService.alertConfirmation('Deseas eliminar este alumno?', 'Eliminar', 20000);
   }
 
   onSearch(term : string) : void{

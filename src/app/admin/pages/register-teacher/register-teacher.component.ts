@@ -97,7 +97,13 @@ export class RegisterTeacherComponent implements OnInit{
   public sendForm() : void{
     this._teacherService.registerNewStudent(this.registerTeacherForm.value).subscribe({
       next : (response) => {
-        this.alertService.alertOk(response.message, 5000);
+        this.alertService.alertOk(response.message, 3000);
+
+        setTimeout(() => {
+          this.router.navigate(['/coordinacion/asesores']).then(() => {
+            window.location.reload();
+          })
+        }, 3001);
       },
       error : (err) => {
         this.alertService.alertError(err.error.message, 5000);

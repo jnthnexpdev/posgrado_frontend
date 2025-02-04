@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { RegisterTeacher, TeacherRegisterResponse, TeachersRegisterResponse } from '../../interfaces/teachers.interface';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
+import { ServerResponse } from '../../interfaces/server.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,11 @@ export class TeacherService {
     };
 
     return this.http.get<TeachersRegisterResponse>(`${environment.api}asesores/listado-asesores`, options);
+  }
+
+  deleteTeacher(id : string) : Observable<ServerResponse>{
+    const options = { withCredentials : true };
+    return this.http.delete<ServerResponse>(`${environment.api}asesores/eliminar-cuenta/${id}`, options);
   }
 
 }

@@ -1,18 +1,21 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { Period } from '../../../shared/interfaces/periods.interface';
-import { Pagination } from '../../../shared/interfaces/pagination.interface';
 import { debounceTime, distinctUntilChanged, filter, Subject, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
-import { PeriodService } from '../../../shared/services/periods/period.service';
 import { NgClass } from '@angular/common';
-import { RegisterPeriodComponent } from '../../components/register-period/register-period.component';
 import { Dialog } from '@angular/cdk/dialog';
+import { MatTooltip } from '@angular/material/tooltip';
+
+import { PeriodService } from '../../../shared/services/periods/period.service';
+import { RegisterPeriodComponent } from '../../components/register-period/register-period.component';
 import { AlertService } from '../../../shared/services/alerts/alert.service';
+import { Period } from '../../../shared/interfaces/periods.interface';
+import { Pagination } from '../../../shared/interfaces/pagination.interface';
+
 
 @Component({
   selector: 'app-list-periods',
   standalone: true,
-  imports: [ NgClass ],
+  imports: [ NgClass, MatTooltip ],
   templateUrl: './list-periods.component.html',
   styleUrl: './list-periods.component.css'
 })

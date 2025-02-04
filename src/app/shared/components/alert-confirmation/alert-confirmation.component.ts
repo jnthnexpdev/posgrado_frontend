@@ -12,13 +12,12 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class AlertConfirmationComponent implements OnInit{
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data : { message : string },
+    @Inject(MAT_DIALOG_DATA) public data : { message : string, btnText : string },
     private dialog : Dialog
   ){}
 
   ngOnInit(): void {
-    
-  }
+  };
 
   public closeDialog() : void{
     this.dialog.closeAll();
