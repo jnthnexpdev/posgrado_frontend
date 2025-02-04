@@ -137,6 +137,11 @@ export class RegisterStudentComponent implements OnInit{
     this._periodService.addStudentToPeriod(idStudent, idPeriod).subscribe({
       next : (response) => {
         this.alertService.alertOk(response.message, 2500);
+        setTimeout(() => {
+          this.router.navigate(['/coordinacion/alumnos']).then(() => {
+            window.location.reload();
+          });
+        }, 2501);
       },
       error : (err) => {
         this.alertService.alertError(err.error.message, 2500);
