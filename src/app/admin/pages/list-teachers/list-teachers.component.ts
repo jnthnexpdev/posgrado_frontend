@@ -67,6 +67,26 @@ export class ListTeachersComponent implements OnInit{
     this.router.navigate(['/coordinacion/registrar-asesor']).then(() => {});
   }
 
+  downloadTeachers() : void{
+    this._teacherService.exportTeachers().subscribe((data : Blob) => {
+      const url = window.URL.createObjectURL(data);
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = 'asesores.pdf';
+      anchor.target = '_blank';
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+      window.URL.revokeObjectURL(url);
+    });
+
+    this._alertService.alertLoading('Generando PDF y recargando pagina', 2500);
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 5000);
+  }
+
   deleteTeacher(id : string) : void{
     this._alertService.alertConfirmation('Deseas eliminar este asesor?', 'Eliminar', 20000);
   }

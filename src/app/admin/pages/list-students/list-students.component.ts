@@ -65,6 +65,26 @@ export class ListStudentsComponent implements OnInit{
     this.router.navigate(['/coordinacion/registrar-estudiantes']).then(() => {});
   }
 
+  downloadStudents() : void{
+    this._studentService.exportStudents().subscribe((data : Blob) => {
+      const url = window.URL.createObjectURL(data);
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = 'alumnos.pdf';
+      anchor.target = '_blank';
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+      window.URL.revokeObjectURL(url);
+    });
+
+    this._alertService.alertLoading('Generando PDF y recargando pagina', 2500);
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 5000);
+  }
+
   deleteStudent(id : string) : void{
     this._alertService.alertConfirmation('Deseas eliminar este alumno?', 'Eliminar', 20000);
   }

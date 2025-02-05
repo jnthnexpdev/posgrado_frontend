@@ -29,6 +29,11 @@ export class StudentService {
     return this.http.get<StudentsResponse>(`${environment.api}alumnos/listado-alumnos`, options);
   }
 
+  // Exportar alumnos en PDF
+  exportStudents(){
+    return this.http.get(`${environment.api}alumnos/exportar-alumnos`, {responseType : 'blob', withCredentials : true});
+  }
+
   deleteStudent(id : string) : Observable<ServerResponse>{
     const options = { withCredentials : true };
     return this.http.delete<ServerResponse>(`${environment.api}alumnos/eliminar-cuenta/${id}`, options);

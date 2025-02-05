@@ -30,6 +30,11 @@ export class TeacherService {
     return this.http.get<TeachersRegisterResponse>(`${environment.api}asesores/listado-asesores`, options);
   }
 
+  // Exportar asesores en PDF
+  exportTeachers(){
+    return this.http.get(`${environment.api}asesores/exportar-asesores`, {responseType : 'blob', withCredentials : true});
+  }
+
   deleteTeacher(id : string) : Observable<ServerResponse>{
     const options = { withCredentials : true };
     return this.http.delete<ServerResponse>(`${environment.api}asesores/eliminar-cuenta/${id}`, options);
