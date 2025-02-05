@@ -11,6 +11,6 @@ p{
     word-break: break-word;
     text-align: center;
 }
-.btn-options{ width: 100%; flex-direction: row-reverse; }
+.btn-options{ width: 100%; }
 .btn-prim{ background-color: var(--red); }
 button:hover{ cursor: pointer; transform: scale(1.01); }

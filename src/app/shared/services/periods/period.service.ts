@@ -4,6 +4,7 @@ import { AllPeriods, RegisterPeriod } from '../../interfaces/periods.interface';
 import { Observable } from 'rxjs';
 import { ServerResponse } from '../../interfaces/server.interface';
 import { environment } from '../../../../environments/environment.development';
+import { StudentsByPeriodResponse } from '../../interfaces/students.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,21 @@ export class PeriodService {
       withCredentials: true
     };
     return this.http.get<AllPeriods>(`${environment.api}periodos/listado-periodos`, options);
+  }
+
+  // Obtener alumnos por periodo
+  getStudentListByPeriod(idPeriod : string, search: string = '', page: number = 1, pageSize: number = 1) : Observable<StudentsByPeriodResponse>{
+    const params = new HttpParams()
+    .set('search', search || '')
+    .set('page', page.toString())
+    .set('pageSize', pageSize.toString());
+    const options = {
+      params: params,
+      withCredentials: true
+    };
+
+    console.log(`${environment.api}periodos/listado-alumnos-periodo/${idPeriod}`);
+    return this.http.get<StudentsByPeriodResponse>(`${environment.api}periodos/listado-alumnos-periodo/${idPeriod}`, options);
   }
 
   // Exportar periodos en PDF

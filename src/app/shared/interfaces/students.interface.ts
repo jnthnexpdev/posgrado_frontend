@@ -14,6 +14,27 @@ export interface BaseStudent {
   __v: number;
 }
 
+// Estudiantes por periodo
+export interface StudentsByPeriodResponse {
+  success: boolean;
+  httpCode: number;
+  message: string;
+  period: {
+    students: StudentInPeriod[];
+    pagination: Pagination;
+  };
+}
+
+// Informacion estudiante por periodo
+export interface StudentInPeriod {
+  _id: string;
+  nombre: string;
+  numeroControl: string;
+  correo: string;
+  estatusCuenta: string;
+  fechaRegistro: string;
+}
+
 // Interfaz para la sesión del estudiante
 export interface StudentSession {
   ultimaSesion: string;

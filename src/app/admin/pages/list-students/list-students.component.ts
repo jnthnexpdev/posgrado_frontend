@@ -5,9 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 
 import { StudentService } from '../../../shared/services/students/student.service';
-import { Student } from '../../../shared/interfaces/students.interface';
+import { StudentInPeriod } from '../../../shared/interfaces/students.interface';
 import { Pagination } from '../../../shared/interfaces/pagination.interface';
 import { AlertService } from '../../../shared/services/alerts/alert.service';
+import { Period } from '../../../shared/interfaces/periods.interface';
+import { PeriodService } from '../../../shared/services/periods/period.service';
 
 @Component({
   selector: 'app-list-students',
@@ -19,7 +21,7 @@ import { AlertService } from '../../../shared/services/alerts/alert.service';
 export class ListStudentsComponent implements OnInit{
 
   searchTerm: string = '';
-  students : Student[] = [];
+  students : StudentInPeriod[] = [];
   pagination: Pagination = {
     total: 0,
     page: 1,
@@ -27,16 +29,21 @@ export class ListStudentsComponent implements OnInit{
     totalPages: 1,
   };
   pages : number[] = [];
+  public periodo : string = '';
+  periods : Period[] = [];
   private studentSubject = new Subject<String>();
   public requestCompleted = signal(false);
 
   constructor(
     private router : Router,
     private _studentService : StudentService,
-    private _alertService : AlertService
+    private _alertService : AlertService,
+    private _periodService : PeriodService
   ){}
 
   ngOnInit(): void {
+    this.getPeriodList();
+
     this.studentSubject
     .pipe(
       debounceTime(300),
@@ -44,13 +51,13 @@ export class ListStudentsComponent implements OnInit{
       filter((term) => term.length >= 3 || term.length < 3),
       switchMap((term) => {
         const searchQuery = term.length < 3 ? '' : term;
-        return this._studentService.getStudentsInfo(searchQuery.toString(), this.pagination?.page || 1);
+        return this._periodService.getStudentListByPeriod(this.periodo, searchQuery.toString(), this.pagination?.page || 1);
       })
     )
     .subscribe({
       next: (response) => {
-        this.students = response.students;
-        this.pagination = response.pagination;
+        this.students = response.period.students;
+        this.pagination = response.period.pagination;
         this.calculatePages();
       },
       error : (err) => {
@@ -58,7 +65,6 @@ export class ListStudentsComponent implements OnInit{
       },
     });
 
-    this.getStudentsList();
   }
 
   redirecToRegister() : void{
@@ -93,11 +99,27 @@ export class ListStudentsComponent implements OnInit{
     this.studentSubject.next(term);
   }
 
-  private getStudentsList(page: number = 1) : void{
-    this._studentService.getStudentsInfo('', page).subscribe({
+  private getPeriodList() : void{
+    this._periodService.getPeriodsInfo('').subscribe({
       next : (response) => {
-        this.students = response.students;
-        this.pagination = response.pagination;
+        this.periods = response.periods;
+        if (this.periods.length > 0) {
+          this.periodo = this.periods[this.periods.length - 1]._id;
+        }
+
+        this.getStudentsList();
+      },
+      error : (err) => {
+        console.error('Error al obtener la lista de periodos: ', err.error.message);
+      }
+    });
+  }
+
+  public getStudentsList(page: number = 1) : void{
+    this._periodService.getStudentListByPeriod(this.periodo,'', page).subscribe({
+      next : (response) => {
+        this.students = response.period.students;
+        this.pagination = response.period.pagination;
         this.requestCompleted.set(true);
         this.calculatePages();
       },

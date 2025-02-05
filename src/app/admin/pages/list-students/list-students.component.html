@@ -24,10 +24,10 @@
               <span class="text-small">Registrar</span>
             </button>
 
-            <select class="select-filter" name="" id="">
-              <option value="" disabled selected>Periodo: </option>
-                <option value=""> Enero - Junio </option>
-                <option value=""> Agosto - Diciembre </option>
+            <select class="select-filter" [(ngModel)]="periodo" (ngModelChange)="getStudentsList()" [ngModelOptions]="{standalone: true}">
+              @for(period of periods; track $index; let i = $index;){
+                <option [value]="period._id">{{period.periodo}}</option>
+              }
             </select>
           </div>
 
