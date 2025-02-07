@@ -92,7 +92,7 @@ export class ListStudentsComponent implements OnInit{
   }
 
   deleteStudent(id : string) : void{
-    this._alertService.alertConfirmation('Deseas eliminar este alumno?', 'Eliminar', 20000);
+    this._alertService.alertConfirmation('Deseas eliminar este alumno?', 'borrarAlumno' , id, 20000);
   }
 
   onSearch(term : string) : void{

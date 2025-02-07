@@ -88,7 +88,7 @@ export class ListTeachersComponent implements OnInit{
   }
 
   deleteTeacher(id : string) : void{
-    this._alertService.alertConfirmation('Deseas eliminar este asesor?', 'Eliminar', 20000);
+    this._alertService.alertConfirmation('Deseas eliminar este asesor?', 'borrarAsesor', id, 20000);
   }
 
   onSearch(term : string) : void{
@@ -102,7 +102,6 @@ export class ListTeachersComponent implements OnInit{
           this.pagination = response.pagination;
           this.requestCompleted.set(true);
           this.calculatePages();
-          console.log('Paginado: ', this.pagination);
         },
         error : (err) => {
           console.error('Error al obtener la lista de asesores: ', err.error.message);
