@@ -48,8 +48,6 @@ export class PeriodService {
       params: params,
       withCredentials: true
     };
-
-    console.log(`${environment.api}periodos/listado-alumnos-periodo/${idPeriod}`);
     return this.http.get<StudentsByPeriodResponse>(`${environment.api}periodos/listado-alumnos-periodo/${idPeriod}`, options);
   }
 

@@ -16,16 +16,17 @@ export class AdviseService {
     return this.http.post<RegisterStudentAdvisedResponse>(`${environment.api}asesoramiento/registrar-asesorado`, student, options);
   }
 
-  getStudentsAdvisedByTeacher(search: string = '', page: number = 1, pageSize: number = 1) : Observable<StudentsResponse>{
+  getStudentsAdvisedByTeacher(period : string, search: string = '', page: number = 1, pageSize: number = 1) : Observable<StudentsResponse>{
     const params = new HttpParams()
     .set('search', search || '')
     .set('page', page.toString())
     .set('pageSize', pageSize.toString());
+
     const options = {
       params: params,
       withCredentials: true
     };
-    return this.http.get<StudentsResponse>(`${environment.api}asesoramiento/alumnos-asesorados`, options);
+    return this.http.get<StudentsResponse>(`${environment.api}asesoramiento/alumnos-asesorados/${period}`, options);
   }
 
 }

@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { StudentsAdvised } from '../../../shared/interfaces/students-advised.types';
 import { Pagination } from '../../../shared/interfaces/pagination.interface';
 import { AdviseService } from '../../../shared/services/advise/advise.service';
+import { PeriodService } from '../../../shared/services/periods/period.service';
+import { Period } from '../../../shared/interfaces/periods.interface';
 
 @Component({
   selector: 'app-mentored-students',
@@ -27,15 +29,20 @@ export class AdvisedStudentsComponent implements OnInit{
     totalPages: 1,
   };
   pages : number[] = [];
+  public period : string = '';
+  periods : Period[] = [];
   private advisedsSubject = new Subject<String>();
   public requestCompleted = signal(false);
 
   constructor(
     private _dialog : MatDialog,
-    private _adviseService : AdviseService
+    private _adviseService : AdviseService,
+    private _periodService : PeriodService,
   ){}
 
   ngOnInit(): void {
+    this.getPeriodList();
+
     this.advisedsSubject
     .pipe(
       debounceTime(300),
@@ -43,7 +50,7 @@ export class AdvisedStudentsComponent implements OnInit{
       filter((term) => term.length >= 3 || term.length < 3),
       switchMap((term) => {
         const searchQuery = term.length < 3 ? '' : term;
-        return this._adviseService.getStudentsAdvisedByTeacher(searchQuery.toString(), this.pagination?.page || 1 );
+        return this._adviseService.getStudentsAdvisedByTeacher(this.period, searchQuery.toString(), this.pagination?.page || 1 );
       })
     )
     .subscribe({
@@ -51,7 +58,6 @@ export class AdvisedStudentsComponent implements OnInit{
         this.adviseds = response.students;
         this.pagination = response.pagination;
         this.calculatePages();
-        console.log('Paginado: ', this.pagination);
       },
       error : (err) => {
         console.error("Error al obtener la lista de asesorados: ", err.error.message);
@@ -73,14 +79,29 @@ export class AdvisedStudentsComponent implements OnInit{
     this.advisedsSubject.next(term);
   }
 
-  private getStudentsAdvised(page: number = 1) : void{
-    this._adviseService.getStudentsAdvisedByTeacher('', page).subscribe({
+  private getPeriodList() : void{
+    this._periodService.getPeriodsInfo('').subscribe({
+      next : (response) => {
+        this.periods = response.periods;
+        if (this.periods.length > 0) {
+          this.period = this.periods[this.periods.length - 1].periodo;
+        }
+
+        this.getStudentsAdvised();
+      },
+      error : (err) => {
+        console.error('Error al obtener la lista de periodos: ', err.error.message);
+      }
+    });
+  }
+
+  public getStudentsAdvised(page: number = 1) : void{
+    this._adviseService.getStudentsAdvisedByTeacher(this.period, '', page).subscribe({
       next : (response) => {
         this.adviseds = response.students;
         this.pagination = response.pagination;
         this.requestCompleted.set(true);
         this.calculatePages();
-        console.log('Paginado: ', this.pagination);
       },
       error : (err) => {
         console.error('Error al obtener la lista de asesorados: ', err.error.message);
@@ -93,7 +114,6 @@ export class AdvisedStudentsComponent implements OnInit{
     if (this.pagination && page >= 1 && page <= this.pagination.totalPages) {
       this.getStudentsAdvised(page);
     }
-    console.log('Cambiando de pagina: ', page);
   }
 
   private calculatePages(): void {
