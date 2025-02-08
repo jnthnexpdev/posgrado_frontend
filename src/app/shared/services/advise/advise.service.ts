@@ -29,4 +29,9 @@ export class AdviseService {
     return this.http.get<StudentsResponse>(`${environment.api}asesoramiento/alumnos-asesorados/${period}`, options);
   }
 
+  // Exportar alumnos en PDF
+  exportAdvised(period : string = ''){
+    return this.http.get(`${environment.api}asesoramiento/exportar-alumnos-asesorados/${period}`, {responseType : 'blob', withCredentials : true});
+  }
+
 }

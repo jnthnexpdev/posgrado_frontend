@@ -10,6 +10,7 @@ import { Pagination } from '../../../shared/interfaces/pagination.interface';
 import { AdviseService } from '../../../shared/services/advise/advise.service';
 import { PeriodService } from '../../../shared/services/periods/period.service';
 import { Period } from '../../../shared/interfaces/periods.interface';
+import { AlertService } from '../../../shared/services/alerts/alert.service';
 
 @Component({
   selector: 'app-mentored-students',
@@ -38,6 +39,7 @@ export class AdvisedStudentsComponent implements OnInit{
     private _dialog : MatDialog,
     private _adviseService : AdviseService,
     private _periodService : PeriodService,
+    private _alertService : AlertService,
   ){}
 
   ngOnInit(): void {
@@ -65,6 +67,26 @@ export class AdvisedStudentsComponent implements OnInit{
     });
 
     this.getStudentsAdvised();
+  }
+
+  public downloadAdvised(){
+    this._adviseService.exportAdvised(this.period).subscribe((data : Blob) => {
+      const url = window.URL.createObjectURL(data);
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = `asesoramiento_${this.period}.pdf`;
+      anchor.target = '_blank';
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+      window.URL.revokeObjectURL(url);
+    });
+
+    this._alertService.alertLoading('Generando PDF y recargando pagina', 2500);
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 5000);
   }
 
   public addAdvisedStudent() : void{
