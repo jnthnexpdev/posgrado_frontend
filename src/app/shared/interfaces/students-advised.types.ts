@@ -1,5 +1,6 @@
 // Interfaces relacionadas con la paginación
 import { Pagination } from "./pagination.interface";
+import { ServerResponse } from "./server.interface";
 
 // Respuesta al obtener estudiantes asesorados
 export interface StudentsResponse {
@@ -40,4 +41,18 @@ export interface RegisterStudentAdvisedResponse {
   success: boolean;  // Indica si la operación fue exitosa
   httpCode: number;  // Código de estado HTTP de la respuesta
   message: string;  // Mensaje descriptivo de la respuesta
+}
+
+export interface AdvisorInfo extends ServerResponse{
+  assignment : AssignmentInfo
+}
+
+export interface AssignmentInfo {
+  nombre : string;
+  correo : string;
+  fechaAsignacion : string;
+}
+
+export interface AdvisedCount extends ServerResponse{
+  counter : number;
 }

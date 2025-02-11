@@ -22,8 +22,8 @@ export const routes: Routes = [
         loadChildren : () => import('./students/students.module').then(m => m.StudentsModule)
     },
     {
-        path : 'ajustes',
-        title : 'Ajustes',
+        path : 'perfil',
+        title : 'Perfil',
         loadComponent : () => import('./shared/pages/settings/settings.component').then(c => c.SettingsComponent)
     },
     {

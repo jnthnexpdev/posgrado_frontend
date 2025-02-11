@@ -30,17 +30,22 @@
 
                     <div class="option mb-24">
                         <p class="text-normal"> Asesores: </p>
-                        <span class="text-normal"> 20 </span>
+                        <span class="text-normal"> {{teacherCount}} </span>
                     </div>
                 
                     <div class="option mb-24">
                         <p class="text-normal"> Alumnos: </p>
-                        <span class="text-normal"> 200 </span>
+                        <span class="text-normal"> {{studentCount}} </span>
                     </div>
 
                     <div class="option mb-24">
                         <p class="text-normal"> Periodos: </p>
-                        <span class="text-normal"> 3 </span>
+                        <span class="text-normal"> {{periodCount}} </span>
+                    </div>
+
+                    <div class="option mb-24">
+                        <p class="text-normal"> Tesis: </p>
+                        <span class="text-normal"> {{tesisCount}} </span>
                     </div>
                 
                     <mat-divider></mat-divider>
@@ -50,20 +55,24 @@
     
                     <div class="option mb-24">
                         <p class="text-normal"> Titulo: </p>
-                        <span class="text-normal"> “SISTEMA WEB DE MONITOREO EDUCATIVO ENFOCADO A 
-                            INDICES DE REPROBACION Y DESERCION ESCOLAR”  </span>
+                        <span class="text-normal"> {{tesis.titulo}} </span>
                     </div>
                 
                     <div class="option mb-24">
                         <p class="text-normal"> Estatus: </p>
-                        <span class="text-normal"> - </span>
+                        <span class="text-normal"> {{tesis.estatus}} </span>
                     </div>
 
-                    <div class="tesis mb-24">
+                    <div class="option mb-24">
+                        <p class="text-normal"> Fecha registro: </p>
+                        <span class="text-normal"> {{tesis.fechaInicio}} </span>
+                    </div>
+
+                    <!-- <div class="tesis mb-24">
                         <button class="btn-sec hover" (click)="openDialogPassword()"> 
                             Editar datos tesis 
                         </button>
-                    </div>
+                    </div> -->
                 
                     <mat-divider></mat-divider>
 
@@ -71,17 +80,17 @@
     
                     <div class="option mb-24">
                         <p class="text-normal"> Nombre: </p>
-                        <span class="text-normal"> - </span>
+                        <span class="text-normal"> {{advisorName}} </span>
                     </div>
                 
                     <div class="option mb-24">
                         <p class="text-normal"> Correo: </p>
-                        <span class="text-normal"> - </span>
+                        <span class="text-normal"> {{advisorEmail}} </span>
                     </div>
                 
                     <div class="option mb-24">
                         <p class="text-normal"> Fecha asignacion: </p>
-                        <span class="text-normal"> - </span>
+                        <span class="text-normal"> {{dateAssignment}} </span>
                     </div>
                 
                     <mat-divider></mat-divider>
@@ -91,7 +100,7 @@
                 
                     <div class="option mb-24">
                         <p class="text-normal"> Alumnos asesorados: </p>
-                        <span class="text-normal"> 2 </span>
+                        <span class="text-normal"> {{countAdvised}} </span>
                     </div>
                 
                     <mat-divider></mat-divider>

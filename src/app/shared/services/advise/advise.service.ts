@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment.development';
-import { RegisterStudentAdvised, RegisterStudentAdvisedResponse, StudentsResponse } from '../../interfaces/students-advised.types';
+import { AdvisedCount, AdvisorInfo, RegisterStudentAdvised, RegisterStudentAdvisedResponse, StudentsResponse } from '../../interfaces/students-advised.types';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,11 +11,25 @@ export class AdviseService {
 
   private http = inject(HttpClient);
 
+  // Registrar un nuevo alumno asesorado
   registerStudentAdvised(student : RegisterStudentAdvised) : Observable<RegisterStudentAdvisedResponse>{
     const options = { withCredentials : true };
     return this.http.post<RegisterStudentAdvisedResponse>(`${environment.api}asesoramiento/registrar-asesorado`, student, options);
   }
 
+  // Obtener la informacion de un asesor de un alumno
+  getAdvisorInfo() : Observable<AdvisorInfo>{
+    const options = { withCredentials : true };
+    return this.http.get<AdvisorInfo>(`${environment.api}asesoramiento/informacion-asesor`, options);
+  }
+
+  // Obtener el conteo de alumnos asesorados por asesor
+  getCountStudentsAdvised() : Observable<AdvisedCount>{
+    const options = { withCredentials : true };
+    return this.http.get<AdvisedCount>(`${environment.api}asesoramiento/conteo-alumnos-asesorados`, options);
+  }
+
+  // Obtener alumnos asesorados
   getStudentsAdvisedByTeacher(period : string, search: string = '', page: number = 1, pageSize: number = 1) : Observable<StudentsResponse>{
     const params = new HttpParams()
     .set('search', search || '')
@@ -29,7 +43,7 @@ export class AdviseService {
     return this.http.get<StudentsResponse>(`${environment.api}asesoramiento/alumnos-asesorados/${period}`, options);
   }
 
-  // Exportar alumnos en PDF
+  // Exportar alumnos asesorados en PDF
   exportAdvised(period : string = ''){
     return this.http.get(`${environment.api}asesoramiento/exportar-alumnos-asesorados/${period}`, {responseType : 'blob', withCredentials : true});
   }
