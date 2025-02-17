@@ -1,11 +1,11 @@
-import { NgClass } from '@angular/common';
 import { Component, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { AuthService } from '../../services/auth/auth.service';
 import { LoginRequest } from '../../interfaces/auth.types';
 import { AlertService } from '../../../shared/services/alerts/alert.service';
 import { UserAccountResponse } from '../../interfaces/user-response.types';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit{
         this._alertService.alertOk(`${response.message}`, 2500);
         setTimeout(() => {
           this.redirectHomePage();
-        }), 2501;
+        }, 2501);
       },
       error : (err) => {
         this._alertService.alertError(`${err.error.message}`, 5000);
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit{
           error : (err) => {
             console.error(err.error.message);
           }
-        });
+    });
   }
 
 }

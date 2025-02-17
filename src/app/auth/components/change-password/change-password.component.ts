@@ -2,8 +2,9 @@ import { Dialog } from '@angular/cdk/dialog';
 import { Component, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatTooltip } from '@angular/material/tooltip';
-import { AlertService } from '../../../shared/services/alerts/alert.service';
 import { NgClass } from '@angular/common';
+
+import { AlertService } from '../../../shared/services/alerts/alert.service';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -25,7 +26,7 @@ export class ChangePasswordComponent implements OnInit{
   constructor(
     private formBuilder : FormBuilder,
     private dialog : Dialog,
-    private alertService : AlertService,
+    private _alertService : AlertService,
     private _authService : AuthService
   ){
     this.passwordForm = this.formBuilder.group({
@@ -62,7 +63,7 @@ export class ChangePasswordComponent implements OnInit{
 
     if(this.passwordForm.valid){
       if(this.passwordForm.get('password')?.value != this.passwordForm.get('confirmPassword')?.value){
-        this.alertService.alertError('Las contraseñas no coinciden', 5000);
+        this._alertService.alertError('Las contraseñas no coinciden', 5000);
         return;
       }
 
@@ -89,13 +90,13 @@ export class ChangePasswordComponent implements OnInit{
   public sendForm() : void{
     this._authService.changePassword(this.passwordForm.value).subscribe({
       next : (response) => {
-        this.alertService.alertOk(response.message, 5000);
+        this._alertService.alertOk(response.message, 5000);
         setTimeout(() => {
           this.closeDialog();
         }, 5001);
       },
       error : (err) => {
-        this.alertService.alertError(err.error.message, 5000);
+        this._alertService.alertError(err.error.message, 5000);
       }
     });
   }
