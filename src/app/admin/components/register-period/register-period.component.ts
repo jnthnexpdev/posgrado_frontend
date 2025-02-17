@@ -2,9 +2,10 @@ import { NgClass } from '@angular/common';
 import { Component, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Dialog } from '@angular/cdk/dialog';
+
 import { AlertService } from '../../../shared/services/alerts/alert.service';
 import { PeriodService } from '../../../shared/services/periods/period.service';
-import { Dialog } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-register-period',
@@ -22,8 +23,7 @@ export class RegisterPeriodComponent implements OnInit{
     constructor(
         private formBuilder : FormBuilder,
         private dialog : Dialog,
-        private alertService : AlertService,
-        private router : Router,
+        private _alertService : AlertService,
         private _periodService : PeriodService
     ){
         this.registerPeriodForm = this.formBuilder.group({
@@ -73,13 +73,13 @@ export class RegisterPeriodComponent implements OnInit{
     public sendForm() : void{
         this._periodService.registerPeriod(this.registerPeriodForm.value).subscribe({
             next : (response) => {
-                this.alertService.alertOk(response.message, 5000);
+                this._alertService.alertOk(response.message, 5000);
                 setTimeout(() => {
                   window.location.reload();
                 }, 5000);
             },
             error : (err) => {
-                this.alertService.alertError(err.error.message, 5000);
+                this._alertService.alertError(err.error.message, 5000);
             }
         });
     }

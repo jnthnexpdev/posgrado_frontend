@@ -142,7 +142,6 @@ export class ListStudentsComponent implements OnInit{
     const currentPage = this.pagination.page;
     const totalPages = this.pagination.totalPages;
 
-    // Mostrar hasta 3 páginas: actual -1, actual, actual +1 (dentro del rango válido)
     this.pages = Array.from(
       { length: Math.min(3, totalPages) },
       (_, i) => Math.max(1, currentPage - 1) + i

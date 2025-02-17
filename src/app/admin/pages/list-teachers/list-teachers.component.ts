@@ -3,12 +3,12 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, Subject, switchMap } from 'rxjs';
 import { NgClass } from '@angular/common';
+import { MatTooltip } from '@angular/material/tooltip';
 
 import { Teacher } from '../../../shared/interfaces/teachers.interface';
 import { TeacherService } from '../../../shared/services/teachers/teacher.service';
 import { Pagination } from '../../../shared/interfaces/pagination.interface';
 import { AlertService } from '../../../shared/services/alerts/alert.service';
-import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-list-teachers',
@@ -122,7 +122,6 @@ export class ListTeachersComponent implements OnInit{
     const currentPage = this.pagination.page;
     const totalPages = this.pagination.totalPages;
 
-    // Mostrar hasta 3 páginas: actual -1, actual, actual +1 (dentro del rango válido)
     this.pages = Array.from(
       { length: Math.min(3, totalPages) },
       (_, i) => Math.max(1, currentPage - 1) + i

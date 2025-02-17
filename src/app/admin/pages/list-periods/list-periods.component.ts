@@ -11,7 +11,6 @@ import { AlertService } from '../../../shared/services/alerts/alert.service';
 import { Period } from '../../../shared/interfaces/periods.interface';
 import { Pagination } from '../../../shared/interfaces/pagination.interface';
 
-
 @Component({
   selector: 'app-list-periods',
   standalone: true,
@@ -34,7 +33,6 @@ export class ListPeriodsComponent implements OnInit{
   public requestCompleted = signal(false);
 
   constructor(
-    private router : Router,
     private dialog : Dialog,
     private alertService : AlertService,
     private _periodService : PeriodService
@@ -124,7 +122,6 @@ export class ListPeriodsComponent implements OnInit{
     const currentPage = this.pagination.page;
     const totalPages = this.pagination.totalPages;
 
-    // Mostrar hasta 3 páginas: actual -1, actual, actual +1 (dentro del rango válido)
     this.pages = Array.from(
       { length: Math.min(3, totalPages) },
       (_, i) => Math.max(1, currentPage - 1) + i

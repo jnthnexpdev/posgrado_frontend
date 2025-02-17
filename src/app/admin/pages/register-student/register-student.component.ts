@@ -11,7 +11,6 @@ import { StudentService } from '../../../shared/services/students/student.servic
 import { PeriodService } from '../../../shared/services/periods/period.service';
 import { Period } from '../../../shared/interfaces/periods.interface';
 
-
 @Component({
   selector: 'app-register-student',
   standalone: true,
@@ -36,7 +35,7 @@ export class RegisterStudentComponent implements OnInit{
     private formBuilder : FormBuilder,
     private dialog : MatDialog,
     private router : Router,
-    private alertService : AlertService,
+    private _alertService : AlertService,
     private _studentService : StudentService,
     private _periodService : PeriodService
   ){
@@ -122,13 +121,13 @@ export class RegisterStudentComponent implements OnInit{
   public sendForm() : void{
     this._studentService.registerNewStudent(this.registerStudentForm.value).subscribe({
       next : (response) => {
-        this.alertService.alertOk(response.message, 2500);
+        this._alertService.alertOk(response.message, 2500);
         setTimeout(() => {
           this.addNewStudentToPeriod(response.studentId, this.periodo);
         }, 2501);
       },
       error : (err) => {
-        this.alertService.alertError(err.error.message, 5000);
+        this._alertService.alertError(err.error.message, 5000);
       }
     });
   }
@@ -136,7 +135,7 @@ export class RegisterStudentComponent implements OnInit{
   public addNewStudentToPeriod(idStudent : string, idPeriod : string) : void {
     this._periodService.addStudentToPeriod(idStudent, idPeriod).subscribe({
       next : (response) => {
-        this.alertService.alertOk(response.message, 2500);
+        this._alertService.alertOk(response.message, 2500);
         setTimeout(() => {
           this.router.navigate(['/coordinacion/alumnos']).then(() => {
             window.location.reload();
@@ -144,7 +143,7 @@ export class RegisterStudentComponent implements OnInit{
         }, 2501);
       },
       error : (err) => {
-        this.alertService.alertError(err.error.message, 2500);
+        this._alertService.alertError(err.error.message, 2500);
       }
     })
   }

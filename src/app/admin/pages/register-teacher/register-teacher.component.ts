@@ -1,10 +1,11 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatTooltip } from '@angular/material/tooltip';
-import { AlertService } from '../../../shared/services/alerts/alert.service';
 import { NgClass } from '@angular/common';
-import { TeacherService } from '../../../shared/services/teachers/teacher.service';
 import { Router } from '@angular/router';
+
+import { AlertService } from '../../../shared/services/alerts/alert.service';
+import { TeacherService } from '../../../shared/services/teachers/teacher.service';
 
 @Component({
   selector: 'app-register-teacher',
@@ -26,8 +27,8 @@ export class RegisterTeacherComponent implements OnInit{
 
   constructor(
     private formBuilder : FormBuilder,
-    private alertService : AlertService,
     private router : Router,
+    private _alertService : AlertService,
     private _teacherService : TeacherService
   )
   {
@@ -66,7 +67,7 @@ export class RegisterTeacherComponent implements OnInit{
 
     if(this.registerTeacherForm.valid){
       if(this.registerTeacherForm.get('password')?.value != this.registerTeacherForm.get('confirmPassword')?.value){
-        this.alertService.alertError('Las contraseñas no coinciden', 5000);
+        this._alertService.alertError('Las contraseñas no coinciden', 5000);
         return;
       }
 
@@ -97,7 +98,7 @@ export class RegisterTeacherComponent implements OnInit{
   public sendForm() : void{
     this._teacherService.registerNewStudent(this.registerTeacherForm.value).subscribe({
       next : (response) => {
-        this.alertService.alertOk(response.message, 3000);
+        this._alertService.alertOk(response.message, 3000);
 
         setTimeout(() => {
           this.router.navigate(['/coordinacion/asesores']).then(() => {
@@ -106,7 +107,7 @@ export class RegisterTeacherComponent implements OnInit{
         }, 3001);
       },
       error : (err) => {
-        this.alertService.alertError(err.error.message, 5000);
+        this._alertService.alertError(err.error.message, 5000);
       }
     })
   }
