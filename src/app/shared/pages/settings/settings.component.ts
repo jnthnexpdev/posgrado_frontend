@@ -1,8 +1,10 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import { AlertService } from '../../services/alerts/alert.service';
 import { MatDialog } from '@angular/material/dialog';
+
+
+import { AlertService } from '../../services/alerts/alert.service';
 import { ChangePasswordComponent } from '../../../auth/components/change-password/change-password.component';
 import { AuthService } from '../../../auth/services/auth/auth.service';
 import { User } from '../../../auth/interfaces/user-response.types';
@@ -37,8 +39,8 @@ export class SettingsComponent implements OnInit{
   public withoutAdvisor = signal(false);
 
   constructor(
-    private _alertService : AlertService,
     private dialog : MatDialog,
+    private _alertService : AlertService,
     private _authService : AuthService,
     private _tesisService : TesisService,
     private _adviseService : AdviseService,

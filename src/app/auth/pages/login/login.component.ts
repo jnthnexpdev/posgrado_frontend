@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -14,7 +14,7 @@ import { UserAccountResponse } from '../../interfaces/user-response.types';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent{
 
   public showPassword = signal(false);
   public loginForm !: FormGroup;
@@ -31,13 +31,12 @@ export class LoginComponent implements OnInit{
     });
   }
 
-  ngOnInit(): void {  
-  }
-
+  // Mostrar / ocultar password
   public togglePassword() : void{
     this.showPassword.set(!this.showPassword());
   }
 
+  // Enviar peticion de login a nodejs
   public sendLoginRequest(){
     const body : LoginRequest = {
       correo : this.loginForm.get('correo')?.value,
@@ -58,6 +57,7 @@ export class LoginComponent implements OnInit{
 
   }
 
+  // Redireccionar al usuario dependiendo su tipo de cuenta
   private redirectHomePage() : void{
     this._authService.getUserAccount().subscribe({
           next : (response : UserAccountResponse) => {

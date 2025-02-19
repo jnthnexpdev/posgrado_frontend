@@ -35,22 +35,25 @@ export class ChangePasswordComponent implements OnInit{
     });
   }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void { 
   }
 
+  // Mostrar / ocultar password
   public togglePassword() : void{
     this.showPassword.set(!this.showPassword());
   }
 
+  // Mostrar / ocultar password 2
   public togglePassword2() : void{
     this.showPassword2.set(!this.showPassword2());
   }
 
+  // Cerrar dialogo
   public closeDialog() : void{
     this.dialog.closeAll();
   }
 
+  // Desactivar boton para evitar multiples peticiones
   public disableBtn() : void{
     this.btnDisable.set(true);
     setTimeout(() => {
@@ -58,6 +61,7 @@ export class ChangePasswordComponent implements OnInit{
     }, 3000);
   }
 
+  // Validar formulario antes de enviar a nodejs
   public validateForm() : void{
     this.disableBtn();
 
@@ -87,6 +91,7 @@ export class ChangePasswordComponent implements OnInit{
     }
   }
 
+  // Enviar formulario a nodejs
   public sendForm() : void{
     this._authService.changePassword(this.passwordForm.value).subscribe({
       next : (response) => {
@@ -100,6 +105,5 @@ export class ChangePasswordComponent implements OnInit{
       }
     });
   }
-
 
 }

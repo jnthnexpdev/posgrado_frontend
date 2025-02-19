@@ -41,7 +41,7 @@ export class AuthService {
   // Cerrar sesion
   logOutUser(): Observable<ServerResponse>{
     const options = { withCredentials : true };
-    return this.http.post<ServerResponse>(`${environment.api}usuario/cerrar-sesion`, options);
+    return this.http.post<ServerResponse>(`${environment.api}usuario/cerrar-sesion`, {}, options);
   }
 
 }

@@ -40,11 +40,12 @@ export class HeaderComponent implements OnInit{
   }
 
   closeSession() : void{
-    this._cookiesService.removeCookie('session');
+    // this._cookiesService.removeCookie('session');
 
     this._authService.logOutUser().subscribe();
 
     this.isAuth.set(false);
+    
     setTimeout(() => {
       this.router.navigate(['/acceso/iniciar-sesion']).then(() => {
         window.location.reload();
