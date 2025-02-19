@@ -41,6 +41,7 @@ export class ListStudentsComponent implements OnInit{
     private _periodService : PeriodService
   ){}
 
+  // Obtener lista de alumnos al cargar la pagina
   ngOnInit(): void {
     this.getPeriodList();
 
@@ -67,10 +68,12 @@ export class ListStudentsComponent implements OnInit{
 
   }
 
+  // Redireccionar al formulario de registro de nuevo alumno
   redirecToRegister() : void{
     this.router.navigate(['/coordinacion/registrar-estudiantes']).then(() => {});
   }
 
+  // Descargar la lista de todos los alumnos de posgrado
   downloadStudents() : void{
     this._studentService.exportStudents().subscribe((data : Blob) => {
       const url = window.URL.createObjectURL(data);
@@ -91,14 +94,17 @@ export class ListStudentsComponent implements OnInit{
     }, 5000);
   }
 
+  // Eliminar alumno por id
   deleteStudent(id : string) : void{
     this._alertService.alertConfirmation('Deseas eliminar este alumno?', 'borrarAlumno' , id, 20000);
   }
 
+  // Metodo para gestionar la busqueda de alumnos
   onSearch(term : string) : void{
     this.studentSubject.next(term);
   }
 
+  // Obtener el listado de periodos para filtrar a los alumnos
   private getPeriodList() : void{
     this._periodService.getPeriodsInfo('').subscribe({
       next : (response) => {
@@ -115,6 +121,7 @@ export class ListStudentsComponent implements OnInit{
     });
   }
 
+  // Obtener lista de alumnos
   public getStudentsList(page: number = 1) : void{
     this._periodService.getStudentListByPeriod(this.periodo,'', page).subscribe({
       next : (response) => {
@@ -130,12 +137,14 @@ export class ListStudentsComponent implements OnInit{
     });
   }
 
+  // Cambiar a pagina ant/sig
   changePage(page: number): void {
     if (this.pagination && page >= 1 && page <= this.pagination.totalPages) {
       this.getStudentsList(page);
     }
   }
 
+  // Calcular total de paginas
   private calculatePages(): void {
     if (!this.pagination) return;
 

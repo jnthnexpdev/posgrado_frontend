@@ -51,14 +51,17 @@ export class RegisterStudentComponent implements OnInit{
     this.getPeriodList();
   }
 
+  // Volver al listado de alumnos
   public backToStudentsPage() : void{
     this.router.navigate(['/coordinacion/alumnos']);
   }
 
+  // Mostrar / ocultar password
   public togglePassword() : void{
     this.showPassword.set(!this.showPassword());
   }
 
+  // Abrir dialogo para cargar lista de alumnos
   public openDialogUpload() : void{
     this.dialog.open(UploadStudentsComponent, {
       minWidth: '200px',
@@ -67,6 +70,7 @@ export class RegisterStudentComponent implements OnInit{
     })
   }
 
+  // Desactivar boton para evitar multiples peticiones
   public disableBtn() : void{
     this.btnDisable.set(true);
     setTimeout(() => {
@@ -74,6 +78,7 @@ export class RegisterStudentComponent implements OnInit{
     }, 3000);
   }
 
+  // Obtener listado de periodos
   private getPeriodList() : void{
     this._periodService.getPeriodsInfo('').subscribe({
       next : (response) => {
@@ -85,6 +90,7 @@ export class RegisterStudentComponent implements OnInit{
     });
   }
 
+  // Validar formulario
   public validateForm() : void{
     this.disableBtn();
 
@@ -118,6 +124,7 @@ export class RegisterStudentComponent implements OnInit{
     }
   }
 
+  // Enviar formulario a nodejs
   public sendForm() : void{
     this._studentService.registerNewStudent(this.registerStudentForm.value).subscribe({
       next : (response) => {
@@ -132,6 +139,7 @@ export class RegisterStudentComponent implements OnInit{
     });
   }
 
+  // Agregar alumno al periodo correspondiente
   public addNewStudentToPeriod(idStudent : string, idPeriod : string) : void {
     this._periodService.addStudentToPeriod(idStudent, idPeriod).subscribe({
       next : (response) => {

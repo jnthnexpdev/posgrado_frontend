@@ -43,18 +43,22 @@ export class RegisterTeacherComponent implements OnInit{
   ngOnInit(): void {
   }
 
+  // Regresar al listado de asesores
   public backToTeachersPage() : void{
     this.router.navigate(['/coordinacion/asesores']);
   }
 
+  // Mostrar / ocultar password
   public togglePassword() : void{
     this.showPassword.set(!this.showPassword());
   }
 
+  // Mostrar / ocultar password2
   public togglePassword2() : void{
     this.showPassword2.set(!this.showPassword2());
   }
 
+  // Desactivar boton para evitar multiples peticiones
   public disableBtn() : void{
     this.btnDisable.set(true);
     setTimeout(() => {
@@ -62,6 +66,7 @@ export class RegisterTeacherComponent implements OnInit{
     }, 3000);
   }
 
+  // Validar formulario antes de enviar
   public validateForm() : void{
     this.disableBtn();
 
@@ -95,6 +100,7 @@ export class RegisterTeacherComponent implements OnInit{
     }
   }
 
+  // Enviar formulario a nodejs
   public sendForm() : void{
     this._teacherService.registerNewStudent(this.registerTeacherForm.value).subscribe({
       next : (response) => {

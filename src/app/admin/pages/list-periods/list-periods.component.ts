@@ -1,6 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { debounceTime, distinctUntilChanged, filter, Subject, switchMap } from 'rxjs';
-import { Router } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { Dialog } from '@angular/cdk/dialog';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -38,6 +37,7 @@ export class ListPeriodsComponent implements OnInit{
     private _periodService : PeriodService
   ){}
 
+  // Cargar la lista de periodos
   ngOnInit(): void {
     this.periodSubject
     .pipe(
@@ -63,6 +63,7 @@ export class ListPeriodsComponent implements OnInit{
     this.getPeriodList();
   }
 
+  // Abrir dialogo para registrar nuevo periodo
   public openDialogRegister() : void{
     this.dialog.open(RegisterPeriodComponent, {
       minWidth: '200px',
@@ -71,10 +72,12 @@ export class ListPeriodsComponent implements OnInit{
     })
   }
 
+  // Metodo para gestionar la busqueda de periodos
   onSearch(term : string) : void{
     this.periodSubject.next(term);
   }
 
+  // Descargar archivo pdf con los periodos del sistema
   downloadPeriods() : void{
     this._periodService.exportPeriods().subscribe((data : Blob) => {
       const url = window.URL.createObjectURL(data);
@@ -95,6 +98,7 @@ export class ListPeriodsComponent implements OnInit{
     }, 5000);
   }
 
+  // Obtener los periodos del sistema
   private getPeriodList(page: number = 1) : void{
     this._periodService.getPeriodsInfo('', page).subscribe({
       next : (response) => {
@@ -110,12 +114,14 @@ export class ListPeriodsComponent implements OnInit{
     });
   }
 
+  // Cambiar a pagina ant/sig
   changePage(page: number): void {
     if (this.pagination && page >= 1 && page <= this.pagination.totalPages) {
       this.getPeriodList(page);
     }
   }
 
+  // Calcular el total de paginas
   private calculatePages(): void {
     if (!this.pagination) return;
 
@@ -128,6 +134,7 @@ export class ListPeriodsComponent implements OnInit{
     );
   }
 
+  // Eliminar periodo del sistema
   public deletePeriod(id : string) : void{
     this._periodService.deletePeriodById(id).subscribe({
       next : (response) => {

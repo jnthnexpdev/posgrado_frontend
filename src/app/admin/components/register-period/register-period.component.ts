@@ -1,6 +1,5 @@
 import { NgClass } from '@angular/common';
 import { Component, OnInit, signal } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Dialog } from '@angular/cdk/dialog';
 
@@ -39,10 +38,12 @@ export class RegisterPeriodComponent implements OnInit{
 
     ngOnInit(): void{}   
 
+    // Cerrar dialogo
     public closeDialog() : void{
         this.dialog.closeAll();
     }
 
+    // Descativar boton para evitar multiples peticiones
     public disableBtn() : void{
         this.btnDisable.set(true);
         setTimeout(() => {
@@ -50,6 +51,7 @@ export class RegisterPeriodComponent implements OnInit{
         }, 5000);
     }
 
+    // Validar formulario
     public validateForm() : void{
       this.disableBtn() 
       if(this.registerPeriodForm.valid){
@@ -70,6 +72,7 @@ export class RegisterPeriodComponent implements OnInit{
       }
     }
 
+    // Enviar formulario a nodejs
     public sendForm() : void{
         this._periodService.registerPeriod(this.registerPeriodForm.value).subscribe({
             next : (response) => {

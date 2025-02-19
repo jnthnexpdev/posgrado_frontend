@@ -37,6 +37,7 @@ export class ListTeachersComponent implements OnInit{
     private _teacherService : TeacherService
   ){}
 
+  // Obtener listado de asesores al cargar la pagina
   ngOnInit(): void {
     this.teacherSubject
     .pipe(
@@ -63,10 +64,12 @@ export class ListTeachersComponent implements OnInit{
     this.getTeacherList();
   }
 
+  // Redireccionar al formulario para agregar un asesor
   redirecToRegister() : void{
     this.router.navigate(['/coordinacion/registrar-asesor']).then(() => {});
   }
 
+  // Descargar lista de asesores en pdf
   downloadTeachers() : void{
     this._teacherService.exportTeachers().subscribe((data : Blob) => {
       const url = window.URL.createObjectURL(data);
@@ -87,14 +90,17 @@ export class ListTeachersComponent implements OnInit{
     }, 5000);
   }
 
+  // Eliminar asesor mediante id
   deleteTeacher(id : string) : void{
     this._alertService.alertConfirmation('Deseas eliminar este asesor?', 'borrarAsesor', id, 20000);
   }
 
+  // Metodo para gestionar la busqueda
   onSearch(term : string) : void{
     this.teacherSubject.next(term);
   }
 
+  // Obtener la lista de asesores
   public getTeacherList(page: number = 1) : void{
       this._teacherService.getTeachersInfo('', page).subscribe({
         next : (response) => {
@@ -110,12 +116,14 @@ export class ListTeachersComponent implements OnInit{
       });
   }
 
+  // Cambiar pagina ant/sig
   changePage(page: number): void {
     if (this.pagination && page >= 1 && page <= this.pagination.totalPages) {
       this.getTeacherList(page);
     }
   }
 
+  // Calcular total de paginas
   private calculatePages(): void {
     if (!this.pagination) return;
 
