@@ -11,6 +11,7 @@ import { environment } from '../../../../environments/environment.development';
 export class StatsService {
   private http = inject(HttpClient);
 
+  // Obtener estadisticas del servidor
   getStats() : Observable<Stats>{
     const options = { withCredentials : true };
     return this.http.get<Stats>(`${environment.api}estadisticas/estadisticas-generales`, options);

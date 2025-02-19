@@ -31,17 +31,18 @@ export class HeaderComponent implements OnInit{
     this.getUserType();
   }
 
+  // Cambiar estado del menu en dispositivos moviles
   changeStatusMenu(): void{
     this.menuOpen.set(!this.menuOpen());
   }
 
+  // Cerrar menu en dispositivos moviles
   closeMenu() : void{
     this.menuOpen.set(false);
   }
 
+  // Cerrar sesion y ocultar menu
   closeSession() : void{
-    // this._cookiesService.removeCookie('session');
-
     this._authService.logOutUser().subscribe();
 
     this.isAuth.set(false);
@@ -55,6 +56,7 @@ export class HeaderComponent implements OnInit{
     this.closeMenu();
   }
 
+  // Obtener tipo de usuario y asignar valores a los signals
   getUserType() : void{
     this._authService.getUserAccount().subscribe({
       next : (response : UserAccountResponse) => {

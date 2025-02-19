@@ -22,20 +22,25 @@ import { StatsService } from '../../services/stats/stats.service';
 })
 export class SettingsComponent implements OnInit{
 
+  // Informacion usuario y tesis
   user !: User;
   tesis !: Tesis;
 
+  // Informacion del asesor y fecha de asignacion
   advisorName : string = '';
   advisorEmail : string = '';
   dateAssignment : string = '';
 
+  // Contador de alumnos asesorados
   countAdvised : number = 0;
 
+  // Estadisticas del sistema
   studentCount : number = 0;
   teacherCount : number = 0;
   periodCount : number = 0;
   tesisCount : number = 0;
 
+  // Alumno sin asesor
   public withoutAdvisor = signal(false);
 
   constructor(
@@ -51,6 +56,7 @@ export class SettingsComponent implements OnInit{
     this.getUserData();
   }
 
+  // Abrir dialogo para cambiar password
   openDialogPassword() : void{
     this.dialog.open(ChangePasswordComponent, {
       minWidth: '200px',
@@ -59,7 +65,7 @@ export class SettingsComponent implements OnInit{
     });
   }
 
-  // Obtener informacion del alumno
+  // Obtener informacion dependiendo el tipo de usuario
   getUserData(){
     this._authService.getUserInfo().subscribe({
       next : (response) => {

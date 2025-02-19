@@ -12,11 +12,13 @@ export class TeacherService {
 
   private http = inject(HttpClient);
 
-  registerNewStudent( student : RegisterTeacher) : Observable<TeacherRegisterResponse>{
+  // Registrar nuevo asesor
+  registerNewTeacher( student : RegisterTeacher) : Observable<TeacherRegisterResponse>{
     const options = { withCredentials : true };
     return this.http.post<TeacherRegisterResponse>(`${environment.api}asesores/registrar-cuenta`, student, options);
   }
 
+  // Obtener la informacion de los asesores
   getTeachersInfo(search: string = '', page: number = 1, pageSize: number = 1) : Observable<TeachersRegisterResponse>{
     const params = new HttpParams()
     .set('search', search || '')
@@ -35,6 +37,7 @@ export class TeacherService {
     return this.http.get(`${environment.api}asesores/exportar-asesores`, {responseType : 'blob', withCredentials : true});
   }
 
+  // Eliminar asesor mediante id
   deleteTeacher(id : string) : Observable<ServerResponse>{
     const options = { withCredentials : true };
     return this.http.delete<ServerResponse>(`${environment.api}asesores/eliminar-cuenta/${id}`, options);

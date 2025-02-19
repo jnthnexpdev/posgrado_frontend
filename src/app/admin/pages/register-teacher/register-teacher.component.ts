@@ -102,7 +102,7 @@ export class RegisterTeacherComponent implements OnInit{
 
   // Enviar formulario a nodejs
   public sendForm() : void{
-    this._teacherService.registerNewStudent(this.registerTeacherForm.value).subscribe({
+    this._teacherService.registerNewTeacher(this.registerTeacherForm.value).subscribe({
       next : (response) => {
         this._alertService.alertOk(response.message, 3000);
 
