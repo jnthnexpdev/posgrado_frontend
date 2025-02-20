@@ -12,6 +12,7 @@ import { TesisService } from '../../services/tesis/tesis.service';
 import { Tesis } from '../../interfaces/tesis.interface';
 import { AdviseService } from '../../services/advise/advise.service';
 import { StatsService } from '../../services/stats/stats.service';
+import { RegisterTesisComponent } from '../../../students/components/register-tesis/register-tesis.component';
 
 @Component({
   selector: 'app-settings',
@@ -42,6 +43,8 @@ export class SettingsComponent implements OnInit{
 
   // Alumno sin asesor
   public withoutAdvisor = signal(false);
+  // Alumno sin tesis
+  public studentWithTesis = signal(false);
 
   constructor(
     private dialog : MatDialog,
@@ -59,6 +62,15 @@ export class SettingsComponent implements OnInit{
   // Abrir dialogo para cambiar password
   openDialogPassword() : void{
     this.dialog.open(ChangePasswordComponent, {
+      minWidth: '200px',
+      width : '350px',
+      maxWidth: '350px'
+    });
+  }
+
+  // Abrir dialogo para registrar una tesis
+  openDialogTesis() : void{
+    this.dialog.open(RegisterTesisComponent, {
       minWidth: '200px',
       width : '350px',
       maxWidth: '350px'
@@ -97,9 +109,10 @@ export class SettingsComponent implements OnInit{
     this._tesisService.getTesisByStudent().subscribe({
       next : (response) => {
         this.tesis = response.tesis;
+        this.studentWithTesis.set(true);
       }, 
       error : (err) => {
-        this._alertService.alertError(err.error.message, 3500);
+        this.studentWithTesis.set(false);
       }
     })
   }

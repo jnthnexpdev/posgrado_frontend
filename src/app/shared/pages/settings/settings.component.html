@@ -53,26 +53,39 @@
                 @else if(user.tipoCuenta === 'Alumno'){
                     <h3 class="title-3 mt-24 mb-24"> Informacion de tesis </h3>
     
-                    <div class="option mb-24">
-                        <p class="text-normal"> Titulo: </p>
-                        <span class="text-normal"> {{tesis.titulo}} </span>
-                    </div>
-                
-                    <div class="option mb-24">
-                        <p class="text-normal"> Estatus: </p>
-                        <span class="text-normal"> {{tesis.estatus}} </span>
-                    </div>
+                    <!-- Si el alumno ya tiene una tesis registrada  -->
+                    @if(studentWithTesis()){
+                        <div class="option mb-24">
+                            <p class="text-normal"> Titulo: </p>
+                            <span class="text-normal"> {{tesis.titulo}} </span>
+                        </div>
+                    
+                        <div class="option mb-24">
+                            <p class="text-normal"> Estatus: </p>
+                            <span class="text-normal"> {{tesis.estatus}} </span>
+                        </div>
+    
+                        <div class="option mb-24">
+                            <p class="text-normal"> Fecha registro: </p>
+                            <span class="text-normal"> {{tesis.fechaInicio}} </span>
+                        </div>
 
-                    <div class="option mb-24">
-                        <p class="text-normal"> Fecha registro: </p>
-                        <span class="text-normal"> {{tesis.fechaInicio}} </span>
-                    </div>
+                        <div class="mb-24">
+                            <button class="btn-sec hover"> 
+                                Editar informacion de la tesis
+                            </button>
+                        </div>
 
-                    <!-- <div class="tesis mb-24">
-                        <button class="btn-sec hover" (click)="openDialogPassword()"> 
-                            Editar datos tesis 
-                        </button>
-                    </div> -->
+                    <!-- Si el alumno no tiene tesis pero si tiene asignado un asesor -->
+                    }@else if(!withoutAdvisor()){
+
+                        <div class="option mb-24">
+                            <p class="text-normal"> Tesis: </p>
+                            <button class="btn-sec hover" (click)="openDialogTesis()"> 
+                                Registrar
+                            </button>
+                        </div>
+                    }
                 
                     <mat-divider></mat-divider>
 
