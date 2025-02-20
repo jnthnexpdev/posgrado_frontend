@@ -16,3 +16,5 @@ export interface Tesis {
     areaConocimiento: string;
     resumen: string | null;
 }
+
+export type TesisRegister = Pick<Tesis, "titulo" | "areaConocimiento">

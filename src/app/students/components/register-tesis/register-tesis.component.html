@@ -1,7 +1,7 @@
 <section class="center-center-column">
     <form [formGroup]="registerTesisForm" class="container pd-24 center-center-column">
         <h3 class="title-3 mb-24 text-center"> Registrar tesis </h3>
-        <span class="text-normal mb-24 text-justify"> Ingresa la informacion correspondiente para tu tesis en el sistema de posgrado </span>
+        <span class="text-normal mb-24 text-justify"> Ingresa la informacion correspondiente para el registro de tu tesis en el sistema de posgrado. </span>
 
         <div [ngClass]="titleInvalid() ? 'label-form invalid-field center-start-row mb-16'  : 'label-form center-start-row mb-16'">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -12,19 +12,19 @@
             <label>Titulo:</label>
         </div>
 
-        <input class="input-form mb-24" type="text">
+        <input class="input-form mb-24" formControlName="titulo" placeholder="Titulo de la tesis" type="text">
 
-        <div [ngClass]="titleInvalid() ? 'label-form invalid-field center-start-row mb-16'  : 'label-form center-start-row mb-16'">
+        <div [ngClass]="areaInvalid() ? 'label-form invalid-field center-start-row mb-16'  : 'label-form center-start-row mb-16'">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19.5 1.5H6A1.5 1.5 0 0 0 4.5 3v3H3v1.5h1.5v3.75H3v1.5h1.5v3.75H3V18h1.5v3A1.5 1.5 0 0 0 6 22.5h13.5A1.5 1.5 0 0 0 21 21V3a1.5 1.5 0 0 0-1.5-1.5Zm0 19.5H6v-3h1.5v-1.5H6v-3.75h1.5v-1.5H6V7.5h1.5V6H6V3h13.5v18Z"></path>
-                <path d="M16.5 6h-6v1.5h6V6Z"></path>
-                <path d="M16.5 11.25h-6v1.5h6v-1.5Z"></path>
-                <path d="M16.5 16.5h-6V18h6v-1.5Z"></path>
+                <path d="m5.07 4.5.337.668L5.82 6H9v3.75H3V4.5h2.07ZM5.535 3H2.25a.75.75 0 0 0-.75.75v6.75a.75.75 0 0 0 .75.75h7.5a.75.75 0 0 0 .75-.75V5.25a.75.75 0 0 0-.75-.75h-3l-.54-1.087A.75.75 0 0 0 5.535 3Z"></path>
+                <path d="m17.07 4.5.337.668.413.832H21v3.75h-6V4.5h2.07Zm.465-1.5H14.25a.75.75 0 0 0-.75.75v6.75a.75.75 0 0 0 .75.75h7.5a.75.75 0 0 0 .75-.75V5.25a.75.75 0 0 0-.75-.75h-3l-.54-1.087A.75.75 0 0 0 17.535 3Z"></path>
+                <path d="m5.07 14.25.337.668.413.832H9v3.75H3v-5.25h2.07Zm.465-1.5H2.25a.75.75 0 0 0-.75.75v6.75a.75.75 0 0 0 .75.75h7.5a.75.75 0 0 0 .75-.75V15a.75.75 0 0 0-.75-.75h-3l-.54-1.088a.75.75 0 0 0-.675-.412Z"></path>
+                <path d="m17.07 14.25.337.668.413.832H21v3.75h-6v-5.25h2.07Zm.465-1.5H14.25a.75.75 0 0 0-.75.75v6.75a.75.75 0 0 0 .75.75h7.5a.75.75 0 0 0 .75-.75V15a.75.75 0 0 0-.75-.75h-3l-.54-1.088a.75.75 0 0 0-.675-.412Z"></path>
             </svg>
             <label>Area conocimiento:</label>
         </div>
 
-        <input class="input-form mb-24" type="text">
+        <input class="input-form mb-24" formControlName="areaConocimiento" placeholder="Inteligencia artificial, Redes, etc." type="text">
 
         <div class="btn-options center-evenly-row">
             <button class="btn-sec hover" (click)="closeDialog()"> Cancelar </button>

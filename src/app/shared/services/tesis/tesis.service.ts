@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Tesis, TesisResponseServer } from '../../interfaces/tesis.interface';
+import { TesisRegister, TesisResponseServer } from '../../interfaces/tesis.interface';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
+import { ServerResponse } from '../../interfaces/server.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,9 @@ export class TesisService {
   private http = inject(HttpClient);
 
   // Registrar tesis
-  registerTesis(tesis : Tesis) : Observable<TesisResponseServer>{
+  registerTesis(tesis : TesisRegister) : Observable<ServerResponse>{
     const options = { withCredentials : true };
-    return this.http.post<TesisResponseServer>(`${environment.api}tesis/registrar-tesis`, tesis, options);
+    return this.http.post<ServerResponse>(`${environment.api}tesis/registrar-tesis`, tesis, options);
   }
 
   // Obtener la tesis de un alumno

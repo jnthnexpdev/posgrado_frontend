@@ -1,9 +1,10 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { Component, OnInit, signal } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgClass } from '@angular/common';
 
 import { AlertService } from '../../../shared/services/alerts/alert.service';
+import { TesisService } from '../../../shared/services/tesis/tesis.service';
 
 @Component({
   selector: 'app-register-tesis',
@@ -16,16 +17,29 @@ export class RegisterTesisComponent implements OnInit{
 
     public btnDisable = signal(false);
     public titleInvalid = signal(false);
+    public areaInvalid = signal(false);
     public registerTesisForm !: FormGroup;
     
     constructor(
         private formBuilder : FormBuilder,
         private dialog : Dialog,
         private _alertService : AlertService,
+        private _tesisService : TesisService,
     ){
-        this.registerTesisForm = this.formBuilder.group({
-            
-        });
+      this.registerTesisForm = this.formBuilder.group({
+        titulo : ['', [
+          Validators.required,
+          Validators.minLength(5), // Mínimo 5 caracteres
+          Validators.maxLength(300), // Máximo 300 caracteres
+          Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9!@#$%^&*()_+={}\[\]:;"'<>,.?/\\ -]+$/)
+        ]],
+        areaConocimiento : ['', [
+          Validators.required,
+          Validators.minLength(5), // Mínimo 5 caracteres
+          Validators.maxLength(300), // Máximo 300 caracteres
+          Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9!@#$%^&*()_+={}\[\]:;"'<>,.?/\\ -]+$/)
+        ]],
+      });
     }
 
     ngOnInit(): void{}   
@@ -54,10 +68,12 @@ export class RegisterTesisComponent implements OnInit{
                 if(control?.invalid){
                   switch(key){
                     case 'titulo' : this.titleInvalid.set(true); break;
+                    case 'areaConocimiento' : this.areaInvalid.set(true); break;
                   }
               
                 setTimeout(() => {
                   this.titleInvalid.set(false);
+                  this.areaInvalid.set(false);
                 }, 3000);
             }
         })
@@ -66,5 +82,19 @@ export class RegisterTesisComponent implements OnInit{
 
     // Enviar formulario a nodejs
     public sendForm() : void{
+      this._tesisService.registerTesis(this.registerTesisForm.value).subscribe({
+        next : (response) => {
+          if(response.success === true){
+            this._alertService.alertOk(response.message, 3500);
+
+            setTimeout(() => {
+              window.location.reload();
+            }, 3510);
+          }
+        },
+        error : (err) => {
+          this._alertService.alertError(err.error.message, 3500);
+        }
+      });
     }
 }
