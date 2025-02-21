@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { TesisRegister, TesisResponseServer } from '../../interfaces/tesis.interface';
 import { Observable } from 'rxjs';
+
+import { EditTesis, TesisRegister, TesisResponseServer } from '../../interfaces/tesis.interface';
 import { environment } from '../../../../environments/environment.development';
 import { ServerResponse } from '../../interfaces/server.interface';
 
@@ -22,6 +23,11 @@ export class TesisService {
   getTesisByStudent() : Observable<TesisResponseServer>{
     const options = { withCredentials : true };
     return this.http.get<TesisResponseServer>(`${environment.api}tesis/buscar-tesis-alumno`, options);
+  }
+
+  editTesis(id : string, tesis : EditTesis) : Observable<ServerResponse>{
+    const options = { withCredentials : true };
+    return this.http.put<TesisResponseServer>(`${environment.api}tesis/editar-informacion/${id}`, tesis, options);
   }
 
 }

@@ -15,6 +15,8 @@ export interface Tesis {
     fechaEntrega: string | null;
     areaConocimiento: string;
     resumen: string | null;
+    _id : string;
 }
 
 export type TesisRegister = Pick<Tesis, "titulo" | "areaConocimiento">
+export type EditTesis = Pick<Tesis, "titulo" | "areaConocimiento" | "resumen" | "url">

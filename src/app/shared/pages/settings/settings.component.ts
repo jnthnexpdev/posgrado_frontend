@@ -13,6 +13,7 @@ import { Tesis } from '../../interfaces/tesis.interface';
 import { AdviseService } from '../../services/advise/advise.service';
 import { StatsService } from '../../services/stats/stats.service';
 import { RegisterTesisComponent } from '../../../students/components/register-tesis/register-tesis.component';
+import { EditTesisComponent } from '../../../students/components/edit-tesis/edit-tesis.component';
 
 @Component({
   selector: 'app-settings',
@@ -71,6 +72,15 @@ export class SettingsComponent implements OnInit{
   // Abrir dialogo para registrar una tesis
   openDialogTesis() : void{
     this.dialog.open(RegisterTesisComponent, {
+      minWidth: '200px',
+      width : '350px',
+      maxWidth: '350px'
+    });
+  }
+
+  // Abrir dialogo para registrar una tesis
+  openDialogEditTesis() : void{
+    this.dialog.open(EditTesisComponent, {
       minWidth: '200px',
       width : '350px',
       maxWidth: '350px'

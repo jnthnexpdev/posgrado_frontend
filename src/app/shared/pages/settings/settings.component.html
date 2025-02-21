@@ -6,7 +6,7 @@
             </svg>
             <h3 class="title-3 text-center mb-24"> {{user.nombre}} </h3>
             <p class="text-normal mb-24"> {{user.tipoCuenta}} de posgrado </p>
-            <button class="btn-sec hover" (click)="openDialogPassword()"> Editar informacion </button>
+            <button class="btn-sec hover" (click)="openDialogPassword()"> Editar cuenta </button>
         </header>
 
         <div class="data-user">
@@ -70,9 +70,10 @@
                             <span class="text-normal"> {{tesis.fechaInicio}} </span>
                         </div>
 
-                        <div class="mb-24">
-                            <button class="btn-sec hover"> 
-                                Editar informacion de la tesis
+                        <div class="option mb-24">
+                            <p class="text-normal"> Editar tesis: </p>
+                            <button class="btn-sec hover" (click)="openDialogEditTesis()"> 
+                                Editar informacion
                             </button>
                         </div>
 
