@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 
 import { environment } from '../../../../environments/environment.development';
 import { LoginRequest, LoginResponse } from '../../interfaces/auth.types';
@@ -36,6 +36,14 @@ export class AuthService {
   getUserAccount() : Observable<UserAccountResponse>{
     const options = { withCredentials : true };
     return this.http.get<UserAccountResponse>(`${environment.api}usuario/tipo-usuario`, options);
+  }
+
+  isAuthenticated() : Observable<boolean>{
+    const options = { withCredentials : true };
+    return this.http.get<{ success : boolean }>(`${environment.api}usuario/tipo-usuario`, options).pipe(
+      map( response => response.success ),
+      catchError(() => of (false))
+    );
   }
 
   // Cerrar sesion
