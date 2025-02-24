@@ -18,16 +18,17 @@ span{ width: 100%; }
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     flex-direction: row;
 }
 .actions{
-    width: 60%;
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     flex-direction: row;
 }
-.actions button, .actions select{ margin-right: 16px; }
+.actions button, .actions select{ margin-left: 16px; }
 .input-search{
     width: 40%;
 }
