@@ -11,11 +11,13 @@ export const adminGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
   return new Observable<boolean>((observer) => {
-    authService.isAuthenticated().subscribe((isAuth) => {
-      if (!isAuth) {
-        router.navigate(['/acceso/iniciar-sesion']); 
+    authService.getUserType().subscribe((userType) => {
+      if (userType !== 'Coordinador') {
+        router.navigate(['/unauthorized']); // Redirige si no es Coordinador
+        observer.next(false);
+      } else {
+        observer.next(true);
       }
-      observer.next(isAuth);
       observer.complete();
     });
   });

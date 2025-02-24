@@ -1,5 +1,8 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './auth/guards/auth.guard';
+import { teacherGuard } from './auth/guards/teacher.guard';
+import { adminGuard } from './auth/guards/admin.guard';
+import { studentGuard } from './auth/guards/student.guard';
 
 export const routes: Routes = [
     {
@@ -11,19 +14,19 @@ export const routes: Routes = [
         path : 'coordinacion',
         title : 'Coordinacion',
         loadChildren : () => import('./admin/admin.module').then(m => m.AdminModule),
-        canMatch : [authGuard]
+        canMatch : [authGuard, adminGuard]
     },
     {
         path : 'asesor',
         title : 'Asesores',
         loadChildren : () => import('./teacher/teacher.module').then(m => m.TeacherModule),
-        canMatch : [authGuard]
+        canMatch : [authGuard, teacherGuard]
     },
     {
         path : 'alumno',
         title : 'Alumnos',
         loadChildren : () => import('./students/students.module').then(m => m.StudentsModule),
-        canMatch : [authGuard]
+        canMatch : [authGuard, studentGuard]
     },
     {
         path : 'perfil',
