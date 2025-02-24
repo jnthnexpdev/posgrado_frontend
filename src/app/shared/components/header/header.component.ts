@@ -29,6 +29,7 @@ export class HeaderComponent implements OnInit{
 
   ngOnInit(): void {
     this.getUserType();
+    this.isUserAuth();
   }
 
   // Cambiar estado del menu en dispositivos moviles
@@ -63,15 +64,12 @@ export class HeaderComponent implements OnInit{
         switch(response.accountType){
           case 'Coordinador' : 
             this.isAdmin.set(true);  
-            this.isAuth.set(true);
             break;
           case 'Asesor' : 
             this.isTeacher.set(true);
-            this.isAuth.set(true);
             break;
           case 'Alumno' : 
             this.isStudent.set(true);
-            this.isAuth.set(true);
             break;
           default : this.isAuth.set(false);
         }
@@ -86,6 +84,16 @@ export class HeaderComponent implements OnInit{
         setTimeout(() => {
           this.router.navigate(['/acceso/iniciar-sesion']);
         }, 100);
+      }
+    });
+  }
+
+  isUserAuth() : void{
+    this._authService.isAuthenticated().subscribe((isAuth) => {
+      if (!isAuth) {
+        this.isAuth.set(false);
+      }else{
+        this.isAuth.set(true);
       }
     });
   }

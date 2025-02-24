@@ -38,11 +38,21 @@ export class AuthService {
     return this.http.get<UserAccountResponse>(`${environment.api}usuario/tipo-usuario`, options);
   }
 
+  // Verificar si el usuario ha iniciado sesion
   isAuthenticated() : Observable<boolean>{
     const options = { withCredentials : true };
-    return this.http.get<{ success : boolean }>(`${environment.api}usuario/tipo-usuario`, options).pipe(
+    return this.http.get<{ success : boolean }>(`${environment.api}usuario/usuario-autenticado`, options).pipe(
       map( response => response.success ),
       catchError(() => of (false))
+    );
+  }
+
+  // Obtener el tipo de usuario que intenta acceder al sistema
+  getUserType(): Observable<string | null> {
+    const options = { withCredentials : true };
+    return this.http.get<{ success: boolean, accountType: string }>(`${environment.api}usuario/tipo-usuario`, options).pipe(
+      map(response => response.success ? response.accountType : null),
+      catchError(() => of(null))
     );
   }
 
