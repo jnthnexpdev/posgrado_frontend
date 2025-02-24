@@ -33,7 +33,7 @@
 
         <select class="input-form mb-24" formControlName="periodo">
             @for(period of periods; track $index; let i = $index;){
-                <option [value]="period._id">{{period.periodo}}</option>
+                <option [value]="period.periodo">{{period.periodo}}</option>
             }
         </select>
 

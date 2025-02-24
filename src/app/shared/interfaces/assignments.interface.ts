@@ -28,3 +28,5 @@ export interface AlumnosAssignment {
     nombreAlumno : string;
     _id : string;
 }
+
+export type NewAssignment = Pick< Assignment, "nombre" | "descripcion" | "fechaLimite" | "periodo" >;

@@ -7,11 +7,14 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { NgClass } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 import { AlertService } from '../../../shared/services/alerts/alert.service';
 import { Period } from '../../../shared/interfaces/periods.interface';
 import { PeriodService } from '../../../shared/services/periods/period.service';
+import { AssignmentService } from '../../../shared/services/assignments/assignment.service';
+
 
 @Component({
   selector: 'app-assing-revision',
@@ -46,8 +49,10 @@ export class AssingRevisionComponent implements OnInit{
   constructor(
     private formBuilder : FormBuilder,
     private dialog : Dialog,
+    private router : Router,
     private _alertService : AlertService,
     private _periodService : PeriodService,
+    private _assignmentService : AssignmentService,
 
     private dateAdapter: DateAdapter<Date>,
   ){
@@ -152,7 +157,21 @@ export class AssingRevisionComponent implements OnInit{
       ...this.newRevisionForm.value,
       fechaLimite: dateFormated
     };
-    console.log('Formulario a enviar:', formData);
+    
+    this._assignmentService.createAssignment(formData).subscribe({
+      next : (response) => {
+        this._alertService.alertOk(response.message, 2500);
+
+        setTimeout(() => {
+          this.router.navigate(['/asesor/revisiones']).then(() => {
+            window.location.reload();
+          })
+        }, 2600);
+      },
+      error : (err) => {
+        this._alertService.alertError(err.error.message, 3500);
+      }
+    })
   }
 
 }

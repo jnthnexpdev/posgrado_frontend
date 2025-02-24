@@ -1,14 +1,22 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { AssignmentsResponse } from '../../interfaces/assignments.interface';
-import { environment } from '../../../../environments/environment.development';
 import { Observable } from 'rxjs';
+
+import { AssignmentsResponse, NewAssignment } from '../../interfaces/assignments.interface';
+import { environment } from '../../../../environments/environment.development';
+import { ServerResponse } from '../../interfaces/server.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AssignmentService {
   private http = inject(HttpClient);
+
+  // Crear nueva asignacion
+    createAssignment( assignment : NewAssignment) : Observable<ServerResponse>{
+      const options = { withCredentials : true };
+      return this.http.post<ServerResponse>(`${environment.api}asignaciones/crear-asignacion`, assignment, options);
+    }
 
     // Obtener las asignaciones creadas de un asesor por periodo
     getAssignmentsByPeriod(period : string, page: number = 1, pageSize: number = 30) : Observable<AssignmentsResponse>{
