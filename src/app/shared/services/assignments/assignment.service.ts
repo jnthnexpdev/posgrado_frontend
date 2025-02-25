@@ -13,20 +13,26 @@ export class AssignmentService {
   private http = inject(HttpClient);
 
   // Crear nueva asignacion
-    createAssignment( assignment : NewAssignment) : Observable<ServerResponse>{
-      const options = { withCredentials : true };
-      return this.http.post<ServerResponse>(`${environment.api}asignaciones/crear-asignacion`, assignment, options);
-    }
+  createAssignment( assignment : NewAssignment) : Observable<ServerResponse>{
+    const options = { withCredentials : true };
+    return this.http.post<ServerResponse>(`${environment.api}asignaciones/crear-asignacion`, assignment, options);
+  }
+  // Obtener las asignaciones creadas de un asesor por periodo
+  getAssignmentsByPeriod(period : string, page: number = 1, pageSize: number = 30) : Observable<AssignmentsResponse>{
+    const params = new HttpParams()
+    .set('page', page.toString())
+    .set('pageSize', pageSize.toString());
+    const options = {
+      params: params,
+      withCredentials: true
+    };
+    return this.http.get<AssignmentsResponse>(`${environment.api}asignaciones/obtener-asignaciones-asesor-periodo/${period}`, options);
+  }
 
-    // Obtener las asignaciones creadas de un asesor por periodo
-    getAssignmentsByPeriod(period : string, page: number = 1, pageSize: number = 30) : Observable<AssignmentsResponse>{
-      const params = new HttpParams()
-      .set('page', page.toString())
-      .set('pageSize', pageSize.toString());
-      const options = {
-        params: params,
-        withCredentials: true
-      };
-      return this.http.get<AssignmentsResponse>(`${environment.api}asignaciones/obtener-asignaciones-asesor-periodo/${period}`, options);
-    }
+  // Eliminar asignacion mediante id
+  deleteAssignment(id : string) : Observable <ServerResponse>{
+    const options = { withCredentials : true };
+    return this.http.delete<ServerResponse>(`${environment.api}asignaciones/eliminar-asignacion/${id}`, options);
+  }
+  
 }

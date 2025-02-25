@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../../environments/environment.development';
-import { AdvisedCount, AdvisorInfo, RegisterStudentAdvised, RegisterStudentAdvisedResponse, StudentsResponse } from '../../interfaces/students-advised.types';
+import { AdvisedCount, AdvisorInfo, RegisterStudentAdvised, StudentsResponse } from '../../interfaces/students-advised.types';
 import { ServerResponse } from '../../interfaces/server.interface';
 
 @Injectable({

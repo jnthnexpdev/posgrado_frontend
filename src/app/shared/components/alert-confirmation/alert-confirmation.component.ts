@@ -5,6 +5,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TeacherService } from '../../services/teachers/teacher.service';
 import { StudentService } from '../../services/students/student.service';
 import { AlertService } from '../../services/alerts/alert.service';
+import { AssignmentService } from '../../services/assignments/assignment.service';
 
 @Component({
   selector: 'app-alert-confirmation',
@@ -22,7 +23,8 @@ export class AlertConfirmationComponent implements OnInit{
     private dialog : Dialog,
     private _teacherService : TeacherService,
     private _studentService : StudentService,
-    private _alertService : AlertService
+    private _alertService : AlertService,
+    private _assignmentService : AssignmentService,
   ){}
 
   ngOnInit(): void {
@@ -41,37 +43,53 @@ export class AlertConfirmationComponent implements OnInit{
       case 'borrarAsesor' : 
         this.btnText = 'Eliminar';
         break;
+      case 'borrarAsignacion' : 
+        this.btnText = 'Eliminar';
+        break;
     };
   }
 
   public confirmAction() : void{
     switch(this.data.subject){
-        case 'borrarAlumno' : 
-            this._studentService.deleteStudent(this.data.id).subscribe({
-                next : (response) => {
-                    this._alertService.alertOk(response.message, 3500);
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 3501);
-                },
-                error : (err) => {
-                    this._alertService.alertError(err.error.message, 3500);
-                }
-            });
-            break;
-        case 'borrarAsesor' : 
-            this._teacherService.deleteTeacher(this.data.id).subscribe({
-                next : (response) => {
-                    this._alertService.alertOk(response.message, 3500);
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 3501);
-                },
-                error : (err) => {
-                    this._alertService.alertError(err.error.message, 3500);
-                }
-            });
-        break;
+      case 'borrarAlumno' : 
+        this._studentService.deleteStudent(this.data.id).subscribe({
+            next : (response) => {
+                this._alertService.alertOk(response.message, 3500);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3501);
+            },
+            error : (err) => {
+                this._alertService.alertError(err.error.message, 3500);
+            }
+        });
+      break;
+      case 'borrarAsesor' : 
+        this._teacherService.deleteTeacher(this.data.id).subscribe({
+            next : (response) => {
+                this._alertService.alertOk(response.message, 3500);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3501);
+            },
+            error : (err) => {
+                this._alertService.alertError(err.error.message, 3500);
+            }
+        });
+      break;
+      case 'borrarAsignacion' : 
+        this._assignmentService.deleteAssignment(this.data.id).subscribe({
+            next : (response) => {
+                this._alertService.alertOk(response.message, 3500);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3501);
+            },
+            error : (err) => {
+                this._alertService.alertError(err.error.message, 3500);
+            }
+        });
+      break;
     };
   }
 

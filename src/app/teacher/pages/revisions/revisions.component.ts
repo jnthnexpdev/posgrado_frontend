@@ -1,16 +1,19 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AssingRevisionComponent } from '../../components/assing-revision/assing-revision.component';
 import { Router } from '@angular/router';
+import { NgClass } from '@angular/common';
+
+import { AssingRevisionComponent } from '../../components/assing-revision/assing-revision.component';
 import { AssignmentService } from '../../../shared/services/assignments/assignment.service';
 import { Pagination } from '../../../shared/interfaces/pagination.interface';
 import { Assignment } from '../../../shared/interfaces/assignments.interface';
-import { NgClass } from '@angular/common';
+import { AlertService } from '../../../shared/services/alerts/alert.service';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-revisions',
   standalone: true,
-  imports: [ NgClass ],
+  imports: [ NgClass, MatTooltip ],
   templateUrl: './revisions.component.html',
   styleUrl: './revisions.component.css'
 })
@@ -28,46 +31,59 @@ export class RevisionsComponent implements OnInit{
   public requestCompleted = signal(false);
 
   constructor(
-    private _dialog : MatDialog,
-    private _router : Router,
+    private dialog : MatDialog,
+    private router : Router,
     private _assignmentService : AssignmentService,
+    private _alertService : AlertService
   ){}
 
   ngOnInit(): void {
     this.getAssignments();
   }
 
+  // Abrir dialogo para registrar una nueva asignacion
   openDialog() : void{
-    this._dialog.open(AssingRevisionComponent, {
+    this.dialog.open(AssingRevisionComponent, {
       minWidth: '200px',
       width : '350px',
       maxWidth: '350px'
     });
   }
 
+  // Ver detalles de la asignacion
   viewDetails(id : number) : void{
-    this._router.navigate([`/asesor/detalle-revision/${id}`]).then(() => {});
+    this.router.navigate([`/asesor/detalle-revision/${id}`]).then(() => {});
   }
 
+  // Obtener asignaciones
   getAssignments() : void{
     this._assignmentService.getAssignmentsByPeriod('Enero - Junio 2025').subscribe({
       next  : (response) => {
         this.assignments = response.assignments;
         this.pagination = response.pagination;
-        console.log(this.pagination);
+        this.requestCompleted.set(true);
+        this.calculatePages();
       },
       error : (err) => {
-        console.log('Error al obtener las asignaciones.');
+        console.error('Error al obtener las asignaciones.');
+        this.requestCompleted.set(true);
       }
     })
   }
 
+  // Cambiar ant/sig pagina
   changePage(page: number): void {
     if (this.pagination && page >= 1 && page <= this.pagination.totalPages) {
       this.getAssignments();
     }
   }
 
+  // Abrir dialogo para confirmar eliminacion
+  deleteAssignment(id : string) : void{
+    this._alertService.alertConfirmation('Deseas eliminar esta asignacion?', 'borrarAsignacion', id, 20000);
+  }
+
+  // Calcular total de paginas
   private calculatePages(): void {
     if (!this.pagination) return;
 
