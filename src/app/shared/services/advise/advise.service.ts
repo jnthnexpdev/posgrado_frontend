@@ -1,8 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { environment } from '../../../../environments/environment.development';
 import { AdvisedCount, AdvisorInfo, RegisterStudentAdvised, RegisterStudentAdvisedResponse, StudentsResponse } from '../../interfaces/students-advised.types';
-import { Observable } from 'rxjs';
+import { ServerResponse } from '../../interfaces/server.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +14,9 @@ export class AdviseService {
   private http = inject(HttpClient);
 
   // Registrar un nuevo alumno asesorado
-  registerStudentAdvised(student : RegisterStudentAdvised) : Observable<RegisterStudentAdvisedResponse>{
+  registerStudentAdvised(student : RegisterStudentAdvised) : Observable<ServerResponse>{
     const options = { withCredentials : true };
-    return this.http.post<RegisterStudentAdvisedResponse>(`${environment.api}asesoramiento/registrar-asesorado`, student, options);
+    return this.http.post<ServerResponse>(`${environment.api}asesoramiento/registrar-asesorado`, student, options);
   }
 
   // Obtener la informacion de un asesor de un alumno

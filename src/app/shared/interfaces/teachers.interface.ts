@@ -1,5 +1,6 @@
 // Importación de la interfaz de paginación
 import { Pagination } from "./pagination.interface";
+import { ServerResponse } from "./server.interface";
 
 // Información sobre la sesión del profesor
 export interface TeacherSession {
@@ -27,15 +28,8 @@ export interface RegisterTeacher{
   password: string;
 }
 
-// Respuesta al registar un asesor
-export interface TeacherRegisterResponse {
-  success: boolean;   // Indica si la operación fue exitosa
-  httpCode: number;   // Código de estado HTTP de la respuesta
-  message: string;    // Mensaje de respuesta del servidor 
-}
-
 // Respuesta al obtener la lista de profesores
-export interface TeachersRegisterResponse {
+export interface TeachersRegisterResponse extends ServerResponse{
   success: boolean;   // Indica si la operación fue exitosa
   httpCode: number;   // Código de estado HTTP de la respuesta
   teachers: Teacher[]; // Lista de profesores

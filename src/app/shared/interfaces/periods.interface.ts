@@ -1,14 +1,12 @@
 // Interfaces relacionadas con la paginación
 import { Pagination } from "./pagination.interface";
+import { ServerResponse } from "./server.interface";
 
 export interface RegisterPeriod{
     periodo: string;
 }
 
-export interface AllPeriods{
-    success: boolean;  // Indica si la operación fue exitosa
-    httpCode: number;  // Código de estado HTTP de la respuesta
-    message: string;  // Mensaje descriptivo de la respuesta
+export interface AllPeriods extends ServerResponse{
     periods: [Period] // Periodos
     pagination : Pagination
 }

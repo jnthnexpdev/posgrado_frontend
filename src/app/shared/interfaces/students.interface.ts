@@ -1,4 +1,5 @@
 import { Pagination } from "./pagination.interface";
+import { ServerResponse } from "./server.interface";
 
 // Interfaz base para estudiantes
 export interface BaseStudent {
@@ -15,10 +16,7 @@ export interface BaseStudent {
 }
 
 // Estudiantes por periodo
-export interface StudentsByPeriodResponse {
-  success: boolean;
-  httpCode: number;
-  message: string;
+export interface StudentsByPeriodResponse extends ServerResponse{
   period: {
     students: StudentInPeriod[];
     pagination: Pagination;
@@ -58,17 +56,12 @@ export interface StudentAccount extends BaseStudent {
 }
 
 // Respuesta al obtener la lista de estudiantes
-export interface StudentsResponse {
-  success: boolean;
-  httpCode: number;
+export interface StudentsResponse extends ServerResponse{
   students: Student[]; // Lista de estudiantes
   pagination: Pagination; // Información de paginación
 }
 
 // Respuesta al registrar un nuevo estudiante
-export interface RegisterStudentsResponse {
-  success: boolean;
-  httpCode: number;
-  message: string;
+export interface RegisterStudentsResponse extends ServerResponse{
   studentId: string; // Información detallada del estudiante registrado
 }

@@ -3,9 +3,7 @@ import { Pagination } from "./pagination.interface";
 import { ServerResponse } from "./server.interface";
 
 // Respuesta al obtener estudiantes asesorados
-export interface StudentsResponse {
-  success: boolean;  // Indica si la operación fue exitosa
-  httpCode: number;  // Código de estado HTTP de la respuesta
+export interface StudentsResponse extends ServerResponse{
   students: StudentsAdvised[];  // Lista de estudiantes asesorados
   pagination: Pagination;  // Información de la paginación
 }
@@ -34,13 +32,6 @@ export interface RegisterStudentAdvised {
   numeroControl: string;  // Número de control del estudiante
   periodo: string;  // Periodo en el que se registrará
   notas: string;  // Notas adicionales (opcional)
-}
-
-// Respuesta al registrar un nuevo estudiante asesorado
-export interface RegisterStudentAdvisedResponse {
-  success: boolean;  // Indica si la operación fue exitosa
-  httpCode: number;  // Código de estado HTTP de la respuesta
-  message: string;  // Mensaje descriptivo de la respuesta
 }
 
 export interface AdvisorInfo extends ServerResponse{
