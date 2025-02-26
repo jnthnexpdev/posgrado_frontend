@@ -16,7 +16,7 @@ import { PeriodService } from '../../../shared/services/periods/period.service';
   templateUrl: './register-advise.component.html',
   styleUrl: './register-advise.component.css'
 })
-export class AddMentoredStudentComponent implements OnInit{
+export class RegisterAdviseComponent implements OnInit{
 
   public btnDisable = signal(false);
   public controlNumberInvalid = signal(false);

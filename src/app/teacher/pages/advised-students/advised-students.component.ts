@@ -1,10 +1,10 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddMentoredStudentComponent } from '../../components/register-advise/register-advise.component';
 import { NgClass } from '@angular/common';
 import { debounceTime, distinctUntilChanged, filter, Subject, switchMap } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 
+import { RegisterAdviseComponent } from '../../components/register-advise/register-advise.component';
 import { StudentsAdvised } from '../../../shared/interfaces/students-advised.types';
 import { Pagination } from '../../../shared/interfaces/pagination.interface';
 import { AdviseService } from '../../../shared/services/advise/advise.service';
@@ -90,7 +90,7 @@ export class AdvisedStudentsComponent implements OnInit{
   }
 
   public addAdvisedStudent() : void{
-    this._dialog.open(AddMentoredStudentComponent, {
+    this._dialog.open(RegisterAdviseComponent, {
       minWidth: '200px',
       width : '350px',
       maxWidth: '350px'

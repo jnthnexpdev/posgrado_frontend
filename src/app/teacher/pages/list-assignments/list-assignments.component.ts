@@ -14,10 +14,10 @@ import { MatTooltip } from '@angular/material/tooltip';
   selector: 'app-revisions',
   standalone: true,
   imports: [ NgClass, MatTooltip ],
-  templateUrl: './revisions.component.html',
-  styleUrl: './revisions.component.css'
+  templateUrl: './list-assignments.component.html',
+  styleUrl: './list-assignments.component.css'
 })
-export class RevisionsComponent implements OnInit{
+export class ListAssignmentsComponent implements OnInit{
 
   pagination: Pagination = {
     total: 0,

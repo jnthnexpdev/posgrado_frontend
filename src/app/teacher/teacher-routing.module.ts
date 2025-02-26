@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { RevisionsComponent } from './pages/revisions/revisions.component';
+import { ListAssignmentsComponent } from './pages/list-assignments/list-assignments.component';
 import { DetailsRevisionComponent } from './pages/details-revision/details-revision.component';
 import { AdvisedStudentsComponent } from './pages/advised-students/advised-students.component';
 import { authGuard } from '../auth/guards/auth.guard';
@@ -9,7 +9,7 @@ import { authGuard } from '../auth/guards/auth.guard';
 const routes: Routes = [
   {
     path : 'revisiones',
-    component : RevisionsComponent,
+    component : ListAssignmentsComponent,
     canMatch : [authGuard]
   },
   {
