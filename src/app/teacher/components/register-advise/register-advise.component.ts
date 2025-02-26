@@ -13,8 +13,8 @@ import { PeriodService } from '../../../shared/services/periods/period.service';
   selector: 'app-add-mentored-student',
   standalone: true,
   imports: [ NgClass, ReactiveFormsModule, FormsModule ],
-  templateUrl: './add-mentored-student.component.html',
-  styleUrl: './add-mentored-student.component.css'
+  templateUrl: './register-advise.component.html',
+  styleUrl: './register-advise.component.css'
 })
 export class AddMentoredStudentComponent implements OnInit{
 

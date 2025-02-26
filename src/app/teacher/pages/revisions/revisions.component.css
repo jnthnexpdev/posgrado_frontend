@@ -32,6 +32,7 @@ span{ width: 100%; }
 .input-search{
     width: 40%;
 }
+.btn-edit svg{ fill: var(--blue); }
 
 main{ width: 100%; }
 

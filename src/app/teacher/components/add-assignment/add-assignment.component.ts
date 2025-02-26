@@ -28,8 +28,8 @@ import { AssignmentService } from '../../../shared/services/assignments/assignme
     FormsModule,
     NgClass,
   ],
-  templateUrl: './assing-revision.component.html',
-  styleUrl: './assing-revision.component.css',
+  templateUrl: './add-assignment.component.html',
+  styleUrl: './add-assignment.component.css',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AssingRevisionComponent } from './assing-revision.component';
+import { AssingRevisionComponent } from './add-assignment.component';
 
 describe('AssingRevisionComponent', () => {
   let component: AssingRevisionComponent;

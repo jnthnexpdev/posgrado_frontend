@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgClass } from '@angular/common';
 
-import { AssingRevisionComponent } from '../../components/assing-revision/assing-revision.component';
+import { AssingRevisionComponent } from '../../components/add-assignment/add-assignment.component';
 import { AssignmentService } from '../../../shared/services/assignments/assignment.service';
 import { Pagination } from '../../../shared/interfaces/pagination.interface';
 import { Assignment } from '../../../shared/interfaces/assignments.interface';
@@ -60,6 +60,7 @@ export class RevisionsComponent implements OnInit{
     this._assignmentService.getAssignmentsByPeriod('Enero - Junio 2025').subscribe({
       next  : (response) => {
         this.assignments = response.assignments;
+        console.log(this.assignments);
         this.pagination = response.pagination;
         this.requestCompleted.set(true);
         this.calculatePages();

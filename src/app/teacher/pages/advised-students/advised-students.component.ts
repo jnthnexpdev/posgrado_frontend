@@ -1,6 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddMentoredStudentComponent } from '../../components/add-mentored-student/add-mentored-student.component';
+import { AddMentoredStudentComponent } from '../../components/register-advise/register-advise.component';
 import { NgClass } from '@angular/common';
 import { debounceTime, distinctUntilChanged, filter, Subject, switchMap } from 'rxjs';
 import { FormsModule } from '@angular/forms';
