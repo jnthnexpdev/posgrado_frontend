@@ -8,7 +8,7 @@ import { authGuard } from '../auth/guards/auth.guard';
 
 const routes: Routes = [
   {
-    path : 'revisiones',
+    path : 'asignaciones',
     component : ListAssignmentsComponent,
     canMatch : [authGuard]
   },
@@ -18,7 +18,7 @@ const routes: Routes = [
     canMatch : [authGuard]
   },
   {
-    path : 'detalle-revision/:id',
+    path : 'detalles-revision/:id',
     component : DetailsAssignmentComponent,
     canMatch : [authGuard]
   },

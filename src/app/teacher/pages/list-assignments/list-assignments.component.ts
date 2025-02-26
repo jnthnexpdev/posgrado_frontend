@@ -52,7 +52,7 @@ export class ListAssignmentsComponent implements OnInit{
 
   // Ver detalles de la asignacion
   viewDetails(id : number) : void{
-    this.router.navigate([`/asesor/detalle-revision/${id}`]).then(() => {});
+    this.router.navigate([`/asesor/detalles-revision/${id}`]).then(() => {});
   }
 
   // Obtener asignaciones
