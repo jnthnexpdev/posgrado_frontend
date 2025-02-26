@@ -4,13 +4,11 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-details-revision',
   standalone: true,
   imports: [],
-  templateUrl: './details-revision.component.html',
-  styleUrl: './details-revision.component.css'
+  templateUrl: './details-assignment.component.html',
+  styleUrl: './details-assignment.component.css'
 })
-export class DetailsRevisionComponent implements OnInit{
+export class DetailsAssignmentComponent implements OnInit{
 
-
-  
   ngOnInit(): void {
     
   }
