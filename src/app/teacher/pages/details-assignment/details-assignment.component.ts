@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsAssignmentComponent implements OnInit{
 
+  constructor(){}
+
   ngOnInit(): void {
     
   }

@@ -1,5 +1,5 @@
-import { Dialog } from '@angular/cdk/dialog';
-import {ChangeDetectionStrategy, Component, OnInit, signal, ViewEncapsulation} from '@angular/core';
+import { Dialog, DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
+import {ChangeDetectionStrategy, Component, Inject, OnInit, signal, ViewEncapsulation} from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { DateAdapter } from '@angular/material/core';
@@ -28,12 +28,12 @@ import { AssignmentService } from '../../../shared/services/assignments/assignme
     FormsModule,
     NgClass,
   ],
-  templateUrl: './add-assignment.component.html',
-  styleUrl: './add-assignment.component.css',
+  templateUrl: './edit-assignment.component.html',
+  styleUrl: './edit-assignment.component.css',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AssingRevisionComponent implements OnInit{
+export class EditAssignmentComponent implements OnInit{
   public btnDisable = signal(false);
   public titleInvalid = signal(false);
   public descriptionInvalid = signal(false);
@@ -43,7 +43,9 @@ export class AssingRevisionComponent implements OnInit{
   public periodo : string = '';
   periods : Period[] = [];
 
-  public newRevisionForm !: FormGroup;
+  public idAssignment!: string;
+
+  public editAssignmentForm !: FormGroup;
 
   constructor(
     private formBuilder : FormBuilder,
@@ -52,13 +54,16 @@ export class AssingRevisionComponent implements OnInit{
     private _alertService : AlertService,
     private _periodService : PeriodService,
     private _assignmentService : AssignmentService,
+    private dialogRef: DialogRef<EditAssignmentComponent>,
+    @Inject(DIALOG_DATA) public data: { idAssignment: string },
 
     private dateAdapter: DateAdapter<Date>,
   ){
+    this.idAssignment = data.idAssignment;
     this.dateAdapter.setLocale('en-GB'); // dd/MM/yyyy
     this.dateAdapter.getDayOfWeekNames('narrow');
 
-    this.newRevisionForm = this.formBuilder.group({
+    this.editAssignmentForm = this.formBuilder.group({
       nombre : ['', [
         Validators.required,
         Validators.minLength(5), // Mínimo 5 caracteres
@@ -71,13 +76,15 @@ export class AssingRevisionComponent implements OnInit{
         Validators.maxLength(300), // Máximo 300 caracteres
         Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9!@#$%^&*()_+={}\[\]:;"'<>,.?/\\ -]+$/)
       ]],
-      fechaLimite : ['',],
-      periodo : ['',],
+      fechaLimite : ['', [ Validators.required ]],
+      periodo : ['', [ Validators.required ]],
     });
   }
 
   ngOnInit(): void {
     this.getPeriodList();
+    console.log(this.idAssignment);
+    this.getAssignmentData();
   }
 
   public closeDialog() : void{
@@ -92,13 +99,24 @@ export class AssingRevisionComponent implements OnInit{
     }, 5000);
   }
 
+  private getAssignmentData() : void{
+    this._assignmentService.searchAssignment(this.idAssignment).subscribe({
+      next : (response) => {
+        this.editAssignmentForm.patchValue({
+          nombre : response.assignment.nombre,
+          descripcion : response.assignment.descripcion,
+        });
+      }
+    });
+  }
+
   // Obtener listado de periodos
   private getPeriodList() : void{
     this._periodService.getPeriodsInfo('').subscribe({
       next : (response) => {
         this.periods = response.periods;
         if (this.periods.length > 0) {
-          this.newRevisionForm.patchValue({
+          this.editAssignmentForm.patchValue({
             periodo : this.periods[this.periods.length - 1].periodo
           })
         }
@@ -110,7 +128,7 @@ export class AssingRevisionComponent implements OnInit{
   }
 
   private getDate(): string {
-    const date: Date = this.newRevisionForm.get('fechaLimite')?.value;
+    const date: Date = this.editAssignmentForm.get('fechaLimite')?.value;
     if (date) {
       const day = date.getDate().toString().padStart(2, '0');
       const month = (date.getMonth() + 1).toString().padStart(2, '0'); // +1 porque los meses van de 0 a 11
@@ -125,13 +143,12 @@ export class AssingRevisionComponent implements OnInit{
     this.disableBtn(); 
     this.getDate();
 
-    if(this.newRevisionForm.valid){
+    if(this.editAssignmentForm.valid){
       const fechaFormateada = this.getDate();
-      console.log('Fecha a enviar:', fechaFormateada);
       this.sendForm(fechaFormateada);
     }else{
-      Object.keys(this.newRevisionForm.controls).forEach(key => {
-        const control = this.newRevisionForm.get(key);
+      Object.keys(this.editAssignmentForm.controls).forEach(key => {
+        const control = this.editAssignmentForm.get(key);
           if(control?.invalid){
             switch(key){
               case 'nombre' : this.titleInvalid.set(true); break;
@@ -153,11 +170,13 @@ export class AssingRevisionComponent implements OnInit{
   
   public sendForm(dateFormated: string): void {
     const formData = { 
-      ...this.newRevisionForm.value,
+      ...this.editAssignmentForm.value,
       fechaLimite: dateFormated
     };
+
+    console.log('Form: ', formData);
     
-    this._assignmentService.createAssignment(formData).subscribe({
+    this._assignmentService.editAssignment(this.idAssignment, formData).subscribe({
       next : (response) => {
         this._alertService.alertOk(response.message, 2500);
 

@@ -7,6 +7,10 @@ export interface AssignmentsResponse extends ServerResponse{
     pagination : Pagination
 }
 
+export interface AssignmentResponse extends ServerResponse{
+    assignment : Assignment;
+}
+
 export interface Assignment {
     asesor : [ AsesorAssignment ];
     nombre : string;

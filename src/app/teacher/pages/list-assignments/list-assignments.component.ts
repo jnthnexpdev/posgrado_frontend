@@ -1,14 +1,15 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgClass } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { MatTooltip } from '@angular/material/tooltip';
 
 import { AssingRevisionComponent } from '../../components/add-assignment/add-assignment.component';
 import { AssignmentService } from '../../../shared/services/assignments/assignment.service';
 import { Pagination } from '../../../shared/interfaces/pagination.interface';
 import { Assignment } from '../../../shared/interfaces/assignments.interface';
 import { AlertService } from '../../../shared/services/alerts/alert.service';
-import { MatTooltip } from '@angular/material/tooltip';
+import { EditAssignmentComponent } from '../../components/edit-assignment/edit-assignment.component';
 
 @Component({
   selector: 'app-revisions',
@@ -42,12 +43,27 @@ export class ListAssignmentsComponent implements OnInit{
   }
 
   // Abrir dialogo para registrar una nueva asignacion
-  openDialog() : void{
+  newAssignment() : void{
     this.dialog.open(AssingRevisionComponent, {
       minWidth: '200px',
       width : '350px',
       maxWidth: '350px'
     });
+  }
+
+  // Abrir dialogo para editar la asignacion
+  editAssignment(id : string) : void{
+    this.dialog.open(EditAssignmentComponent, {
+      minWidth: '200px',
+      width : '350px',
+      maxWidth: '350px',
+      data : { idAssignment : id }
+    });
+  }
+
+  // Abrir dialogo para confirmar eliminacion
+  deleteAssignment(id : string) : void{
+    this._alertService.alertConfirmation('Deseas eliminar esta asignacion?', 'borrarAsignacion', id, 20000);
   }
 
   // Ver detalles de la asignacion
@@ -77,11 +93,6 @@ export class ListAssignmentsComponent implements OnInit{
     if (this.pagination && page >= 1 && page <= this.pagination.totalPages) {
       this.getAssignments();
     }
-  }
-
-  // Abrir dialogo para confirmar eliminacion
-  deleteAssignment(id : string) : void{
-    this._alertService.alertConfirmation('Deseas eliminar esta asignacion?', 'borrarAsignacion', id, 20000);
   }
 
   // Calcular total de paginas

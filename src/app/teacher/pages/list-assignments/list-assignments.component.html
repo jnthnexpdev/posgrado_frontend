@@ -14,7 +14,7 @@
               </svg>
               Descargar PDF
           </button>
-          <button (click)="openDialog()" class="btn-prim center-center-row hover">
+          <button (click)="newAssignment()" class="btn-prim center-center-row hover">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M23.25 18h-3v-3h-1.5v3h-3v1.5h3v3h1.5v-3h3V18Z"></path>
                   <path d="M18.75 3.75H16.5V3A1.504 1.504 0 0 0 15 1.5H9A1.504 1.504 0 0 0 7.5 3v.75H5.25a1.504 1.504 0 0 0-1.5 1.5V21a1.504 1.504 0 0 0 1.5 1.5h7.5V21h-7.5V5.25H7.5V7.5h9V5.25h2.25V12h1.5V5.25a1.504 1.504 0 0 0-1.5-1.5ZM15 6H9V3h6v3Z"></path>
@@ -75,7 +75,7 @@
                               </button>
 
                               <button class="btn-icon btn-edit hover" 
-                              (click)="deleteAssignment(assignment._id)"
+                              (click)="editAssignment(assignment._id)"
                               matTooltip="Editar asignacion"> 
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                   <path d="M22.5 19.5h-21V21h21v-1.5Z"></path>
