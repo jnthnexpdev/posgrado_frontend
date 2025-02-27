@@ -83,7 +83,6 @@ export class EditAssignmentComponent implements OnInit{
 
   ngOnInit(): void {
     this.getPeriodList();
-    console.log(this.idAssignment);
     this.getAssignmentData();
   }
 
@@ -173,8 +172,6 @@ export class EditAssignmentComponent implements OnInit{
       ...this.editAssignmentForm.value,
       fechaLimite: dateFormated
     };
-
-    console.log('Form: ', formData);
     
     this._assignmentService.editAssignment(this.idAssignment, formData).subscribe({
       next : (response) => {
