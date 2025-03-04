@@ -10,11 +10,14 @@ import { Pagination } from '../../../shared/interfaces/pagination.interface';
 import { Assignment } from '../../../shared/interfaces/assignments.interface';
 import { AlertService } from '../../../shared/services/alerts/alert.service';
 import { EditAssignmentComponent } from '../../components/edit-assignment/edit-assignment.component';
+import { PeriodService } from '../../../shared/services/periods/period.service';
+import { Period } from '../../../shared/interfaces/periods.interface';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-revisions',
   standalone: true,
-  imports: [ NgClass, MatTooltip ],
+  imports: [ NgClass, MatTooltip, FormsModule ],
   templateUrl: './list-assignments.component.html',
   styleUrl: './list-assignments.component.css'
 })
@@ -28,6 +31,7 @@ export class ListAssignmentsComponent implements OnInit{
   };
   pages : number[] = [];
   public period : string = '';
+  public periods : Period[] = [];
   assignments : Assignment[] = [];
   public requestCompleted = signal(false);
 
@@ -35,10 +39,12 @@ export class ListAssignmentsComponent implements OnInit{
     private dialog : MatDialog,
     private router : Router,
     private _assignmentService : AssignmentService,
-    private _alertService : AlertService
+    private _alertService : AlertService,
+    private _periodService : PeriodService
   ){}
 
   ngOnInit(): void {
+    this.getPeriodList();
     this.getAssignments();
   }
 
@@ -71,18 +77,29 @@ export class ListAssignmentsComponent implements OnInit{
     this.router.navigate([`/asesor/detalles-revision/${id}`]).then(() => {});
   }
 
+  // Obtener el listado de periodos para filtrar a los alumnos
+  private getPeriodList() : void{
+    this._periodService.getPeriodsInfo('').subscribe({
+      next : (response) => {
+        this.periods = response.periods;
+        if (this.periods.length > 0) {
+          this.period = this.periods[this.periods.length - 1].periodo;
+        }
+      }
+    });
+  }
+
   // Obtener asignaciones
   getAssignments() : void{
     this._assignmentService.getAssignmentsByPeriod('Enero - Junio 2025').subscribe({
       next  : (response) => {
         this.assignments = response.assignments;
-        console.log(this.assignments);
         this.pagination = response.pagination;
         this.requestCompleted.set(true);
         this.calculatePages();
+        // console.clear();
       },
       error : (err) => {
-        console.error('Error al obtener las asignaciones.');
         this.requestCompleted.set(true);
       }
     })

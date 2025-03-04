@@ -110,9 +110,6 @@ export class AdvisedStudentsComponent implements OnInit{
         }
 
         this.getStudentsAdvised();
-      },
-      error : (err) => {
-        console.error('Error al obtener la lista de periodos: ', err.error.message);
       }
     });
   }
@@ -124,9 +121,9 @@ export class AdvisedStudentsComponent implements OnInit{
         this.pagination = response.pagination;
         this.requestCompleted.set(true);
         this.calculatePages();
+        console.clear();
       },
       error : (err) => {
-        console.error('Error al obtener la lista de asesorados: ', err.error.message);
         this.requestCompleted.set(true);
       }
     });

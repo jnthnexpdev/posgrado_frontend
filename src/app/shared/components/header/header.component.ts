@@ -73,10 +73,6 @@ export class HeaderComponent implements OnInit{
             break;
           default : this.isAuth.set(false);
         }
-        console.log('Admin: ', this.isAdmin());
-        console.log('Asesor: ', this.isTeacher());
-        console.log('Alumno: ', this.isStudent());
-        console.log('Auth: ', this.isAuth());
       },
       error : (err) => {
         this.isAuth.set(false);

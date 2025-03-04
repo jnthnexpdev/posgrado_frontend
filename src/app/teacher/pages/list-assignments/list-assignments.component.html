@@ -2,7 +2,7 @@
     <main class="center-center-column container pd-24">
         <h3 class="title-3 mb-24"> Revisiones </h3>
         <span class="text-normal mb-24"> 
-            Informacion correspondiente sobre las revisiones de tesis registradas en el sistema
+            Revisiones de tesis registradas en el sistema de posgrado en el periodo {{period}}
         </span>
 
         <div class="filters mb-24">
@@ -22,16 +22,10 @@
               Nueva revision
           </button>
 
-            <select class="select-filter" name="" id="">
-              <option value="" disabled selected>Estatus: </option>
-                <option value=""> Revisadas </option>
-                <option value=""> Pendientes </option>
-            </select>
-
-            <select class="select-filter" name="" id="">
-              <option value="" disabled selected>Periodo: </option>
-                <option value=""> Enero - Junio </option>
-                <option value=""> Agosto - Diciembre </option>
+            <select class="select-filter" [(ngModel)]="period"  [ngModelOptions]="{standalone: true}">
+              @for(period of periods; track $index; let i = $index;){
+                <option [value]="period.periodo">{{period.periodo}}</option>
+              }
             </select>
           </div>
         </div>
@@ -115,9 +109,9 @@
                 <span class="text-small mt-24"> Cargando informacion  </span>
               </div>
             }
-          }@else if (assignments.length === 0 && requestCompleted()){
+          }@else if (assignments.length == 0 && requestCompleted()){
             <div class="center-center-column empty">
-              <span class="text-small"> No tienes alumnos asesorados por el momento </span>
+              <span class="text-small"> No hay asignaciones registradas en este periodo </span>
             </div>
           }
     </main>
