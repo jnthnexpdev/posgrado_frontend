@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { AssignmentResponse, AssignmentsResponse, NewAssignment } from '../../interfaces/assignments.interface';
+import { AssignmentResponse, AssignmentsOfStudentResponse, AssignmentsResponse, NewAssignment } from '../../interfaces/assignments.interface';
 import { environment } from '../../../../environments/environment.development';
 import { ServerResponse } from '../../interfaces/server.interface';
 
@@ -34,6 +34,11 @@ export class AssignmentService {
       withCredentials: true
     };
     return this.http.get<AssignmentsResponse>(`${environment.api}asignaciones/obtener-asignaciones-asesor-periodo/${period}`, options);
+  }
+
+  getAssignmentsOfStudent(period : string) : Observable<AssignmentsOfStudentResponse>{
+    const options = { withCredentials : true };
+    return this.http.get<AssignmentsOfStudentResponse>(`${environment.api}asignaciones/obtener-asignaciones-alumno-periodo/${period}`, options);
   }
 
   // Editar datos de una asignacion

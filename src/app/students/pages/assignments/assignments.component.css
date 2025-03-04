@@ -24,9 +24,9 @@ h3, span{ width: 100%; text-align: left; }
 .filters .filter-selected{
     border: 1px solid var(--black);
 }
-.filters button:nth-child(1){ background-color: rgb(187 247 208); color: rgb(22 101 52); }
-.filters button:nth-child(2){ background-color: rgb(191 219 254); color: rgb(30 64 175); }
-.filters button:nth-child(3) { background-color: rgb(254 240 138); color: rgb(133 77 14); }
+.filters button:nth-child(2){ background-color: rgb(187 247 208); color: rgb(22 101 52); }
+.filters button:nth-child(3){ background-color: rgb(191 219 254); color: rgb(30 64 175); }
+.filters button:nth-child(4) { background-color: rgb(254 240 138); color: rgb(133 77 14); }
 
 article{
     width: 100%;
@@ -54,14 +54,6 @@ article .assignment-title{
     align-items: center;
 }
 article .assignment-title p{ font-weight: 500; }
-article .assignment-title > svg{
-    min-width: 24px;
-    min-height: 24px;
-    width: 48px;
-    height: 48px;
-    fill: var(--blue);
-    margin-right: 8px;
-}
 article .assignment > span{ 
     width: auto; 
     padding: 4px 8px;
@@ -70,9 +62,9 @@ article .assignment > span{
     text-align: center;
 }
 
-.assignment:nth-child(1) > span{ background-color: rgb(187 247 208); color: rgb(22 101 52); }
-.assignment:nth-child(2) > span{ background-color: rgb(191 219 254); color: rgb(30 64 175); }
-.assignment:nth-child(3) > span{ background-color: rgb(254 240 138); color: rgb(133 77 14); }
+.assignment:nth-child(2) > span{ background-color: rgb(187 247 208); color: rgb(22 101 52); }
+.assignment:nth-child(3) > span{ background-color: rgb(191 219 254); color: rgb(30 64 175); }
+.assignment:nth-child(4) > span{ background-color: rgb(254 240 138); color: rgb(133 77 14); }
 
 
 @media(min-width : 300px) and (max-width : 500px){

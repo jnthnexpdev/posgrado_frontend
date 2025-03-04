@@ -95,12 +95,16 @@ export class ListAssignmentsComponent implements OnInit{
       next  : (response) => {
         this.assignments = response.assignments;
         this.pagination = response.pagination;
-        this.requestCompleted.set(true);
+        setTimeout(() => {
+          this.requestCompleted.set(true);
+        }, 2000);
         this.calculatePages();
         // console.clear();
       },
       error : (err) => {
-        this.requestCompleted.set(true);
+        setTimeout(() => {
+          this.requestCompleted.set(true);
+        }, 2000);
       }
     })
   }

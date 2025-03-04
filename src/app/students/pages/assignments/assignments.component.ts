@@ -1,5 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { AssignmentService } from '../../../shared/services/assignments/assignment.service';
+import { Assignment } from '../../../shared/interfaces/assignments.interface';
 
 @Component({
   selector: 'app-assignments',
@@ -11,13 +13,15 @@ import { Router } from '@angular/router';
 export class AssignmentsComponent implements OnInit{
 
   public expandDetails = signal(false);
+  public assignments : Assignment[] = [];
 
   constructor(
-    private _router : Router
+    private router : Router,
+    private _assignmentService : AssignmentService,
   ){}
 
   ngOnInit(): void {
-    
+    this.getAssignments();
   }
 
   public expandCard() : void{
@@ -25,7 +29,16 @@ export class AssignmentsComponent implements OnInit{
   }
 
   viewDetails(id : number) : void{
-    this._router.navigate([`/alumno/detalles-asignacion/${id}`]).then(() => {});
+    this.router.navigate([`/alumno/detalles-asignacion/${id}`]).then(() => {});
+  }
+
+  private getAssignments() : void{
+    this._assignmentService.getAssignmentsOfStudent('Enero - Junio 2025').subscribe({
+      next : (response) => {
+        this.assignments = response.assignments;
+        console.log('Asignaciones: ', this.assignments);
+      }
+    })
   }
 
 }

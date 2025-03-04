@@ -30,7 +30,7 @@
           </div>
         </div>
         
-        @if(assignments.length >= 1){
+        @if(assignments.length >= 1 || !requestCompleted()){
             @defer(on timer(2000ms)){
                 <main class="mb-24">
                     <table>
@@ -103,16 +103,17 @@
                   </button>
                 </div>
               }
-            }@placeholder(minimum 2s;){
+            }@loading(minimum 2s;){
               <div class="center-center-column loading">
                 <div class="loader"></div>
                 <span class="text-small mt-24"> Cargando informacion  </span>
               </div>
             }
-          }@else if (assignments.length == 0 && requestCompleted()){
-            <div class="center-center-column empty">
-              <span class="text-small"> No hay asignaciones registradas en este periodo </span>
-            </div>
-          }
+        }
+        @if (assignments.length === 0 && requestCompleted()){
+          <div class="center-center-column empty">
+            <span class="text-small"> No hay asignaciones registradas en este periodo </span>
+          </div>
+        }
     </main>
 </section>
