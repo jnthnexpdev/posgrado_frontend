@@ -36,7 +36,54 @@ article{
     flex-direction: row;
     flex-wrap: wrap;
 }
-article .assignment{
+
+.assignment{
+    width: calc(50% - 8px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.1);
+}
+
+.assignment{ margin-top: 16px; }
+.assignment:nth-child(1){ margin-top: 0px; }
+.assignment:nth-child(2){ margin-top: 0px; }
+.assignment:nth-child(odd){ margin-right: 8px; }
+.assignment:nth-child(even){ margin-left: 8px; }
+
+.header-assignment{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.header-assignment h4{ min-width: 80%; max-width: 85%; }
+.header-assignment span{ text-align: end; min-width: 10%; max-width: 15%; color: var(--gray); }
+
+.description-assignment{
+    width: 100%;
+}
+
+.footer-assignment{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.status{
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+.status-4{ background-color: rgb(187 247 208); color: rgb(22 101 52); }
+.status-4{ background-color: rgb(191 219 254); color: rgb(30 64 175); }
+.status-4{ background-color: rgb(254 240 138); color: rgb(133 77 14); }
+
+
+/* article .assignment{
     width: calc(50% - 8px);
     display: flex;
     align-items: center;
@@ -48,19 +95,7 @@ article .assignment{
 .assignment:nth-child(2){ margin-top: 0px; }
 .assignment:nth-child(odd){ margin-right: 8px; }
 .assignment:nth-child(even){ margin-left: 8px; }
-article .assignment-title{
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-article .assignment-title p{ font-weight: 500; }
-article .assignment > span{ 
-    width: auto; 
-    padding: 4px 8px;
-    border-radius: 20px;
-    font-weight: 600;
-    text-align: center;
-}
+
 
 .assignment:nth-child(2) > span{ background-color: rgb(187 247 208); color: rgb(22 101 52); }
 .assignment:nth-child(3) > span{ background-color: rgb(191 219 254); color: rgb(30 64 175); }
@@ -103,4 +138,4 @@ article .assignment > span{
     article .assignment:nth-child(even){ margin-top: 16px; }
     .assignment:nth-child(odd){ margin-right: 0px; }
     .assignment:nth-child(even){ margin-left: 0px; }
-}
+} */

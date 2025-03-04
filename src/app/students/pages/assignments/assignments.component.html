@@ -12,16 +12,22 @@
 
         <article>
             @for (assignment of assignments; track $index){
-                <div class="container assignment pd-16" (click)="viewDetails(1)">
-                    <div class="assignment-title">
-                            <div class="assignment-data">
-                                <p class="text-normal mb-8"> {{assignment.nombre}} </p>
-                                <span class="text-small"> {{assignment.descripcion}} </span>
-                            </div>
+                <div class="assignment container pd-16" (click)="viewDetails(1)">
+                    <div class="header-assignment mb-16">
+                        <h4 class="title-4"> {{assignment.nombre}} </h4>
+                        <span class="text-small"> {{assignment.fechaLimite}} </span>
                     </div>
-        
-                    <span class="text-small"> {{assignment.fechaLimite}} </span>
+
+                    <div class="description-assignment mb-16">
+                        <p class="text-normal"> {{assignment.descripcion}} </p>
+                    </div>
+
+                    <div class="footer-assignment mb-16">
+                        <p class="text-small status status-4"> Pendiente </p>
+                        <button class="btn-sec"> Ver mas </button>
+                    </div>
                 </div>
+
             }
         </article>
 
