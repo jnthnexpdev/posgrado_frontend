@@ -12,49 +12,27 @@
 
         <article>
             @for (assignment of assignments; track $index){
-                <div class="assignment container pd-16" (click)="viewDetails(1)">
+                <div class="assignment container pd-16">
                     <div class="header-assignment mb-16">
                         <h4 class="title-4"> {{assignment.nombre}} </h4>
-                        <span class="text-small"> {{assignment.fechaLimite}} </span>
+                        <span class="text-small center-end-row date"> 
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.5 3h-3V1.5H15V3H9V1.5H7.5V3h-3C3.675 3 3 3.675 3 4.5v15c0 .825.675 1.5 1.5 1.5h15c.825 0 1.5-.675 1.5-1.5v-15c0-.825-.675-1.5-1.5-1.5Zm0 16.5h-15V9h15v10.5Zm0-12h-15v-3h3V6H9V4.5h6V6h1.5V4.5h3v3Z"></path>
+                            </svg>
+                            {{assignment.fechaLimite}} 
+                        </span>
                     </div>
 
                     <div class="description-assignment mb-16">
                         <p class="text-normal"> {{assignment.descripcion}} </p>
                     </div>
 
-                    <div class="footer-assignment mb-16">
+                    <div class="footer-assignment">
                         <p class="text-small status status-4"> Pendiente </p>
-                        <button class="btn-sec"> Ver mas </button>
+                        <button class="btn-sec hover" (click)="viewDetails(assignment._id)"> Ver mas </button>
                     </div>
                 </div>
-
             }
         </article>
-
-        <!-- <article>
-            <div class="container assignment pd-16" (click)="viewDetails(1)">
-                <header>
-                    <div class="assignment-header center-start-row">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16.5 17.25h-6v1.5h6v-1.5Z"></path>
-                            <path d="M9 17.25H7.5v1.5H9v-1.5Z"></path>
-                            <path d="M16.5 13.5h-6V15h6v-1.5Z"></path>
-                            <path d="M9 13.5H7.5V15H9v-1.5Z"></path>
-                            <path d="M16.5 9.75h-6v1.5h6v-1.5Z"></path>
-                            <path d="M9 9.75H7.5v1.5H9v-1.5Z"></path>
-                            <path d="M18.75 3.75H16.5V3A1.5 1.5 0 0 0 15 1.5H9A1.5 1.5 0 0 0 7.5 3v.75H5.25a1.5 1.5 0 0 0-1.5 1.5V21a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5ZM9 3h6v3H9V3Zm9.75 18H5.25V5.25H7.5V7.5h9V5.25h2.25V21Z"></path>
-                        </svg>
-        
-                        <div class="data-assingment">
-                            <p class="text-normal mb-8"> Elaboracion del marco referencial </p>
-                            <span class="text-small"> 10/11/2024 </span>
-                        </div>
-                    </div>
-    
-                    <span class="text-small"> Calificado </span>
-                </header>
-            </div>
-
-        </article> -->
     </main>
 </section>

@@ -16,7 +16,7 @@ export interface AssignmentResponse extends ServerResponse{
 }
 
 export interface Assignment {
-    asesor : [ AsesorAssignment ];
+    asesor : AsesorAssignment;
     nombre : string;
     descripcion : string;
     fechaAsignacion : string;

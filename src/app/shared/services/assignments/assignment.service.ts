@@ -36,6 +36,7 @@ export class AssignmentService {
     return this.http.get<AssignmentsResponse>(`${environment.api}asignaciones/obtener-asignaciones-asesor-periodo/${period}`, options);
   }
 
+  // Obtener todas las asignaciones de un alumno en determinado periodo
   getAssignmentsOfStudent(period : string) : Observable<AssignmentsOfStudentResponse>{
     const options = { withCredentials : true };
     return this.http.get<AssignmentsOfStudentResponse>(`${environment.api}asignaciones/obtener-asignaciones-alumno-periodo/${period}`, options);

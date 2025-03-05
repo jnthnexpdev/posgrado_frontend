@@ -28,7 +28,7 @@ export class AssignmentsComponent implements OnInit{
     this.expandDetails.set(!this.expandDetails());
   }
 
-  viewDetails(id : number) : void{
+  viewDetails(id : string) : void{
     this.router.navigate([`/alumno/detalles-asignacion/${id}`]).then(() => {});
   }
 

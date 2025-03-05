@@ -33,7 +33,8 @@
               "src/app/shared/styles/inputs.css",
               "src/app/shared/styles/font.css",
               "src/app/shared/styles/pagination.css",
-              "src/app/shared/styles/loader.css"
+              "src/app/shared/styles/loader.css",
+              "src/app/shared/styles/card-assignment.css"
             ],
             "scripts": []
           },
@@ -97,7 +98,8 @@
               "src/app/shared/styles/inputs.css",
               "src/app/shared/styles/font.css",
               "src/app/shared/styles/pagination.css",
-              "src/app/shared/styles/loader.css"
+              "src/app/shared/styles/loader.css",
+              "src/app/shared/styles/card-assignment.css"
             ],
             "scripts": []
           }

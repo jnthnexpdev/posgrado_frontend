@@ -49,7 +49,7 @@ export class RegisterTesisComponent implements OnInit{
         this.dialog.closeAll();
     }
 
-    // Descativar boton para evitar multiples peticiones
+    // Desactivar boton para evitar multiples peticiones
     public disableBtn() : void{
         this.btnDisable.set(true);
         setTimeout(() => {
