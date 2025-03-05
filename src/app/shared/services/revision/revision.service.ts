@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ServerResponse } from '../../interfaces/server.interface';
 import { environment } from '../../../../environments/environment.development';
-import { RegisterRevision } from '../../interfaces/revisions.interface';
+import { GetRevisionResponse, RegisterRevision } from '../../interfaces/revisions.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,12 @@ export class RevisionService {
 
   registerRevision(revision : RegisterRevision) : Observable<ServerResponse>{
     const options = { withCredentials : true };
-    return this.http.post<ServerResponse>(`${environment.api}`, revision, options);
+    return this.http.post<ServerResponse>(`${environment.api}revisiones/registrar-entrega-alumno`, revision, options);
+  }
+
+  getRevisionOfAssignmentByStudent(idAssignment : string) : Observable<GetRevisionResponse>{
+    const options = { withCredentials : true };
+    return this.http.get<GetRevisionResponse>(`${environment.api}revisiones/informacion-entrega-alumno/${idAssignment}`, options);
   }
 
 }

@@ -1,12 +1,13 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgClass } from '@angular/common';
 
 import { AssignmentService } from '../../../shared/services/assignments/assignment.service';
 import { AlertService } from '../../../shared/services/alerts/alert.service';
 import { Assignment } from '../../../shared/interfaces/assignments.interface';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgClass } from '@angular/common';
 import { RevisionService } from '../../../shared/services/revision/revision.service';
+import { Revision } from '../../../shared/interfaces/revisions.interface';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class AssignmentDetailsComponent implements OnInit{
   public linkInvalid = signal(false);
 
   public assignment !: Assignment;
+  public revision !: Revision;
   public idAssignment !: string;
 
   public revisionForm !: FormGroup;
@@ -46,6 +48,7 @@ export class AssignmentDetailsComponent implements OnInit{
   ngOnInit(): void {
     this.getIdFormUrl();
     this.getAssignment();
+    this.getRevision();
   }
 
   getIdFormUrl() : void{
@@ -66,6 +69,20 @@ export class AssignmentDetailsComponent implements OnInit{
         this.assignment = response.assignment;
       }
     });
+  }
+
+  getRevision() : void{
+    this._revisionService.getRevisionOfAssignmentByStudent(this.idAssignment).subscribe({
+      next : (response) => {
+        this.revision = response.revision;
+        this.revisionForm.patchValue({
+          linkEntrega : response.revision.linkEntrega
+        });
+      },
+      error : (err) => {
+        console.log('Error al obtener la revision: ', err);
+      }
+    })
   }
 
   // Validar formulario
@@ -96,21 +113,19 @@ export class AssignmentDetailsComponent implements OnInit{
       ...this.assignment
     };
 
-    console.log(formData);
-
-    // this._revisionService.registerRevision(formData).subscribe({
-    //   next : (response) => {
-    //     if(response.success === true){
-    //       this._alertService.alertOk(response.message, 3500);
-    //       setTimeout(() => {
-    //         window.location.reload();
-    //       }, 3510);
-    //     }
-    //   },
-    //   error : (err) => {
-    //     this._alertService.alertError(err.error.message, 3500);
-    //   }
-    // });
+    this._revisionService.registerRevision(formData).subscribe({
+      next : (response) => {
+        if(response.success === true){
+          this._alertService.alertOk(response.message, 3500);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3510);
+        }
+      },
+      error : (err) => {
+        this._alertService.alertError(err.error.message, 3500);
+      }
+    });
   }
 
 }

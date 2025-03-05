@@ -61,7 +61,7 @@
                     Fecha entrega:  
                 </span>
     
-                <p class="text-normal"> - </p>
+                <p class="text-normal"> {{revision.fechaEntrega}} </p>
             </div>
 
             <div class="start-start-column text-info">
@@ -73,7 +73,7 @@
                     Hora entrega:  
                 </span>
     
-                <p class="text-normal"> - </p>
+                <p class="text-normal"> {{revision.horaEntrega}} </p>
             </div>
 
             <div class="start-start-column text-info">
@@ -85,7 +85,13 @@
                     Calificacion:  
                 </span>
     
-                <p class="text-normal"> Sin asignar </p>
+                <p class="text-normal"> 
+                    @if(revision.calificacion == null){
+                        No asignada aun
+                    }@else{
+                        {{revision.calificacion}} 
+                    } 
+                </p>
             </div>
 
             <div class="start-start-column text-info">
