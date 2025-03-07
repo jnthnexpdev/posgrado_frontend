@@ -72,9 +72,9 @@ export class ListAssignmentsComponent implements OnInit{
     this._alertService.alertConfirmation('Deseas eliminar esta asignacion?', 'borrarAsignacion', id, 20000);
   }
 
-  // Ver detalles de la asignacion
-  viewDetails(id : number) : void{
-    this.router.navigate([`/asesor/detalles-revision/${id}`]).then(() => {});
+  // Ver entregas de una asignacion
+  redirectRevisions(id : string) : void{
+    this.router.navigate([`/asesor/lista-entregas-alumnos/${id}`]);
   }
 
   // Obtener el listado de periodos para filtrar a los alumnos

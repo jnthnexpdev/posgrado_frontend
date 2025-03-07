@@ -87,7 +87,7 @@
     
                 <p class="text-normal"> 
                     @if(revision.calificacion == null){
-                        No asignada aun
+                        Sin asignar
                     }@else{
                         {{revision.calificacion}} 
                     } 
@@ -120,6 +120,8 @@
             type="text" 
             formControlName="linkEntrega"
             placeholder="Asegurate de proporcionar los permisos necesarios">
+
+            <!-- <a href={{revision.linkEntrega}} target="_blank">{{revision.linkEntrega}}</a> -->
     
             <div class="btn-options center-evenly-row">
                 <button class="btn-sec hover"> Regresar </button>

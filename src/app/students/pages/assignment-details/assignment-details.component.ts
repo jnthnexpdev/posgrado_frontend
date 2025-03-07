@@ -51,6 +51,7 @@ export class AssignmentDetailsComponent implements OnInit{
     this.getRevision();
   }
 
+  // Obtener el id de la asignacion desde la url
   getIdFormUrl() : void{
     this.idAssignment = this.route.snapshot.paramMap.get('id') || '';
   }

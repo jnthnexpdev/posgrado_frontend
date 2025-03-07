@@ -16,6 +16,7 @@ export interface Revision {
     nombreAsignacion : string;
     fechaAsignacion : string;
     alumno : string;
+    nombreAlumno : string;
     tesis : string;
     linkEntrega: string;
     estatusEntrega : string;
@@ -23,6 +24,10 @@ export interface Revision {
     horaEntrega : string;
     calificacion : number;
     comentarios : [ Comment ]
+}
+
+export interface AllRevisionsOfAssignment extends ServerResponse{
+    revisions : [Revision]
 }
 
 export interface Comment{

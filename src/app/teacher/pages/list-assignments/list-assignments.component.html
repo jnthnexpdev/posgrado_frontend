@@ -76,6 +76,16 @@
                                   <path d="M19.05 6.75c.6-.6.6-1.5 0-2.1l-2.7-2.7c-.6-.6-1.5-.6-2.1 0L3 13.2V18h4.8L19.05 6.75ZM15.3 3 18 5.7l-2.25 2.25-2.7-2.7L15.3 3ZM4.5 16.5v-2.7L12 6.3 14.7 9l-7.5 7.5H4.5Z"></path>
                                 </svg>
                               </button>
+
+                              <button class="btn-icon btn-view hover" 
+                              (click)="redirectRevisions(assignment._id)"
+                              matTooltip="Ver entregas"> 
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M16.5 19.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                  <path d="M22.333 17.609A6.48 6.48 0 0 0 16.5 13.5a6.48 6.48 0 0 0-5.833 4.109L10.5 18l.167.391A6.48 6.48 0 0 0 16.5 22.5a6.48 6.48 0 0 0 5.833-4.109L22.5 18l-.167-.391ZM16.5 21a3 3 0 1 1 0-5.999 3 3 0 0 1 0 5.999Z"></path>
+                                  <path d="M9 21H5.25V5.25H7.5V7.5h9V5.25h2.25V12h1.5V5.25a1.5 1.5 0 0 0-1.5-1.5H16.5V3A1.5 1.5 0 0 0 15 1.5H9A1.5 1.5 0 0 0 7.5 3v.75H5.25a1.5 1.5 0 0 0-1.5 1.5V21a1.5 1.5 0 0 0 1.5 1.5H9V21ZM9 3h6v3H9V3Z"></path>
+                                </svg>
+                              </button>
                             </td>
                           </tr>
                         }
@@ -83,26 +93,26 @@
                     </table>
                 </main>
     
-              @if(pagination.totalPages > 1){
-                <div class="pagination center-center-row">
-                  <button class="btn-prev" 
-                  [disabled]="pagination.page === 1" 
-                  (click)="changePage(pagination.page - 1)">
-                  Ant
-                  </button>
-                  @for (page of pages; track $index){
-                    <button [ngClass]="pagination.page === page ? 'btn-page current-page'  : 'btn-page'"
-                    (click)="changePage(page)">
-                      {{page}}
+                @if(pagination.totalPages > 1){
+                  <div class="pagination center-center-row">
+                    <button class="btn-prev" 
+                    [disabled]="pagination.page === 1" 
+                    (click)="changePage(pagination.page - 1)">
+                    Ant
                     </button>
-                  }
-                  <button class="btn-next" 
-                  [disabled]="pagination.totalPages === pagination.page"
-                  (click)="changePage(pagination.page + 1)">
-                  Sig
-                  </button>
-                </div>
-              }
+                    @for (page of pages; track $index){
+                      <button [ngClass]="pagination.page === page ? 'btn-page current-page'  : 'btn-page'"
+                      (click)="changePage(page)">
+                        {{page}}
+                      </button>
+                    }
+                    <button class="btn-next" 
+                    [disabled]="pagination.totalPages === pagination.page"
+                    (click)="changePage(pagination.page + 1)">
+                    Sig
+                    </button>
+                  </div>
+                }
             }@loading(minimum 2s;){
               <div class="center-center-column loading">
                 <div class="loader"></div>

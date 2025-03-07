@@ -1,0 +1,91 @@
+<section class="center-start-column" >
+    <main class="center-center-column container pd-24">
+        <h3 class="title-3 mb-24"> Entregas </h3>
+        <span class="text-normal mb-24"> 
+            Lista de entregas por parte de los alumnos asesorados para la asignacion <b class="text-normal">{{assignment.nombre}}</b> 
+            del periodo <b class="text-normal">{{assignment.periodo}} </b> asignada el dia <b class="text-normal">{{assignment.fechaAsignacion}}</b> con fecha limite 
+            <b class="text-normal"> {{assignment.fechaLimite}} </b>
+        </span>
+
+        <div class="filters mb-24">
+          <div class="actions">
+            <button class="btn-prim center-center-row hover">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19.5 18v3h-15v-3H3v3a1.5 1.5 0 0 0 1.5 1.5h15A1.5 1.5 0 0 0 21 21v-3h-1.5Z"></path>
+                  <path d="m19.5 10.5-1.058-1.057-5.692 5.684V1.5h-1.5v13.627L5.558 9.444 4.5 10.5 12 18l7.5-7.5Z"></path>
+              </svg>
+              Descargar PDF
+            </button>
+          </div>
+        </div>
+        
+        @if(requestCompleted()){
+            @defer(on timer(2000ms)){
+                <main class="mb-24">
+                    <table>
+                      <thead>
+                        <tr>
+                            <th class="text-normal">No</th>
+                            <th class="text-normal">Alumno</th>
+                            <th class="text-normal">Fecha entrega</th>
+                            <th class="text-normal">Link</th>
+                            <th class="text-normal">Calificacion</th>
+                            <th class="text-normal">Estatus</th>
+                            <th class="text-normal">Opciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @for(revision of revisions; track $index; let i = $index){
+                          <tr>
+                            <td class="text-small">{{ $index + 1 }}</td>
+                            <td class="text-small">{{ revision.nombreAlumno }}</td>
+                            <td class="text-small">{{ revision.fechaEntrega }}</td>
+                            <td class="text-small center-center-column">
+                              <a class="btn-link text-small" href={{revision.linkEntrega}} target="_blank">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M21.938 5.074a4.5 4.5 0 0 0-6.375 0l1.065 1.065a3.007 3.007 0 1 1 4.252 4.252l-6 6a3.004 3.004 0 1 1-4.252-4.245l1.057-1.065-1.057-1.065-1.065 1.065a4.5 4.5 0 0 0 0 6.375 4.5 4.5 0 0 0 3.187 1.297 4.499 4.499 0 0 0 3.203-1.32l6-6a4.5 4.5 0 0 0-.015-6.36Z"></path>
+                                  <path d="M3.142 18.618a3 3 0 0 1 0-4.253l6-6a3 3 0 0 1 4.253 0 2.957 2.957 0 0 1 .855 2.138 3 3 0 0 1-.878 2.137l-1.59 1.613 1.065 1.065 1.59-1.59a4.513 4.513 0 0 0-6.382-6.383l-6 6a4.5 4.5 0 0 0 0 6.383 4.5 4.5 0 0 0 3.195 1.275 4.553 4.553 0 0 0 3.21-1.32l-1.065-1.065a2.999 2.999 0 0 1-4.253 0Z"></path>
+                                </svg>
+                                
+                                Link
+                              </a>
+                            </td>
+                            <td class="text-small">
+                              @if(revision.calificacion === null){
+                                No asignada
+                              }@else{
+                                {{ revision.calificacion }}
+                              }
+                            </td>
+                            <td class="text-small">{{ revision.estatusEntrega }}</td>
+                            <td class="text-small"></td>
+                            <!-- <td>
+                              <button class="btn-icon btn-view hover" 
+                              (click)="redirectRevisions(assignment._id)"
+                              matTooltip="Ver entregas"> 
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M16.5 19.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                  <path d="M22.333 17.609A6.48 6.48 0 0 0 16.5 13.5a6.48 6.48 0 0 0-5.833 4.109L10.5 18l.167.391A6.48 6.48 0 0 0 16.5 22.5a6.48 6.48 0 0 0 5.833-4.109L22.5 18l-.167-.391ZM16.5 21a3 3 0 1 1 0-5.999 3 3 0 0 1 0 5.999Z"></path>
+                                  <path d="M9 21H5.25V5.25H7.5V7.5h9V5.25h2.25V12h1.5V5.25a1.5 1.5 0 0 0-1.5-1.5H16.5V3A1.5 1.5 0 0 0 15 1.5H9A1.5 1.5 0 0 0 7.5 3v.75H5.25a1.5 1.5 0 0 0-1.5 1.5V21a1.5 1.5 0 0 0 1.5 1.5H9V21ZM9 3h6v3H9V3Z"></path>
+                                </svg>
+                              </button>
+                            </td> -->
+                          </tr>
+                        }
+                      </tbody>
+                    </table>
+                </main>
+            }@loading(minimum 2s;){
+              <div class="center-center-column loading">
+                <div class="loader"></div>
+                <span class="text-small mt-24"> Cargando informacion  </span>
+              </div>
+            }
+        }
+        <!-- @if (assignment.length === 0 && requestCompleted()){
+          <div class="center-center-column empty">
+            <span class="text-small"> Por el momento aun no hay entregas de alumnos para esta asignacion </span>
+          </div>
+        } -->
+    </main>
+</section>
