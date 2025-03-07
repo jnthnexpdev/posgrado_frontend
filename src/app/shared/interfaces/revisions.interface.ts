@@ -23,7 +23,8 @@ export interface Revision {
     fechaEntrega : string;
     horaEntrega : string;
     calificacion : number;
-    comentarios : [ Comment ]
+    comentarios : [ Comment ];
+    _id : string;
 }
 
 export interface AllRevisionsOfAssignment extends ServerResponse{

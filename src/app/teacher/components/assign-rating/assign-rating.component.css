@@ -1,0 +1,19 @@
+article{
+    width: 100%;
+    background-color: var(--white);
+}
+
+h3{ color: var(--blue); text-align: left; width: 100%; }
+form{
+    width: 100%;
+}
+.label-form, .input-form, mat-form-field, .select-form, .invalid-field{ width: 100%; }
+.label-form svg, .invalid-field svg{
+    margin-right: 4px;
+    fill: var(--blue);
+    width: 20px;
+    height: 20px;
+}
+.label-form svg{ fill: var(--blue); }
+.invalid-field svg{ fill: var(--red); }
+.invalid-field label{ color: var(--red); }

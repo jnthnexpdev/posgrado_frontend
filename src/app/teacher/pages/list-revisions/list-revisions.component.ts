@@ -8,9 +8,9 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { Assignment } from '../../../shared/interfaces/assignments.interface';
 import { AlertService } from '../../../shared/services/alerts/alert.service';
 import { AssignmentService } from '../../../shared/services/assignments/assignment.service';
-import { PeriodService } from '../../../shared/services/periods/period.service';
 import { RevisionService } from '../../../shared/services/revision/revision.service';
 import { Revision } from '../../../shared/interfaces/revisions.interface';
+import { AssignRatingComponent } from '../../components/assign-rating/assign-rating.component';
 
 
 @Component({
@@ -47,10 +47,19 @@ export class ListRevisionsComponent implements OnInit{
     this.router.navigate([`/asesor/lista-entregas-alumnos/${id}`]);
   }
 
-
   // Obtener el id de la asignacion desde la url
   private getIdFormUrl() : void{
     this.idAssignment = this.route.snapshot.paramMap.get('id') || '';
+  }
+
+  // Abrir dialogo para asignar calificacion a la entrega de un alumno
+  updateRating(id : string) : void{
+    this.dialog.open(AssignRatingComponent, {
+      minWidth: '200px',
+      width : '350px',
+      maxWidth: '350px',
+      data : { idAssignment : this.idAssignment, idRevision : id }
+    });
   }
 
   // Obtener asignaciones
