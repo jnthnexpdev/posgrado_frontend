@@ -75,12 +75,16 @@ export class ListRevisionsComponent implements OnInit{
     this._revisionService.getAllRevisionsOfAssignment(this.idAssignment).subscribe({
       next  : (response) => {
         this.revisions = response.revisions;
-        this.requestCompleted.set(true);
+
+        setTimeout(() => {
+          this.requestCompleted.set(true);
+        }, 2000);
 
         console.log(this.revisions);
       },
       error : (err) => {
         setTimeout(() => {
+          this.revisions = [];
           this.requestCompleted.set(true);
         }, 2000);
       }

@@ -19,7 +19,7 @@
           </div>
         </div>
         
-        @if(requestCompleted()){
+        @if(revisions.length >= 1 || !requestCompleted()){
             @defer(on timer(2000ms)){
                 <main class="mb-24">
                     <table>
@@ -83,17 +83,17 @@
                       </tbody>
                     </table>
                 </main>
-            }@loading(minimum 2s;){
+            }@placeholder(minimum 2s;){
               <div class="center-center-column loading">
                 <div class="loader"></div>
                 <span class="text-small mt-24"> Cargando informacion  </span>
               </div>
             }
         }
-        <!-- @if (assignment.length === 0 && requestCompleted()){
+        @if (revisions.length === 0 && requestCompleted()){
           <div class="center-center-column empty">
             <span class="text-small"> Por el momento aun no hay entregas de alumnos para esta asignacion </span>
           </div>
-        } -->
+        }
     </main>
 </section>

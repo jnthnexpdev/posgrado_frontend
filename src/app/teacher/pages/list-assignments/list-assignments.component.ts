@@ -91,7 +91,9 @@ export class ListAssignmentsComponent implements OnInit{
 
   // Obtener asignaciones
   getAssignments() : void{
-    this._assignmentService.getAssignmentsByPeriod('Enero - Junio 2025').subscribe({
+    this.requestCompleted.set(false);
+
+    this._assignmentService.getAssignmentsByPeriod(this.period).subscribe({
       next  : (response) => {
         this.assignments = response.assignments;
         this.pagination = response.pagination;
@@ -99,14 +101,14 @@ export class ListAssignmentsComponent implements OnInit{
           this.requestCompleted.set(true);
         }, 2000);
         this.calculatePages();
-        // console.clear();
       },
       error : (err) => {
         setTimeout(() => {
+          this.assignments = [];
           this.requestCompleted.set(true);
         }, 2000);
       }
-    })
+    });
   }
 
   // Cambiar ant/sig pagina

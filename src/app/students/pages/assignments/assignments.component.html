@@ -28,7 +28,18 @@
                     </div>
 
                     <div class="footer-assignment">
-                        <p class="text-small status status-4"> Pendiente </p>
+                        @switch(assignment.estatusEntrega){
+                            @case('Calificada'){
+                                <p class="text-small status status-qualified"> {{assignment.estatusEntrega}} </p>
+                            }
+                            @case('Entregada'){
+                                <p class="text-small status status-delivered"> {{assignment.estatusEntrega}} </p>
+                            }
+                            @case('Pendiente'){
+                                <p class="text-small status status-pending"> {{assignment.estatusEntrega}} </p>
+                            }
+                        }
+
                         <button class="btn-sec hover" (click)="viewDetails(assignment._id)"> Ver mas </button>
                     </div>
                 </div>

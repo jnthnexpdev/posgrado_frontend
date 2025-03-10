@@ -36,7 +36,7 @@ export class AssignmentsComponent implements OnInit{
     this._assignmentService.getAssignmentsOfStudent('Enero - Junio 2025').subscribe({
       next : (response) => {
         this.assignments = response.assignments;
-        console.log('Asignaciones: ', this.assignments);
+        console.log('Asignaciones: ', response);
       }
     })
   }

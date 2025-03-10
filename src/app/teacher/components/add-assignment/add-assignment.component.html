@@ -21,7 +21,7 @@
             <label>Descripcion:</label>
         </div>
 
-        <textarea class="input-form mb-24" formControlName="descripcion" rows="5">
+        <textarea class="input-form mb-24" formControlName="descripcion" rows="3">
         </textarea>
 
         <div [ngClass]="periodInvalid() ? 'label-form invalid-field center-start-row mb-16' : 'label-form center-start-row mb-16'">
@@ -45,7 +45,7 @@
         </div>
 
         <mat-form-field class="date-field mb-24">
-            <input matInput [matDatepicker]="dp3" [disabled]="true" formControlName="fechaLimite">
+            <input matInput [matDatepicker]="dp3" formControlName="fechaLimite">
             <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
             <mat-datepicker #dp3 disabled="false"></mat-datepicker>
         </mat-form-field>

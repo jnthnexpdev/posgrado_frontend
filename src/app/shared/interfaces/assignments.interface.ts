@@ -24,6 +24,9 @@ export interface Assignment {
     periodo : string;
     alumnos : [ AlumnosAssignment ];
     _id : string;
+    estatusEntrega : string;
+    fechaEntrega : string;
+    calificacion : number;
 }
 
 export interface AsesorAssignment {
