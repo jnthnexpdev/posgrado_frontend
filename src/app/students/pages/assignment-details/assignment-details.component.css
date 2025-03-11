@@ -3,107 +3,65 @@ section{
     min-height: 90dvh;
     padding: 24px;
 }
-main{ width: 50%;     box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.1); }
-aside{ margin-left: 24px;     box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.1); }
 h3{ color: var(--blue); width: 100%; text-align: left; }
-
+main{ width: 50%;box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.1); }
 article{
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
 }
-.text-info{ width: 100%; padding: 24px 0; border-bottom: 1px dashed var(--black); }
-article span, form label, .text-info span{ font-weight: 600; }
-a, label{ word-break: break-all; }
-span svg, .label-form svg{
+.text-info{
+    width: 100%;
+    min-height: 150px;
+    max-height: 150px;
+    padding: 24px 0;
+    border-bottom: 1px dashed var(--black);
+}
+.text-info span, form label{ font-weight: 600; }
+.text-info svg{
     width: 20px;
     height: 20px;
-    fill: var(--black);
     margin-right: 4px;
 }
 
 form{ width: 100%; }
-.label-form, .input-form, .invalid-field{ width: 100%; }
-.label-form svg, .invalid-field svg{
-    margin-right: 4px;
+form svg{
     width: 20px;
     height: 20px;
+    margin-right: 4px;
 }
+
+.label-form, .input-form, .invalid-field{ width: 100%; }
 .label-form svg{ fill: var(--blue); }
 .invalid-field svg{ fill: var(--red); }
 .invalid-field label{ color: var(--red); }
 
-.comment{
-    width: 100%;
-    margin-top: 24px;
-}
-.comment svg{ 
-    width: 24px;
-    height: 24px;
-    min-width: 24px;
-    min-height: 24px;
-    fill: var(--black);
-}
-.author .user-commentary{ margin-right: 8px; }
-.response .user-commentary{ margin-left: 8px; }
-.author .user-commentary{
-    background-color: rgb(219, 234, 254);
-    border-radius: 8px;
-}
-.response .user-commentary{
-    background-color: var(--ligth);    
-    border-radius: 8px;
-}
-
-.add-comment{
-    margin-top: 24px;
-    width: 100%;
-}
-.add-comment textarea{ 
-    resize: vertical; 
-    min-height: 20px;
-}
-.add-comment .btn-send{
-    background-color: transparent;
-    padding: 8px;
-    border-radius: 8px;
-}
-.add-comment .btn-send svg{
-    width: 24px;
-    height: 24px;
-    min-width: 24px;
-    min-height: 24px;
-    fill: var(--blue);
-}
-
-@media(min-width : 300px) and (max-width : 650px){
+@media(min-width : 300px) and (max-width : 600px){
     section{
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
     }
-    main, aside{ width: 100%; }
-    aside{ margin: 24px 0 0 0; }
+    main{ width: 100%; }
     article{ 
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
     }
-}
-@media(min-width : 651px) and (max-width : 950px){
-    section{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
+    .text-info{
+        min-height: 100px;
+        max-height: 100px auto;
+        padding: 12px 0;
     }
-    main, aside{ width: 100%; }
-    aside{ margin: 24px 0 0 0; }
 }
-@media(min-width : 951px) and (max-width : 1300px){
-    main{ width: 55%; }
-    aside{ width: 45%; }
+
+@media(min-width : 601px) and (max-width : 800px){
+    main{ width: 90%; }
+}
+
+@media(min-width : 801px) and (max-width : 1100px){
+    main{ width: 70%; }
 }

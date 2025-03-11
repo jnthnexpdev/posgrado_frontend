@@ -5,7 +5,7 @@ section{
 }
 main{ width: 100% }
 h3{ color: var(--blue); }
-h3, span{ width: 100%; text-align: left; }
+h3, main > span{ width: 100%; text-align: left; }
 
 .filters{ 
     width: 100%;

@@ -1,7 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatTooltip } from '@angular/material/tooltip';
 
@@ -16,7 +15,7 @@ import { AssignRatingComponent } from '../../components/assign-rating/assign-rat
 @Component({
   selector: 'app-list-revisions',
   standalone: true,
-  imports: [ NgClass, MatTooltip, FormsModule ],
+  imports: [ MatTooltip, FormsModule ],
   templateUrl: './list-revisions.component.html',
   styleUrl: './list-revisions.component.css'
 })

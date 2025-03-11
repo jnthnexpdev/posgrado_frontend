@@ -64,6 +64,10 @@ export class AssignmentDetailsComponent implements OnInit{
     }, 5000);
   }
 
+  redirectToAssignments() : void{
+    this.router.navigate(['/alumno/asignaciones']);
+  }
+
   getAssignment() : void{
     this._assignmentService.searchAssignment(this.idAssignment).subscribe({
       next : (response) => {
@@ -75,13 +79,15 @@ export class AssignmentDetailsComponent implements OnInit{
   getRevision() : void{
     this._revisionService.getRevisionOfAssignmentByStudent(this.idAssignment).subscribe({
       next : (response) => {
-        this.revision = response.revision;
-        this.revisionForm.patchValue({
-          linkEntrega : response.revision.linkEntrega
-        });
-      },
-      error : (err) => {
-        console.log('Error al obtener la revision: ', err);
+        if(response.revision != null){
+          this.revision = response.revision;
+
+          if(response.revision.linkEntrega){
+            this.revisionForm.patchValue({
+              linkEntrega : response.revision.linkEntrega
+            });
+          }
+        }
       }
     })
   }

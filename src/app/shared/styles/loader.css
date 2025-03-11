@@ -23,5 +23,6 @@
 }
 
 .empty{
+    width: 100%;
     min-height: 50dvh;
 }

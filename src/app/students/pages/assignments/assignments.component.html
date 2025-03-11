@@ -4,46 +4,78 @@
         <span class="text-normal mb-24"> Revisa los detalles de tus actividades asignadas </span>
 
         <div class="filters mb-24">
-            <button class="btn-filter filter-selected text-small">Todas</button>
-            <button class="btn-filter text-small">Calificadas</button>
-            <button class="btn-filter text-small">Entregadas</button>
-            <button class="btn-filter text-small">Pedientes</button>
+            <button 
+            [ngClass]="selectedFilter === '' ? 'btn-filter hover text-small filter-selected' : 'btn-filter hover text-small'"
+            (click)="applyFilter('')">
+                Todas
+            </button>
+
+            <button 
+            [ngClass]="selectedFilter === 'Calificadas' ? 'btn-filter hover text-small filter-selected' : 'btn-filter hover text-small'"
+            (click)="applyFilter('Calificadas')">
+                Calificadas
+            </button>
+
+            <button 
+            [ngClass]="selectedFilter === 'Entregadas' ? 'btn-filter hover text-small filter-selected' : 'btn-filter hover text-small'"
+            (click)="applyFilter('Entregadas')">
+                Entregadas
+            </button>
+
+            <button 
+            [ngClass]="selectedFilter === 'Pendientes' ? 'btn-filter hover text-small filter-selected' : 'btn-filter hover text-small'"
+            (click)="applyFilter('Pendientes')">
+                Pendientes
+            </button>
         </div>
 
-        <article>
-            @for (assignment of assignments; track $index){
-                <div class="assignment container pd-16">
-                    <div class="header-assignment mb-16">
-                        <h4 class="title-4"> {{assignment.nombre}} </h4>
-                        <span class="text-small center-end-row date"> 
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19.5 3h-3V1.5H15V3H9V1.5H7.5V3h-3C3.675 3 3 3.675 3 4.5v15c0 .825.675 1.5 1.5 1.5h15c.825 0 1.5-.675 1.5-1.5v-15c0-.825-.675-1.5-1.5-1.5Zm0 16.5h-15V9h15v10.5Zm0-12h-15v-3h3V6H9V4.5h6V6h1.5V4.5h3v3Z"></path>
-                            </svg>
-                            {{assignment.fechaLimite}} 
-                        </span>
-                    </div>
-
-                    <div class="description-assignment mb-16">
-                        <p class="text-normal"> {{assignment.descripcion}} </p>
-                    </div>
-
-                    <div class="footer-assignment">
-                        @switch(assignment.estatusEntrega){
-                            @case('Calificada'){
-                                <p class="text-small status status-qualified"> {{assignment.estatusEntrega}} </p>
+        @defer(on timer(2000ms)){
+            <article>
+                @for (assignment of filteredAssignments; track $index){
+                    <div class="assignment container hover pd-16" (click)="viewDetails(assignment._id)">
+                        <div class="header-assignment mb-16">
+                            <h4 class="title-4"> {{assignment.nombre}} </h4>
+                            <span class="text-small center-end-row date"> 
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19.5 3h-3V1.5H15V3H9V1.5H7.5V3h-3C3.675 3 3 3.675 3 4.5v15c0 .825.675 1.5 1.5 1.5h15c.825 0 1.5-.675 1.5-1.5v-15c0-.825-.675-1.5-1.5-1.5Zm0 16.5h-15V9h15v10.5Zm0-12h-15v-3h3V6H9V4.5h6V6h1.5V4.5h3v3Z"></path>
+                                </svg>
+                                {{assignment.fechaLimite}} 
+                            </span>
+                        </div>
+    
+                        <div class="description-assignment mb-16">
+                            <p class="text-normal"> {{assignment.descripcion}} </p>
+                        </div>
+    
+                        <div class="footer-assignment">
+                            @switch(assignment.estatusEntrega){
+                                @case('Calificada'){
+                                    <p class="text-small status status-qualified"> {{assignment.estatusEntrega}} </p>
+                                }
+                                @case('Entregada'){
+                                    <p class="text-small status status-delivered"> {{assignment.estatusEntrega}} </p>
+                                }
+                                @case('Pendiente'){
+                                    <p class="text-small status status-pending"> {{assignment.estatusEntrega}} </p>
+                                }
                             }
-                            @case('Entregada'){
-                                <p class="text-small status status-delivered"> {{assignment.estatusEntrega}} </p>
-                            }
-                            @case('Pendiente'){
-                                <p class="text-small status status-pending"> {{assignment.estatusEntrega}} </p>
-                            }
-                        }
-
-                        <button class="btn-sec hover" (click)="viewDetails(assignment._id)"> Ver mas </button>
+    
+                            <!-- <button class="btn-sec hover" (click)="viewDetails(assignment._id)"> Ver mas </button> -->
+                        </div>
                     </div>
-                </div>
-            }
-        </article>
+                }
+                @empty {
+                    <div class="center-center-column empty">
+                        <span class="text-small"> Por el momento aun no hay asignaciones </span>
+                    </div>
+                }
+            </article>
+        }
+        @placeholder(minimum 2s;){
+            <div class="center-center-column loading">
+              <div class="loader"></div>
+              <span class="text-small mt-24"> Cargando informacion  </span>
+            </div>
+        }
     </main>
 </section>
