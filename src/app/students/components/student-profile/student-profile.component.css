@@ -1,0 +1,35 @@
+.data-user{
+    width: 60%;
+}
+
+.option{ 
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.option p{ color: var(--blue); font-weight: 500; margin-right: 16px; }
+.option span{ text-align: justify; }
+.tesis{ width: 100%; display: flex; justify-content: center; }
+
+@media(min-width : 300px) and (max-width : 500px){
+    article{ 
+        width: 100%; 
+        justify-content: center;
+        flex-direction: column;
+    }
+    header, .data-user{ width: 100%; }
+   .option{
+    align-items: flex-start;
+    flex-direction: column;
+   }
+   .option p{ 
+    margin-bottom: 24px; 
+    }
+    .option span{ 
+        word-wrap: break-word; 
+        word-break: break-all;
+    }
+    button{ width: 100%; }
+}

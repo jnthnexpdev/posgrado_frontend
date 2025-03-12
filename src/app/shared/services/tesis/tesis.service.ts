@@ -25,6 +25,7 @@ export class TesisService {
     return this.http.get<TesisResponseServer>(`${environment.api}tesis/buscar-tesis-alumno`, options);
   }
 
+  // Editar la informacion de una tesis
   editTesis(id : string, tesis : EditTesis) : Observable<ServerResponse>{
     const options = { withCredentials : true };
     return this.http.put<TesisResponseServer>(`${environment.api}tesis/editar-informacion/${id}`, tesis, options);

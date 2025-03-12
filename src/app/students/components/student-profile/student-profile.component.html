@@ -1,0 +1,78 @@
+<h3 class="title-3 mt-24 mb-24"> Información de tesis </h3>
+    
+<!-- Si el alumno ya tiene una tesis registrada  -->
+@if(studentWithTesis()){
+    <div class="option mb-24">
+        <p class="text-normal"> Titulo: </p>
+        <span class="text-normal"> {{tesis.titulo}} </span>
+    </div>
+
+    <div class="option mb-24">
+        <p class="text-normal"> Estatus: </p>
+        <span class="text-normal"> {{tesis.estatus}} </span>
+    </div>
+    <div class="option mb-24">
+        <p class="text-normal"> Fecha registro: </p>
+        <span class="text-normal"> {{tesis.fechaInicio}} </span>
+    </div>
+    <div class="option mb-24">
+        <p class="text-normal"> Editar tesis: </p>
+        <button class="btn-sec hover" (click)="openDialogEditTesis()"> 
+            Editar información
+        </button>
+    </div>
+<!-- Si el alumno no tiene tesis pero si tiene asignado un asesor -->
+}@else if(!withoutAdvisor()){
+    <div class="option mb-24">
+        <p class="text-normal"> Tesis: </p>
+        <button class="btn-sec hover" (click)="openDialogTesis()"> 
+            Registrar
+        </button>
+    </div>
+}
+<mat-divider></mat-divider>
+<h3 class="title-3 mt-24 mb-24"> Publicación en revista </h3>
+@if(studentWithPublication()){
+    <div class="option mb-24">
+        <p class="text-normal"> Nombre de la revista: </p>
+        <span class="text-normal"> {{tesis.titulo}} </span>
+    </div>
+
+    <div class="option mb-24">
+        <p class="text-normal"> Fecha publicación: </p>
+        <span class="text-normal"> {{tesis.estatus}} </span>
+    </div>
+    <div class="option mb-24">
+        <p class="text-normal"> Link publicación: </p>
+        <span class="text-normal"> {{tesis.fechaInicio}} </span>
+    </div>
+    <div class="option mb-24">
+        <p class="text-normal"> Editar publicación: </p>
+        <button class="btn-sec hover" (click)="openDialogEditTesis()"> 
+            Editar información
+        </button>
+    </div>
+}@else{
+    <div class="option mb-24">
+        <p class="text-normal"> Publicación: </p>
+        <button class="btn-sec hover" (click)="openDialogTesis()"> 
+            Registrar
+        </button>
+    </div>
+}
+
+<mat-divider></mat-divider>
+<h3 class="title-3 mt-24 mb-24"> Información de asesor/a </h3>
+<div class="option mb-24">
+    <p class="text-normal"> Nombre: </p>
+    <span class="text-normal"> {{advisorName}} </span>
+</div>
+<div class="option mb-24">
+    <p class="text-normal"> Correo: </p>
+    <span class="text-normal"> {{advisorEmail}} </span>
+</div>
+<div class="option mb-24">
+    <p class="text-normal"> Fecha asignación: </p>
+    <span class="text-normal"> {{dateAssignment}} </span>
+</div>
+<mat-divider></mat-divider>

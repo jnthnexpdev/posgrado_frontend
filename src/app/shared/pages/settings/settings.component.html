@@ -11,7 +11,7 @@
 
         <div class="data-user">
             <mat-list>
-                <h3 class="title-3 mb-24"> Informacion personal </h3>
+                <h3 class="title-3 mb-24"> Información personal </h3>
     
                 <div class="option mb-24">
                     <p class="text-normal"> Correo: </p>
@@ -26,7 +26,7 @@
                 <mat-divider></mat-divider>
 
                 @if (user.tipoCuenta === 'Coordinador'){
-                    <h3 class="title-3 mt-24 mb-24"> Informacion de posgrado </h3>
+                    <h3 class="title-3 mt-24 mb-24"> Información de posgrado </h3>
 
                     <div class="option mb-24">
                         <p class="text-normal"> Asesores: </p>
@@ -51,66 +51,10 @@
                     <mat-divider></mat-divider>
                 }
                 @else if(user.tipoCuenta === 'Alumno'){
-                    <h3 class="title-3 mt-24 mb-24"> Informacion de tesis </h3>
-    
-                    <!-- Si el alumno ya tiene una tesis registrada  -->
-                    @if(studentWithTesis()){
-                        <div class="option mb-24">
-                            <p class="text-normal"> Titulo: </p>
-                            <span class="text-normal"> {{tesis.titulo}} </span>
-                        </div>
-                    
-                        <div class="option mb-24">
-                            <p class="text-normal"> Estatus: </p>
-                            <span class="text-normal"> {{tesis.estatus}} </span>
-                        </div>
-    
-                        <div class="option mb-24">
-                            <p class="text-normal"> Fecha registro: </p>
-                            <span class="text-normal"> {{tesis.fechaInicio}} </span>
-                        </div>
-
-                        <div class="option mb-24">
-                            <p class="text-normal"> Editar tesis: </p>
-                            <button class="btn-sec hover" (click)="openDialogEditTesis()"> 
-                                Editar informacion
-                            </button>
-                        </div>
-
-                    <!-- Si el alumno no tiene tesis pero si tiene asignado un asesor -->
-                    }@else if(!withoutAdvisor()){
-
-                        <div class="option mb-24">
-                            <p class="text-normal"> Tesis: </p>
-                            <button class="btn-sec hover" (click)="openDialogTesis()"> 
-                                Registrar
-                            </button>
-                        </div>
-                    }
-                
-                    <mat-divider></mat-divider>
-
-                    <h3 class="title-3 mt-24 mb-24"> Informacion de asesor/a </h3>
-    
-                    <div class="option mb-24">
-                        <p class="text-normal"> Nombre: </p>
-                        <span class="text-normal"> {{advisorName}} </span>
-                    </div>
-                
-                    <div class="option mb-24">
-                        <p class="text-normal"> Correo: </p>
-                        <span class="text-normal"> {{advisorEmail}} </span>
-                    </div>
-                
-                    <div class="option mb-24">
-                        <p class="text-normal"> Fecha asignacion: </p>
-                        <span class="text-normal"> {{dateAssignment}} </span>
-                    </div>
-                
-                    <mat-divider></mat-divider>
+                    <app-student-profile></app-student-profile>
                 }
                 @else if (user.tipoCuenta === 'Asesor'){
-                    <h3 class="title-3 mt-24 mb-24"> Informacion de asesorados </h3>
+                    <h3 class="title-3 mt-24 mb-24"> Información de asesorados </h3>
                 
                     <div class="option mb-24">
                         <p class="text-normal"> Alumnos asesorados: </p>
@@ -120,10 +64,10 @@
                     <mat-divider></mat-divider>
                 }
 
-                <h3 class="title-3 mt-24 mb-24"> Informacion de acceso </h3>
+                <h3 class="title-3 mt-24 mb-24"> Información de acceso </h3>
     
                 <div class="option">
-                    <p class="text-normal"> Ultimo acceso: </p>
+                    <p class="text-normal"> Último acceso: </p>
                     <span class="text-normal"> {{user.sesion.ultimaSesion}} </span>
                 </div>
             </mat-list>

@@ -4,6 +4,7 @@
         <span class="text-normal mb-24"> Revisa los detalles de tus actividades asignadas </span>
 
         <div class="filters mb-24">
+
             <button 
             [ngClass]="selectedFilter === '' ? 'btn-filter hover text-small filter-selected' : 'btn-filter hover text-small'"
             (click)="applyFilter('')">
@@ -27,6 +28,12 @@
             (click)="applyFilter('Pendientes')">
                 Pendientes
             </button>
+
+            <select class="select-filter" [(ngModel)]="period" (ngModelChange)="getAssignments()" [ngModelOptions]="{standalone: true}">
+                @for(period of periods; track $index; let i = $index;){
+                    <option [value]="period.periodo">{{period.periodo}}</option>
+                }
+            </select>
         </div>
 
         @defer(on timer(2000ms)){
