@@ -11,6 +11,8 @@ import { EditTesisComponent } from '../edit-tesis/edit-tesis.component';
 import { RegisterTesisComponent } from '../register-tesis/register-tesis.component';
 import { Tesis } from '../../../shared/interfaces/tesis.interface';
 import { Publication } from '../../../shared/interfaces/publications.interface';
+import { RegisterPublicationComponent } from '../register-publication/register-publication.component';
+import { EditPublicationComponent } from '../edit-publication/edit-publication.component';
 
 @Component({
     selector: 'app-student-profile',
@@ -66,6 +68,24 @@ export class StudentProfileComponent implements OnInit{
         });
     }
 
+    // Abrir dialogo para registrar una tesis
+    openDialogPublication() : void{
+        this.dialog.open(RegisterPublicationComponent, {
+            minWidth: '200px',
+            width : '350px',
+            maxWidth: '350px'
+        });
+    }
+
+    // Abrir dialogo para registrar una tesis
+    openDialogEditPublication() : void{
+        this.dialog.open(EditPublicationComponent, {
+            minWidth: '200px',
+            width : '350px',
+            maxWidth: '350px'
+        });
+    }
+
     // Obtener informacion de la tesis del alumno
     getStudentTesis() : void{
         this._tesisService.getTesisByStudent().subscribe({
@@ -75,6 +95,7 @@ export class StudentProfileComponent implements OnInit{
         }, 
         error : (err) => {
             this.studentWithTesis.set(false);
+            console.clear();
         }
         })
     }
@@ -88,6 +109,7 @@ export class StudentProfileComponent implements OnInit{
         }, 
         error : (err) => {
             this.studentWithPublication.set(false);
+            console.clear();
         }
         })
     }

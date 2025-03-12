@@ -1,10 +1,10 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-
-import { TesisService } from '../../../shared/services/tesis/tesis.service';
-import { AlertService } from '../../../shared/services/alerts/alert.service';
 import { Dialog } from '@angular/cdk/dialog';
 import { NgClass } from '@angular/common';
+
+import { AlertService } from '../../../shared/services/alerts/alert.service';
+import { TesisService } from '../../../shared/services/tesis/tesis.service';
 import { Tesis } from '../../../shared/interfaces/tesis.interface';
 
 @Component({

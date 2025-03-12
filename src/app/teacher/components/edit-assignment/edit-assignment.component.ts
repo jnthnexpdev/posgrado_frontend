@@ -54,7 +54,6 @@ export class EditAssignmentComponent implements OnInit{
     private _alertService : AlertService,
     private _periodService : PeriodService,
     private _assignmentService : AssignmentService,
-    private dialogRef: DialogRef<EditAssignmentComponent>,
     @Inject(DIALOG_DATA) public data: { idAssignment: string },
 
     private dateAdapter: DateAdapter<Date>,
@@ -98,6 +97,7 @@ export class EditAssignmentComponent implements OnInit{
     }, 5000);
   }
 
+  // Obtener la informacion de la asignacion a editar
   private getAssignmentData() : void{
     this._assignmentService.searchAssignment(this.idAssignment).subscribe({
       next : (response) => {
@@ -126,6 +126,7 @@ export class EditAssignmentComponent implements OnInit{
     });
   }
 
+  // Formatear la fecha a dd-mm-aaaa
   private getDate(): string {
     const date: Date = this.editAssignmentForm.get('fechaLimite')?.value;
     if (date) {

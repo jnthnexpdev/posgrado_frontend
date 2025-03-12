@@ -35,27 +35,27 @@
 @if(studentWithPublication()){
     <div class="option mb-24">
         <p class="text-normal"> Nombre de la revista: </p>
-        <span class="text-normal"> {{tesis.titulo}} </span>
+        <span class="text-normal"> {{publication.revista}} </span>
     </div>
 
     <div class="option mb-24">
         <p class="text-normal"> Fecha publicación: </p>
-        <span class="text-normal"> {{tesis.estatus}} </span>
+        <span class="text-normal"> {{publication.fechaPublicacion}} </span>
     </div>
     <div class="option mb-24">
         <p class="text-normal"> Link publicación: </p>
-        <span class="text-normal"> {{tesis.fechaInicio}} </span>
+        <span class="text-normal"> {{publication.url}} </span>
     </div>
     <div class="option mb-24">
         <p class="text-normal"> Editar publicación: </p>
-        <button class="btn-sec hover" (click)="openDialogEditTesis()"> 
+        <button class="btn-sec hover" (click)="openDialogEditPublication()"> 
             Editar información
         </button>
     </div>
-}@else{
+}@else if(!studentWithPublication()){
     <div class="option mb-24">
         <p class="text-normal"> Publicación: </p>
-        <button class="btn-sec hover" (click)="openDialogTesis()"> 
+        <button class="btn-sec hover" (click)="openDialogPublication()"> 
             Registrar
         </button>
     </div>

@@ -1,0 +1,46 @@
+section, article, form{ width: 100%; }
+h3{ color: var(--blue);  width: 100%; text-align: left; }
+span { width: 100%; text-align: left; }
+
+.btn-options{ width: 100%; }
+
+.label-form, .input-form, mat-form-field, .select-form, .invalid-field, textarea{ width: 100%; }
+.label-form svg, .invalid-field svg{
+    margin-right: 4px;
+    fill: var(--blue);
+    width: 20px;
+    height: 20px;
+}
+.label-form svg{ fill: var(--blue); }
+.invalid-field svg{ fill: var(--red); }
+.invalid-field label{ color: var(--red); }
+textarea{ 
+    resize: none; 
+    min-height: 20px;
+}
+
+/* mat-form-field #mat-input-0{ 
+    min-height: 28px !important;
+} */
+
+.date-field {
+    height: 28px !important;
+    padding: 0px !important;
+    position: relative;
+    border-bottom: 1px solid var(--blue);
+}
+.date-field input{ text-align: center; }
+.date-field .mat-mdc-form-field-flex{ height: 28px !important; background-color: var(--white); }
+.date-field span, .date-field div:nth-child(1){ min-height: 28px !important; }
+.date-field div:nth-child(1){ margin: 0 !important; }
+.date-field .mdc-text-field{ padding: 0 4px !important; background-color: var(--white);}
+#mat-input-0{ 
+    position: absolute;
+    top: 0 !important;
+    left: 0 !important;
+    min-height: 28px !important;
+}
+
+table th{ background-color: transparent !important; }
+table tbody tr{ border-bottom: none; }
+table tbody tr:nth-child(even){ background-color: none; }
