@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { EditTesis, TesisRegister, TesisResponseServer } from '../../interfaces/tesis.interface';
+import { AllTesisOfPeriod, EditTesis, TesisRegister, TesisResponseServer } from '../../interfaces/tesis.interface';
 import { environment } from '../../../../environments/environment.development';
 import { ServerResponse } from '../../interfaces/server.interface';
 
@@ -23,6 +23,11 @@ export class TesisService {
   getTesisByStudent() : Observable<TesisResponseServer>{
     const options = { withCredentials : true };
     return this.http.get<TesisResponseServer>(`${environment.api}tesis/buscar-tesis-alumno`, options);
+  }
+
+  allTesisOfPeriod( period : string ) : Observable<AllTesisOfPeriod>{
+    const options = { withCredentials : true };
+    return this.http.get<AllTesisOfPeriod>(`${environment.api}tesis/tesis-alumnos-periodo/${period}`, options);
   }
 
   // Editar la informacion de una tesis

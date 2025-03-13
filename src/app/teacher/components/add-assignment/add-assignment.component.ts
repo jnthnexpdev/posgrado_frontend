@@ -80,6 +80,7 @@ export class AssingRevisionComponent implements OnInit{
     this.getPeriodList();
   }
 
+  // Cerrar dialogo
   public closeDialog() : void{
     this.dialog.closeAll();
   }
@@ -109,6 +110,7 @@ export class AssingRevisionComponent implements OnInit{
     });
   }
 
+  // Formatear la fecha dd-mm-aaaa
   private getDate(): string {
     const date: Date = this.newRevisionForm.get('fechaLimite')?.value;
     if (date) {
@@ -151,6 +153,7 @@ export class AssingRevisionComponent implements OnInit{
     }
   }
   
+  // Enviar formulario a nodejs
   public sendForm(dateFormated: string): void {
     const formData = { 
       ...this.newRevisionForm.value,

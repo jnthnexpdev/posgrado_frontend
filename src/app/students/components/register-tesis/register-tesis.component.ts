@@ -5,6 +5,8 @@ import { NgClass } from '@angular/common';
 
 import { AlertService } from '../../../shared/services/alerts/alert.service';
 import { TesisService } from '../../../shared/services/tesis/tesis.service';
+import { Period } from '../../../shared/interfaces/periods.interface';
+import { PeriodService } from '../../../shared/services/periods/period.service';
 
 @Component({
   selector: 'app-register-tesis',
@@ -18,6 +20,11 @@ export class RegisterTesisComponent implements OnInit{
     public btnDisable = signal(false);
     public titleInvalid = signal(false);
     public areaInvalid = signal(false);
+    public periodInvalid = signal(false);
+  
+    public periodo : string = '';
+    periods : Period[] = [];
+
     public registerTesisForm !: FormGroup;
     
     constructor(
@@ -25,6 +32,7 @@ export class RegisterTesisComponent implements OnInit{
         private dialog : Dialog,
         private _alertService : AlertService,
         private _tesisService : TesisService,
+        private _periodService : PeriodService
     ){
       this.registerTesisForm = this.formBuilder.group({
         titulo : ['', [
@@ -39,10 +47,13 @@ export class RegisterTesisComponent implements OnInit{
           Validators.maxLength(300), // Máximo 300 caracteres
           Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9!@#$%^&*()_+={}\[\]:;"'<>,.?/\\ -]+$/)
         ]],
+        periodo : ['', [ Validators.required ]]
       });
     }
 
-    ngOnInit(): void{}   
+    ngOnInit(): void{
+      this.getPeriodList();
+    }   
 
     // Cerrar dialogo
     public closeDialog() : void{
@@ -57,6 +68,15 @@ export class RegisterTesisComponent implements OnInit{
         }, 5000);
     }
 
+    // Obtener listado de periodos
+    private getPeriodList() : void{
+      this._periodService.getPeriodsInfo('').subscribe({
+        next : (response) => {
+          this.periods = response.periods;
+        }
+      });
+    }
+
     // Validar formulario
     public validateForm() : void{
       this.disableBtn() 
@@ -69,11 +89,13 @@ export class RegisterTesisComponent implements OnInit{
                   switch(key){
                     case 'titulo' : this.titleInvalid.set(true); break;
                     case 'areaConocimiento' : this.areaInvalid.set(true); break;
+                    case 'periodo' : this.periodInvalid.set(true); break;
                   }
               
                 setTimeout(() => {
                   this.titleInvalid.set(false);
                   this.areaInvalid.set(false);
+                  this.periodInvalid.set(false);
                 }, 3000);
             }
         })

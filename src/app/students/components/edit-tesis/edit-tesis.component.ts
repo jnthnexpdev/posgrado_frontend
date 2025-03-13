@@ -6,6 +6,8 @@ import { NgClass } from '@angular/common';
 import { AlertService } from '../../../shared/services/alerts/alert.service';
 import { TesisService } from '../../../shared/services/tesis/tesis.service';
 import { Tesis } from '../../../shared/interfaces/tesis.interface';
+import { Period } from '../../../shared/interfaces/periods.interface';
+import { PeriodService } from '../../../shared/services/periods/period.service';
 
 @Component({
   selector: 'app-edit-tesis',
@@ -21,6 +23,11 @@ export class EditTesisComponent implements OnInit{
     public btnDisable = signal(false);
     public titleInvalid = signal(false);
     public areaInvalid = signal(false);
+    public periodInvalid = signal(false);
+    
+    public periodo : string = '';
+    periods : Period[] = [];
+    
     public editTesisForm !: FormGroup;
     
     constructor(
@@ -28,6 +35,7 @@ export class EditTesisComponent implements OnInit{
         private dialog : Dialog,
         private _alertService : AlertService,
         private _tesisService : TesisService,
+        private _periodService : PeriodService,
     ){
       this.editTesisForm = this.formBuilder.group({
         titulo : ['', [
@@ -46,11 +54,13 @@ export class EditTesisComponent implements OnInit{
         ]],
         url : ['', [
         ]],
+        periodo : ['', [ Validators.required ]]
       });
     }
 
     ngOnInit(): void{
         this.getStudentTesis();
+        this.getPeriodList();
     }   
 
     // Cerrar dialogo
@@ -66,6 +76,20 @@ export class EditTesisComponent implements OnInit{
         }, 5000);
     }
 
+      // Obtener listado de periodos
+    private getPeriodList() : void{
+        this._periodService.getPeriodsInfo('').subscribe({
+        next : (response) => {
+            this.periods = response.periods;
+            if (this.periods.length > 0) {
+            this.editTesisForm.patchValue({
+                periodo : this.periods[this.periods.length - 1].periodo
+            })
+            }
+        }
+        });
+    }
+
     // Obtener informacion de la tesis del alumno
     private getStudentTesis() : void{
       this._tesisService.getTesisByStudent().subscribe({
@@ -78,6 +102,7 @@ export class EditTesisComponent implements OnInit{
             areaConocimiento : this.tesis.areaConocimiento,
             resumen : this.tesis.resumen,
             url : this.tesis.url,
+            periodo : this.tesis.periodo
           });
         }
       });
@@ -95,11 +120,13 @@ export class EditTesisComponent implements OnInit{
                   switch(key){
                     case 'titulo' : this.titleInvalid.set(true); break;
                     case 'areaConocimiento' : this.areaInvalid.set(true); break;
+                    case 'periodo' : this.periodInvalid.set(true); break;
                   }
               
                 setTimeout(() => {
                   this.titleInvalid.set(false);
                   this.areaInvalid.set(false);
+                  this.periodInvalid.set(false);
                 }, 3000);
             }
         })

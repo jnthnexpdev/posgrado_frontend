@@ -1,0 +1,78 @@
+section{ width: 100%; }
+article{ width: 100%; }
+h3{ color: var(--blue);  width: 100%; text-align: left; }
+article > span { width: 100%; text-align: left; }
+.btn-prim svg{
+    fill: var(--white);
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.actions{ 
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+.actions .input-search{ width: 400px; }
+.actions .btn-actions{
+    display: flex;
+    align-items: center;
+}
+.actions .btn-actions span{ width: auto; }
+.actions select{
+    margin: 0 16px;
+}
+main{ width: 100%; }
+
+@media(min-width : 300px) and (max-width : 500px){
+    .actions{ flex-direction: column-reverse; }
+    .actions .btn-actions{ flex-direction: column; width: 100%; }
+    .actions .btn-actions button{ width: 100%; margin: 0 0 24px 0 }
+    .actions .input-search{ padding-bottom: 24px; min-width: 100%; width: 100%; }
+    main{
+        width: 100%;
+        max-width: 100%;
+        overflow-x: scroll;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x proximity;
+    }
+}
+@media(min-width : 501px) and (max-width : 600px){
+    .actions .btn-actions button:nth-child(2){ margin: 0 8px 0 8px; }
+    .actions .btn-actions span{ display: none; }
+    .actions .btn-actions svg{ margin: 0; }
+    .actions .input-search{ width: 100%;}
+    main{
+        width: 100%;
+        max-width: 100%;
+        overflow-x: scroll;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x proximity;
+    }
+}
+@media(min-width : 601px) and (max-width : 800px){
+    main{
+        width: 100%;
+        max-width: 100%;
+        overflow-x: scroll;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x proximity;
+    }
+    .actions .btn-actions button:nth-child(2){ margin: 0 8px 0 8px; }
+    .actions .btn-actions span{ display: none; }
+    .actions .btn-actions svg{ margin: 0; }
+    .actions .input-search{ width: 60%;}
+}
+@media(min-width : 801px) and (max-width : 1000px){
+    main{
+        width: 100%;
+        max-width: 100%;
+        overflow-x: scroll;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x proximity;
+    }
+    .actions .input-search{ width: 300px;}
+}

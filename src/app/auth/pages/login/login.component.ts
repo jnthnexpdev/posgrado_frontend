@@ -63,7 +63,7 @@ export class LoginComponent{
           next : (response : UserAccountResponse) => {
             switch(response.accountType){
               case 'Coordinador' : 
-                this.router.navigate(['/coordinacion/asesores']).then(() => { window.location.reload(); });
+                this.router.navigate(['/coordinacion/tesis']).then(() => { window.location.reload(); });
                 break;
               case 'Asesor' : 
                 this.router.navigate(['/asesor/alumnos-asesorados']).then(() => { window.location.reload(); });

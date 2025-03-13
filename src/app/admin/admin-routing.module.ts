@@ -5,6 +5,7 @@ import { RegisterTeacherComponent } from './pages/register-teacher/register-teac
 import { ListStudentsComponent } from './pages/list-students/list-students.component';
 import { RegisterStudentComponent } from './pages/register-student/register-student.component';
 import { ListPeriodsComponent } from './pages/list-periods/list-periods.component';
+import { ListTesisComponent } from './pages/list-tesis/list-tesis.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path : 'periodos',
     component : ListPeriodsComponent
+  },
+  {
+    path : 'tesis',
+    component : ListTesisComponent
   },
   {
       path : '',
