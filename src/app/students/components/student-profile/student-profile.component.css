@@ -13,6 +13,21 @@
 .option span{ text-align: justify; }
 .tesis{ width: 100%; display: flex; justify-content: center; }
 
+.btn-link{
+    background-color: var(--white);
+    color: var(--blue);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.btn-link svg{
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+    fill: var(--blue);
+}
+
 @media(min-width : 300px) and (max-width : 500px){
     article{ 
         width: 100%; 

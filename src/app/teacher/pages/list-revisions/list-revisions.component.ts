@@ -46,6 +46,21 @@ export class ListRevisionsComponent implements OnInit{
     this.router.navigate([`/asesor/lista-entregas-alumnos/${id}`]);
   }
 
+  // Descargar pdf con las entregas de una revision
+  downloadRevisions() : void{
+    this._revisionService.exportRevisions(this.idAssignment).subscribe((data : Blob) => {
+      const url = window.URL.createObjectURL(data);
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = `revisiones.pdf`;
+      anchor.target = '_blank';
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+      window.URL.revokeObjectURL(url);
+    });
+  }
+
   // Obtener el id de la asignacion desde la url
   private getIdFormUrl() : void{
     this.idAssignment = this.route.snapshot.paramMap.get('id') || '';

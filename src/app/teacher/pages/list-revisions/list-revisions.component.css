@@ -5,7 +5,7 @@ section{
 }
 main{ width: 100%; }
 h3{ color: var(--blue); text-align: left; width: 100%; }
-span{ width: 100%; }
+main > span{ width: 100%; text-align: left; }
 b{ font-weight: 500; }
 
 .btn-prim svg{
