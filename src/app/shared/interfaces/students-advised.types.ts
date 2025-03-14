@@ -21,7 +21,7 @@ export interface StudentsAdvised {
 
 // Información básica de un estudiante asesorado
 export interface StudentAdvised {
-  _id: string;  // ID único del estudiante
+  alumnoId: string;  // ID único del estudiante
   nombre: string;  // Nombre completo del estudiante
   numeroControl: string;  // Número de control del estudiante
   correo: string;  // Correo del estudiante

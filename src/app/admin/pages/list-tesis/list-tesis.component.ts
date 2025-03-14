@@ -28,8 +28,6 @@ export class ListTesisComponent implements OnInit{
     public tesis : Tesis[] = [];
 
     constructor(
-        private dialog : MatDialog,
-        private router : Router,
         private _tesisService : TesisService,
         private _periodService : PeriodService,
         private _alertService : AlertService
@@ -66,16 +64,19 @@ export class ListTesisComponent implements OnInit{
                 setTimeout(() => {
                     this.requestCompleted.set(true);
                 }, 2000);
+                console.clear();
             },
             error : (err) => {
                 this.tesis = [];
                 setTimeout(() => {
                     this.requestCompleted.set(true);
                 }, 2000);
+                console.clear();
             }
         });
     }
 
+    // Aprobar tesis
     approveTesis(idTesis : string) : void{
         this._tesisService.approveTesis(idTesis).subscribe({
             next : (response) => {
@@ -91,6 +92,7 @@ export class ListTesisComponent implements OnInit{
         });
     }
 
+    // Rechazar tesis
     rejectTesis(idTesis : string) : void{
         this._tesisService.rejectTesis(idTesis).subscribe({
             next : (response) => {

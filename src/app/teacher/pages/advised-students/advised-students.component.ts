@@ -11,11 +11,13 @@ import { AdviseService } from '../../../shared/services/advise/advise.service';
 import { PeriodService } from '../../../shared/services/periods/period.service';
 import { Period } from '../../../shared/interfaces/periods.interface';
 import { AlertService } from '../../../shared/services/alerts/alert.service';
+import { MatTooltip } from '@angular/material/tooltip';
+import { TesisService } from '../../../shared/services/tesis/tesis.service';
 
 @Component({
   selector: 'app-mentored-students',
   standalone: true,
-  imports: [ NgClass, FormsModule ],
+  imports: [ NgClass, FormsModule, MatTooltip ],
   templateUrl: './advised-students.component.html',
   styleUrl: './advised-students.component.css'
 })
@@ -40,6 +42,7 @@ export class AdvisedStudentsComponent implements OnInit{
     private _adviseService : AdviseService,
     private _periodService : PeriodService,
     private _alertService : AlertService,
+    private _tesisService : TesisService
   ){}
 
   ngOnInit(): void {
@@ -60,15 +63,13 @@ export class AdvisedStudentsComponent implements OnInit{
         this.adviseds = response.students;
         this.pagination = response.pagination;
         this.calculatePages();
-      },
-      error : (err) => {
-        console.error("Error al obtener la lista de asesorados: ", err.error.message);
-      },
+      }
     });
 
     this.getStudentsAdvised();
   }
 
+  // Descargar en PDF lista de asesorados
   public downloadAdvised(){
     this._adviseService.exportAdvised(this.period).subscribe((data : Blob) => {
       const url = window.URL.createObjectURL(data);
@@ -89,6 +90,7 @@ export class AdvisedStudentsComponent implements OnInit{
     }, 5000);
   }
 
+  // Agregar nuevo asesorado
   public addAdvisedStudent() : void{
     this._dialog.open(RegisterAdviseComponent, {
       minWidth: '200px',
@@ -97,10 +99,24 @@ export class AdvisedStudentsComponent implements OnInit{
     });
   }
 
+  // Preaprobar tesis
+  public preapproveTesis(idStudent : string) : void{
+    this._tesisService.preapproveTesis(idStudent).subscribe({
+      next : (response) => {
+        this._alertService.alertOk(response.message, 3500);
+      }, 
+      error : (err) => {
+        this._alertService.alertError(err.error.message, 4500);
+      }
+    })
+  }
+
+  // Barra de busqueda
   public onSearch(term : string) : void{
     this.advisedsSubject.next(term);
   }
 
+  // Obtener lista de periodos
   private getPeriodList() : void{
     this._periodService.getPeriodsInfo('').subscribe({
       next : (response) => {
@@ -114,6 +130,7 @@ export class AdvisedStudentsComponent implements OnInit{
     });
   }
 
+  // Obtener lista de alumnos asesorados
   public getStudentsAdvised(page: number = 1) : void{
     this._adviseService.getStudentsAdvisedByTeacher(this.period, '', page).subscribe({
       next : (response) => {
@@ -129,12 +146,14 @@ export class AdvisedStudentsComponent implements OnInit{
     });
   }
 
+  // Pagina sig / ant
   changePage(page: number): void {
     if (this.pagination && page >= 1 && page <= this.pagination.totalPages) {
       this.getStudentsAdvised(page);
     }
   }
 
+  // Calcular total de paginas
   private calculatePages(): void {
     if (!this.pagination) return;
 

@@ -26,6 +26,7 @@ article > span{ width: 100%; text-align: left; }
 .actions button, .actions select{ margin-right: 16px; }
 .actions button span{ width: auto; }
 .input-search{ width: 400px; }
+.btn-icon svg{ fill: var(--blue); }
 main{ width: 100%; }
 
 @media(min-width : 300px) and (max-width : 500px){

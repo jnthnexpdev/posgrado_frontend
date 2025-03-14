@@ -43,10 +43,17 @@ export class TesisService {
         return this.http.patch<ServerResponse>(`${environment.api}tesis/aprobar-tesis/${idTesis}`, {}, options);
     }
 
+    // Preaprobar tesis
+    preapproveTesis(idStudent : string) : Observable<ServerResponse>{
+        const options = { withCredentials : true };
+        console.log(idStudent)
+        return this.http.patch<ServerResponse>(`${environment.api}tesis/preaprobar-tesis/${idStudent}`, {}, options);
+    }
+
     // Rechazar tesis
     rejectTesis(idTesis : string) : Observable<ServerResponse>{
         const options = { withCredentials : true };
-        return this.http.patch<ServerResponse>(`${environment.api}tesis/rechazar-tesis/${idTesis}`, options);
+        return this.http.patch<ServerResponse>(`${environment.api}tesis/rechazar-tesis/${idTesis}`, {}, options);
     }
 
 }

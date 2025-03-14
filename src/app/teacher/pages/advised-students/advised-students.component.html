@@ -42,64 +42,73 @@
         </div>
 
         @if(adviseds.length >= 1){
-          @defer(on timer(2000ms)){
-            <main class="mb-24">
-              <table>
-                <thead>
-                  <tr>
-                    <th class="text-normal">No</th>
-                    <th class="text-normal">Nombre</th>
-                    <th class="text-normal">Numero control</th>
-                    <th class="text-normal">Correo</th>
-                    <th class="text-normal">Asignacion</th>
-                    <th class="text-normal">Periodo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @for(advised of adviseds; track $index; let i = $index){
-                    <tr>
-                      <td class="text-small">{{ (pagination.page - 1) * pagination.pageSize + $index + 1 }}</td>
-                      <td class="text-small">{{ advised.alumno.nombre }}</td>
-                      <td class="text-small">{{ advised.alumno.numeroControl }}</td>
-                      <td class="text-small">{{ advised.alumno.correo }}</td>
-                      <td class="text-small">{{ advised.fechaAsignacion }}</td>
-                      <td class="text-small">{{ advised.periodo }}</td>
-                    </tr>
-                  }
-                </tbody>
-              </table>
-            </main>
-  
+            @defer(on timer(2000ms)){
+                <main class="mb-24">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="text-normal">No</th>
+                                <th class="text-normal">Nombre</th>
+                                <th class="text-normal">Numero control</th>
+                                <th class="text-normal">Correo</th>
+                                <th class="text-normal">Asignacion</th>
+                                <th class="text-normal">Periodo</th>
+                                <th class="text-normal">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(advised of adviseds; track $index; let i = $index){
+                                <tr>
+                                    <td class="text-small">{{ (pagination.page - 1) * pagination.pageSize + $index + 1 }}</td>
+                                    <td class="text-small">{{ advised.alumno.nombre }}</td>
+                                    <td class="text-small">{{ advised.alumno.numeroControl }}</td>
+                                    <td class="text-small">{{ advised.alumno.correo }}</td>
+                                    <td class="text-small">{{ advised.fechaAsignacion }}</td>
+                                    <td class="text-small">{{ advised.periodo}}</td>
+                                    <td class="text-small">
+                                        <button class="btn-icon hover" (click)="preapproveTesis(advised.alumno.alumnoId)"
+                                        matTooltip="Aprobar tesis"> 
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M22.5 15.001a4.501 4.501 0 1 0-7.5 3.345v5.655l3-1.42 3 1.42v-5.655a4.485 4.485 0 0 0 1.5-3.345Zm-3 6.63-1.5-.71-1.5.71V19.24c.97.35 2.03.35 3 0v2.392Zm-1.5-3.63a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"></path>
+                                                <path d="M18.75 3.75H16.5V3A1.504 1.504 0 0 0 15 1.5H9A1.504 1.504 0 0 0 7.5 3v.75H5.25a1.504 1.504 0 0 0-1.5 1.5V21a1.504 1.504 0 0 0 1.5 1.5H12V21H5.25V5.25H7.5V7.5h9V5.25h2.25V9h1.5V5.25a1.504 1.504 0 0 0-1.5-1.5ZM15 6H9V3h6v3Z"></path>
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </main>
             @if(pagination.totalPages > 1){
-              <div class="pagination center-center-row">
-                <button class="btn-prev" 
-                [disabled]="pagination.page === 1" 
-                (click)="changePage(pagination.page - 1)">
-                Ant
-                </button>
-                @for (page of pages; track $index){
-                  <button [ngClass]="pagination.page === page ? 'btn-page current-page'  : 'btn-page'"
-                  (click)="changePage(page)">
-                    {{page}}
-                  </button>
-                }
-                <button class="btn-next" 
-                [disabled]="pagination.totalPages === pagination.page"
-                (click)="changePage(pagination.page + 1)">
-                Sig
-                </button>
-              </div>
+                <div class="pagination center-center-row">
+                    <button class="btn-prev" 
+                    [disabled]="pagination.page === 1" 
+                    (click)="changePage(pagination.page - 1)">
+                        Ant
+                    </button>
+                    @for (page of pages; track $index){
+                        <button [ngClass]="pagination.page === page ? 'btn-page current-page'  : 'btn-page'"
+                        (click)="changePage(page)">
+                            {{page}}
+                        </button>
+                    }
+                    <button class="btn-next" 
+                    [disabled]="pagination.totalPages === pagination.page"
+                    (click)="changePage(pagination.page + 1)">
+                        Sig
+                    </button>
+                </div>
             }
           }@placeholder(minimum 2s;){
-            <div class="center-center-column loading">
-              <div class="loader"></div>
-              <span class="text-small mt-24"> Cargando informacion  </span>
-            </div>
+                <div class="center-center-column loading">
+                    <div class="loader"></div>
+                    <span class="text-small mt-24"> Cargando informacion  </span>
+                </div>
           }
         }@else if (adviseds.length === 0 && requestCompleted()){
-          <div class="center-center-column empty">
-            <span class="text-small"> No tienes alumnos asesorados por el momento </span>
-          </div>
+            <div class="center-center-column empty">
+                <span class="text-small"> No tienes alumnos asesorados por el momento </span>
+            </div>
         }
     </article>
 </section>
