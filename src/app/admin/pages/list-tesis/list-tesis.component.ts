@@ -1,18 +1,20 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { MatTooltip } from '@angular/material/tooltip';
 
 
 import { Period } from '../../../shared/interfaces/periods.interface';
 import { PeriodService } from '../../../shared/services/periods/period.service';
 import { TesisService } from '../../../shared/services/tesis/tesis.service';
-import { FormsModule } from '@angular/forms';
 import { Tesis } from '../../../shared/interfaces/tesis.interface';
+import { AlertService } from '../../../shared/services/alerts/alert.service';
 
 @Component({
     selector: 'app-list-tesis',
     standalone: true,
-    imports: [ FormsModule ],
+    imports: [ FormsModule, MatTooltip ],
     templateUrl: './list-tesis.component.html',
     styleUrl: './list-tesis.component.css'
 })
@@ -29,7 +31,8 @@ export class ListTesisComponent implements OnInit{
         private dialog : MatDialog,
         private router : Router,
         private _tesisService : TesisService,
-        private _periodService : PeriodService
+        private _periodService : PeriodService,
+        private _alertService : AlertService
     ){}
 
     ngOnInit(): void {
@@ -39,36 +42,66 @@ export class ListTesisComponent implements OnInit{
 
     // Obtener el listado de periodos para filtrar a los alumnos
     private getPeriodList() : void{
-      this._periodService.getPeriodsInfo('').subscribe({
-        next : (response) => {
-          this.periods = response.periods;
-          if (this.periods.length > 0) {
-            this.period = this.periods[this.periods.length - 1].periodo;
-          }
-        }
-      });
+        this.tesis = [];
+        setTimeout(() => {
+            this.requestCompleted.set(false);
+        }, 2000);
+
+        this._periodService.getPeriodsInfo('').subscribe({
+            next : (response) => {
+            this.periods = response.periods;
+            if (this.periods.length > 0) {
+                this.period = this.periods[this.periods.length - 1].periodo;
+            }
+            }
+        });
     }
 
-      // Obtener asignaciones
+    // Obtener asignaciones
     getAllTesis() : void{
-        this.requestCompleted.set(false);
-
         this._tesisService.allTesisOfPeriod(this.period).subscribe({
             next  : (response) => {
                 this.tesis = response.tesis;
 
-                console.log('Informacion tesis: ', this.tesis);
-
                 setTimeout(() => {
                     this.requestCompleted.set(true);
                 }, 2000);
-
             },
             error : (err) => {
+                this.tesis = [];
                 setTimeout(() => {
-                    this.tesis = [];
                     this.requestCompleted.set(true);
                 }, 2000);
+            }
+        });
+    }
+
+    approveTesis(idTesis : string) : void{
+        this._tesisService.approveTesis(idTesis).subscribe({
+            next : (response) => {
+                this._alertService.alertOk(response.message, 3500);
+
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3501);
+            },
+            error : (err) => {
+                this._alertService.alertError(err.error.message, 3500);
+            }
+        });
+    }
+
+    rejectTesis(idTesis : string) : void{
+        this._tesisService.rejectTesis(idTesis).subscribe({
+            next : (response) => {
+                this._alertService.alertOk(response.message, 3500);
+
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3501);
+            },
+            error : (err) => {
+                this._alertService.alertError(err.error.message, 3500);
             }
         });
     }

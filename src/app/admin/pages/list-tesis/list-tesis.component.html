@@ -4,120 +4,93 @@
         <span class="text-normal mb-24"> Información relacionada a las tesis registradas en el sistema de posgrado del periodo actual </span>
 
         <div class="actions mb-24">
-            <div class="btn-actions">
-                <button class="btn-prim center-center-row hover">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19.5 18v3h-15v-3H3v3a1.5 1.5 0 0 0 1.5 1.5h15A1.5 1.5 0 0 0 21 21v-3h-1.5Z"></path>
-                        <path d="m19.5 10.5-1.058-1.057-5.692 5.684V1.5h-1.5v13.627L5.558 9.444 4.5 10.5 12 18l7.5-7.5Z"></path>
-                    </svg>
-                    <span class="text-small">Descargar PDF</span>
-                </button>
-                <!-- <button class="btn-prim center-center-row hover">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M24 10.5h-3v-3h-1.5v3h-3V12h3v3H21v-3h3v-1.5Z"></path>
-                        <path d="M9 3a3.75 3.75 0 1 1 0 7.5A3.75 3.75 0 0 1 9 3Zm0-1.5A5.25 5.25 0 1 0 9 12 5.25 5.25 0 0 0 9 1.5Z"></path>
-                        <path d="M16.5 22.5H15v-3.75A3.75 3.75 0 0 0 11.25 15h-4.5A3.75 3.75 0 0 0 3 18.75v3.75H1.5v-3.75a5.25 5.25 0 0 1 5.25-5.25h4.5a5.25 5.25 0 0 1 5.25 5.25v3.75Z"></path>
-                    </svg>
-                    <span class="text-small">Registrar asesor</span>
-                </button> -->
-            </div>
+            <button class="btn-prim center-center-row hover">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.5 18v3h-15v-3H3v3a1.5 1.5 0 0 0 1.5 1.5h15A1.5 1.5 0 0 0 21 21v-3h-1.5Z"></path>
+                    <path d="m19.5 10.5-1.058-1.057-5.692 5.684V1.5h-1.5v13.627L5.558 9.444 4.5 10.5 12 18l7.5-7.5Z"></path>
+                </svg>
+                <span class="text-small">Descargar PDF</span>
+            </button>
 
             <select class="select-filter" [(ngModel)]="period" (ngModelChange)="getAllTesis()" [ngModelOptions]="{standalone: true}">
                 @for(period of periods; track $index; let i = $index;){
                     <option [value]="period.periodo">{{period.periodo}}</option>
                 }
             </select>
-
-            <!-- [(ngModel)]="searchTerm" 
-            (input)="onSearch(searchTerm)"  -->
-            <div class="input-search">
-                <input type="text" 
-                placeholder="Buscar por alumno o titulo de tesis">
-
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="m21.75 20.692-5.664-5.664a8.264 8.264 0 1 0-1.06 1.061l5.664 5.664 1.06-1.06ZM3 9.753a6.75 6.75 0 1 1 6.75 6.75A6.758 6.758 0 0 1 3 9.753Z"></path>
-                </svg>
-            </div>
         </div>
 
-        @if(tesis.length >= 1){
+        @if(tesis.length >= 1 || !requestCompleted()){
             @defer(on timer(2000ms)){
-              <main class="mb-16">
-                <table>
-                  <thead>
-                    <tr>
-                      <th class="text-normal">No</th>
-                      <th class="text-normal">Nombre</th>
-                      <th class="text-normal">Tesis</th>
-                      <th class="text-normal">Asesor</th>
-                      <th class="text-normal">Fecha Entrega</th>
-                      <th class="text-normal">Estatus</th>
-                      <th class="text-normal">Aprobada por</th>
-                      <th class="text-normal">Fecha aprobación</th>
-                      <!-- <th class="text-normal">Opciones</th> -->
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @for(tesis of tesis; track $index; let i = $index){
-                      <tr>
-                        <td class="text-small">{{ $index + 1 }}</td>
-                        <td class="text-small">{{tesis.nombreAlumno}}</td>
-                        <td class="text-small">{{tesis.titulo}}</td>
-                        <td class="text-small">{{tesis.nombreAsesor}}</td>
-                        <td class="text-small">{{tesis.fechaEntrega || 'No preaprobada'}}</td>
-                        <td class="text-small">{{tesis.estatus}}</td>
-                        <td class="text-small">{{tesis.aprobacion.nombre || 'Aprobacion pendiente'}}</td>
-                        <td class="text-small">{{tesis.aprobacion.fechaAprobacion || 'Aprobacion pendiente' }}</td>
-                        <!-- <td class="text-small">
-                          <button class="btn-icon hover" 
-                          (click)="deleteStudent(student._id)"
-                          matTooltip="Eliminar asesor"> 
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M10.5 9H9v9h1.5V9Z"></path>
-                              <path d="M15 9h-1.5v9H15V9Z"></path>
-                              <path d="M3 4.5V6h1.5v15A1.5 1.5 0 0 0 6 22.5h12a1.5 1.5 0 0 0 1.5-1.5V6H21V4.5H3ZM6 21V6h12v15H6Z"></path>
-                              <path d="M15 1.5H9V3h6V1.5Z"></path>
-                            </svg>
-                          </button>
-                        </td> -->
-                      </tr>
-                    }
-                  </tbody>
-                </table>
-              </main>
-              
-              <!-- @if(pagination.totalPages > 1){
-                <div class="pagination center-center-row">
-                  <button class="btn-prev" 
-                  [disabled]="pagination.page === 1" 
-                  (click)="changePage(pagination.page - 1)">
-                  Ant
-                  </button>
-                  @for (page of pages; track $index){
-                    <button [ngClass]="pagination.page === page ? 'btn-page current-page'  : 'btn-page'"
-                    (click)="changePage(page)">
-                      {{page}}
-                    </button>
-                  }
-                  <button class="btn-next" 
-                  [disabled]="pagination.totalPages === pagination.page"
-                  (click)="changePage(pagination.page + 1)">
-                  Sig
-                  </button>
-                </div>
-              } -->
-            }@placeholder(minimum 2s;){
-              <div class="center-center-column loading">
-                <div class="loader"></div>
-                <span class="text-small mt-24"> Cargando informacion  </span>
-              </div>
-            }
-        }@else if (tesis.length === 0 && requestCompleted()){
-          <div class="center-center-column empty">
-            <span class="text-small"> Por el momento aun no hay tesis registradas en este periodo </span>
-          </div>
-        }
+                <main>
+                    <table>
+                        <thead>
+                            <tr>
+                            <th class="text-normal">No</th>
+                            <th class="text-normal">Nombre</th>
+                            <th class="text-normal">Tesis</th>
+                            <th class="text-normal">Link</th>
+                            <th class="text-normal">Asesor</th>
+                            <th class="text-normal">Fecha Revisión</th>
+                            <th class="text-normal">Estatus</th>
+                            <th class="text-normal">Aprobada por</th>
+                            <th class="text-normal">Fecha aprobación</th>
+                            <th class="text-normal">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(tesis of tesis; track $index; let i = $index){
+                                <tr>
+                                    <td class="text-small">{{ $index + 1 }}</td>
+                                    <td class="text-small">{{tesis.nombreAlumno}}</td>
+                                    <td class="text-small">{{tesis.titulo}}</td>
+                                    <td class="text-small">
+                                        <a class="btn-link center-center-row text-small" href={{tesis.url}} target="_blank">
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M21.938 5.074a4.5 4.5 0 0 0-6.375 0l1.065 1.065a3.007 3.007 0 1 1 4.252 4.252l-6 6a3.004 3.004 0 1 1-4.252-4.245l1.057-1.065-1.057-1.065-1.065 1.065a4.5 4.5 0 0 0 0 6.375 4.5 4.5 0 0 0 3.187 1.297 4.499 4.499 0 0 0 3.203-1.32l6-6a4.5 4.5 0 0 0-.015-6.36Z"></path>
+                                            <path d="M3.142 18.618a3 3 0 0 1 0-4.253l6-6a3 3 0 0 1 4.253 0 2.957 2.957 0 0 1 .855 2.138 3 3 0 0 1-.878 2.137l-1.59 1.613 1.065 1.065 1.59-1.59a4.513 4.513 0 0 0-6.382-6.383l-6 6a4.5 4.5 0 0 0 0 6.383 4.5 4.5 0 0 0 3.195 1.275 4.553 4.553 0 0 0 3.21-1.32l-1.065-1.065a2.999 2.999 0 0 1-4.253 0Z"></path>
+                                            </svg>
+                                            
+                                            tesis
+                                        </a>
+                                    </td>
+                                    <td class="text-small">{{tesis.nombreAsesor}}</td>
+                                    <td class="text-small">{{tesis.fechaEntrega}}</td>
+                                    <td class="text-small">{{tesis.estatus}}</td>
+                                    <td class="text-small">{{tesis.aprobacion.nombre || '-'}}</td>
+                                    <td class="text-small">{{tesis.aprobacion.fechaAprobacion || '-'}}</td>
+                                    <td class="text-small">
+                                        <button class="btn-icon hover" (click)="approveTesis(tesis._id)"
+                                        matTooltip="Aprobar tesis"> 
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M22.5 15.001a4.501 4.501 0 1 0-7.5 3.345v5.655l3-1.42 3 1.42v-5.655a4.485 4.485 0 0 0 1.5-3.345Zm-3 6.63-1.5-.71-1.5.71V19.24c.97.35 2.03.35 3 0v2.392Zm-1.5-3.63a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"></path>
+                                                <path d="M18.75 3.75H16.5V3A1.504 1.504 0 0 0 15 1.5H9A1.504 1.504 0 0 0 7.5 3v.75H5.25a1.504 1.504 0 0 0-1.5 1.5V21a1.504 1.504 0 0 0 1.5 1.5H12V21H5.25V5.25H7.5V7.5h9V5.25h2.25V9h1.5V5.25a1.504 1.504 0 0 0-1.5-1.5ZM15 6H9V3h6v3Z"></path>
+                                            </svg>
+                                        </button>
 
+                                        <button class="btn-icon btn-icon-red hover" (click)="rejectTesis(tesis._id)"
+                                        matTooltip="Rechazar tesis"> 
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="m19.808 18.75 2.692-2.692L21.442 15l-2.692 2.692L16.058 15 15 16.058l2.692 2.692L15 21.442l1.058 1.058 2.692-2.692 2.692 2.692 1.058-1.058-2.692-2.692Z"></path>
+                                                <path d="M18.75 3.75H16.5V3A1.504 1.504 0 0 0 15 1.5H9A1.504 1.504 0 0 0 7.5 3v.75H5.25a1.504 1.504 0 0 0-1.5 1.5V21a1.504 1.504 0 0 0 1.5 1.5H12V21H5.25V5.25H7.5V7.5h9V5.25h2.25v7.5h1.5v-7.5a1.504 1.504 0 0 0-1.5-1.5ZM15 6H9V3h6v3Z"></path>
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </main>
+            }@placeholder(minimum 2s;){
+                <div class="center-center-column loading">
+                    <div class="loader"></div>
+                    <span class="text-small mt-24"> Cargando informacion  </span>
+                </div>
+            }
+        }@else if (tesis.length == 0 && requestCompleted()){
+            <div class="center-center-column empty">
+                <span class="text-small"> Por el momento aun no hay tesis registradas en este periodo </span>
+            </div>
+        }
 
     </article>
 </section>

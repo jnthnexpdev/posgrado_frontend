@@ -52,3 +52,12 @@
 /* Estilo hover para botones que no esten deshabilitados */
 .hover:hover:not(:disabled){ cursor: pointer; transform: scale(1.01); }
 button:disabled{ opacity: 0.8; cursor: not-allowed;  }
+
+@media (min-width: 300px) and (max-width : 600px){
+    .btn-prim svg{
+        width: 16px;
+        height: 16px;
+        max-width: 16px;
+        max-height: 16px;
+    }
+}
