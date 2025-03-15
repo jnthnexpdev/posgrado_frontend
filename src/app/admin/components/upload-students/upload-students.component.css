@@ -7,13 +7,15 @@ h3{ color: var(--blue); text-align: left; width: 100%; }
 form{
     width: 100%;
 }
-.label-form, .input-form{ width: 100%; }
-.label-form svg{
+.label-form, .input-form, .invalid-field{ width: 100%; }
+.label-form svg, .invalid-field svg{
     margin-right: 4px;
-    fill: var(--blue);
     width: 20px;
     height: 20px;
 }
+.label-form svg{ fill: var(--blue); }
+.invalid-field svg{ fill: var(--red); }
+.invalid-field label{ color: var(--red); }
 
 .dropzone{
     position: relative;
@@ -37,6 +39,26 @@ form{
 .dropzone .message{ color: var(--blue); }
 .dropzone .message-error{ color: var(--red); }
 .dropzone p, .dropzone span{ text-align: center; }
+
+.password-form{
+    width: 100%;
+    position: relative;
+}
+.password-form button{
+    position: absolute;
+    right: 8px;
+    top: 4px;
+    background-color: transparent;
+}
+.password-form svg{
+    fill: var(--blue);
+    width: 20px;
+    height: 20px;
+}
+.password-form button:hover{
+    cursor: pointer;
+    transform: scale(1.01);
+}
 
 .btn-options{ width: 100%; }
 

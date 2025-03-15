@@ -29,7 +29,14 @@
             Registrar
         </button>
     </div>
+}@else if(withoutAdvisor()){
+    <div class="option withoutAdvisor mb-24">
+        <p class="text-normal"> Requieres un/a asesor/a para registrar una tesis </p>
+    </div>
 }
+
+
+
 <mat-divider></mat-divider>
 <h3 class="title-3 mt-24 mb-24"> Publicación en revista </h3>
 @if(studentWithPublication()){
@@ -70,16 +77,22 @@
 
 <mat-divider></mat-divider>
 <h3 class="title-3 mt-24 mb-24"> Información de asesor/a </h3>
-<div class="option mb-24">
-    <p class="text-normal"> Nombre: </p>
-    <span class="text-normal"> {{advisorName}} </span>
-</div>
-<div class="option mb-24">
-    <p class="text-normal"> Correo: </p>
-    <span class="text-normal"> {{advisorEmail}} </span>
-</div>
-<div class="option mb-24">
-    <p class="text-normal"> Fecha asignación: </p>
-    <span class="text-normal"> {{dateAssignment}} </span>
-</div>
+@if(withoutAdvisor()){
+    <div class="option withoutAdvisor mb-24">
+        <p class="text-normal"> Por el momento no cuentas con un/a asesor/a </p>
+    </div>
+}@else{
+    <div class="option mb-24">
+        <p class="text-normal"> Nombre: </p>
+        <span class="text-normal"> {{advisorName}} </span>
+    </div>
+    <div class="option mb-24">
+        <p class="text-normal"> Correo: </p>
+        <span class="text-normal"> {{advisorEmail}} </span>
+    </div>
+    <div class="option mb-24">
+        <p class="text-normal"> Fecha asignación: </p>
+        <span class="text-normal"> {{dateAssignment}} </span>
+    </div>
+}
 <mat-divider></mat-divider>

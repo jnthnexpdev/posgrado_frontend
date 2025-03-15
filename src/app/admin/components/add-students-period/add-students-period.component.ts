@@ -41,7 +41,6 @@ export class AddStudentsPeriodComponent implements OnInit{
         });
     }
 
-
     ngOnInit(): void {
         this.getPeriodList();
     }

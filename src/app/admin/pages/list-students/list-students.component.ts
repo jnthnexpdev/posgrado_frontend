@@ -10,11 +10,12 @@ import { Pagination } from '../../../shared/interfaces/pagination.interface';
 import { AlertService } from '../../../shared/services/alerts/alert.service';
 import { Period } from '../../../shared/interfaces/periods.interface';
 import { PeriodService } from '../../../shared/services/periods/period.service';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-list-students',
   standalone: true,
-  imports: [ NgClass, FormsModule ],
+  imports: [ NgClass, FormsModule, MatTooltip ],
   templateUrl: './list-students.component.html',
   styleUrl: './list-students.component.css'
 })
