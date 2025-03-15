@@ -54,10 +54,7 @@ export class ListTeachersComponent implements OnInit{
         this.teachers = response.teachers;
         this.pagination = response.pagination;
         this.calculatePages();
-      },
-      error : (err) => {
-        console.error("Error al obtener la lista de asesores: ", err.error.message);
-      },
+      }
     });
 
     this.getTeacherList();
@@ -109,7 +106,6 @@ export class ListTeachersComponent implements OnInit{
           this.calculatePages();
         },
         error : (err) => {
-          console.error('Error al obtener la lista de asesores: ', err.error.message);
           this.requestCompleted.set(true);
         }
       });

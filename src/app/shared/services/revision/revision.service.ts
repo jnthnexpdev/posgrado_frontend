@@ -36,7 +36,7 @@ export class RevisionService {
         return this.http.patch<ServerResponse>(`${environment.api}revisiones/calificar-entrega/${idAssignment}`, rating, options);
     }
 
-    // Exportar alumnos en PDF
+    // Exportar revisiones en PDF
     exportRevisions(idAssignment : string){
       return this.http.get(`${environment.api}revisiones/exportar-entregas-asignacion/${idAssignment}`, {responseType : 'blob', withCredentials : true});
     }

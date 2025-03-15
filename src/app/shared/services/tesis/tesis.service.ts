@@ -31,6 +31,11 @@ export class TesisService {
         return this.http.get<AllTesisOfPeriod>(`${environment.api}tesis/tesis-alumnos-periodo/${period}`, options);
     }
 
+    // Exportar tesis en PDF
+    exportTesis(period : string){
+        return this.http.get(`${environment.api}tesis/exportar-tesis-periodo/${period}`, {responseType : 'blob', withCredentials : true});
+    }
+
     // Editar la informacion de una tesis
     editTesis(id : string, tesis : EditTesis) : Observable<ServerResponse>{
         const options = { withCredentials : true };

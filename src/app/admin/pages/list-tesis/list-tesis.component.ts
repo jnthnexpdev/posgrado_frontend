@@ -55,6 +55,27 @@ export class ListTesisComponent implements OnInit{
         });
     }
 
+    // Descargar lista de asesores en pdf
+    downloadTesis() : void{
+        this._tesisService.exportTesis(this.period).subscribe((data : Blob) => {
+            const url = window.URL.createObjectURL(data);
+            const anchor = document.createElement('a');
+            anchor.href = url;
+            anchor.download = 'tesis.pdf';
+            anchor.target = '_blank';
+            document.body.appendChild(anchor);
+            anchor.click();
+            document.body.removeChild(anchor);
+            window.URL.revokeObjectURL(url);
+        });
+
+        this._alertService.alertLoading('Generando PDF y recargando pagina', 2500);
+
+        setTimeout(() => {
+        window.location.reload();
+        }, 2501);
+    }
+
     // Obtener asignaciones
     getAllTesis() : void{
         this._tesisService.allTesisOfPeriod(this.period).subscribe({

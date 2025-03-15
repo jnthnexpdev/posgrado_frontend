@@ -7,59 +7,65 @@ import { environment } from '../../../../environments/environment.development';
 import { StudentsByPeriodResponse } from '../../interfaces/students.interface';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class PeriodService {
 
-  private http = inject(HttpClient);
+    private http = inject(HttpClient);
 
-  // Registrar un nuevo periodo
-  registerPeriod(period : RegisterPeriod) : Observable<ServerResponse>{
-    const options = { withCredentials : true };
-    return this.http.post<ServerResponse>(`${environment.api}periodos/registrar-periodo`, period, options);
-  }
+    // Registrar un nuevo periodo
+    registerPeriod(period : RegisterPeriod) : Observable<ServerResponse>{
+        const options = { withCredentials : true };
+        return this.http.post<ServerResponse>(`${environment.api}periodos/registrar-periodo`, period, options);
+    }
 
-  // Agregar alumno a un periodo
-  addStudentToPeriod(idStudent : string, idPeriod : string) : Observable<ServerResponse>{
-    const options = { withCredentials : true };
-    return this.http.patch<ServerResponse>(`${environment.api}periodos/agregar-alumno/${idStudent}/${idPeriod}`, options);
-  }
+    // Agregar alumno a un periodo
+    addStudentToPeriod(idStudent : string, idPeriod : string) : Observable<ServerResponse>{
+        const options = { withCredentials : true };
+        return this.http.patch<ServerResponse>(`${environment.api}periodos/agregar-alumno/${idStudent}/${idPeriod}`, options);
+    }
 
-  // Obtener los periodos registrados
-  getPeriodsInfo(search: string = '', page: number = 1, pageSize: number = 30) : Observable<AllPeriods>{
-    const params = new HttpParams()
-    .set('search', search || '')
-    .set('page', page.toString())
-    .set('pageSize', pageSize.toString());
-    const options = {
-      params: params,
-      withCredentials: true
-    };
-    return this.http.get<AllPeriods>(`${environment.api}periodos/listado-periodos`, options);
-  }
+    // Agregar alumnos a un periodo mediante un archivo CSV
+    addStudentsToPeriod(idPeriod : string, formData : FormData) : Observable<ServerResponse>{
+        const options = { withCredentials : true };
+        return this.http.post<ServerResponse>(`${environment.api}periodos/agregar-alumnos-csv/${idPeriod}`, formData, options);
+    }
 
-  // Obtener alumnos por periodo
-  getStudentListByPeriod(idPeriod : string, search: string = '', page: number = 1, pageSize: number = 1) : Observable<StudentsByPeriodResponse>{
-    const params = new HttpParams()
-    .set('search', search || '')
-    .set('page', page.toString())
-    .set('pageSize', pageSize.toString());
-    const options = {
-      params: params,
-      withCredentials: true
-    };
-    return this.http.get<StudentsByPeriodResponse>(`${environment.api}periodos/listado-alumnos-periodo/${idPeriod}`, options);
-  }
+    // Obtener los periodos registrados
+    getPeriodsInfo(search: string = '', page: number = 1, pageSize: number = 35) : Observable<AllPeriods>{
+        const params = new HttpParams()
+        .set('search', search || '')
+        .set('page', page.toString())
+        .set('pageSize', pageSize.toString());
+        const options = {
+            params: params,
+            withCredentials: true
+        };
+        return this.http.get<AllPeriods>(`${environment.api}periodos/listado-periodos`, options);
+    }
 
-  // Exportar periodos en PDF
-  exportPeriods(){
-    return this.http.get(`${environment.api}periodos/exportar-periodos`, {responseType : 'blob', withCredentials : true});
-  }
+    // Obtener alumnos por periodo
+    getStudentListByPeriod(idPeriod : string, search: string = '', page: number = 1, pageSize: number = 35) : Observable<StudentsByPeriodResponse>{
+        const params = new HttpParams()
+        .set('search', search || '')
+        .set('page', page.toString())
+        .set('pageSize', pageSize.toString());
+        const options = {
+            params: params,
+            withCredentials: true
+        };
+        return this.http.get<StudentsByPeriodResponse>(`${environment.api}periodos/listado-alumnos-periodo/${idPeriod}`, options);
+    }
 
-  // Eliminar periodo por id
-  deletePeriodById(idPeriod : string) : Observable<ServerResponse>{
-    const options = { withCredentials : true };
-    return this.http.delete<ServerResponse>(`${environment.api}periodos/eliminar-periodo/${idPeriod}`, options);
-  }
+    // Exportar periodos en PDF
+    exportPeriods(){
+        return this.http.get(`${environment.api}periodos/exportar-periodos`, {responseType : 'blob', withCredentials : true});
+    }
+
+    // Eliminar periodo por id
+    deletePeriodById(idPeriod : string) : Observable<ServerResponse>{
+        const options = { withCredentials : true };
+        return this.http.delete<ServerResponse>(`${environment.api}periodos/eliminar-periodo/${idPeriod}`, options);
+    }
 
 }

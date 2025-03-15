@@ -82,9 +82,9 @@ export class EditTesisComponent implements OnInit{
         next : (response) => {
             this.periods = response.periods;
             if (this.periods.length > 0) {
-            this.editTesisForm.patchValue({
-                periodo : this.periods[this.periods.length - 1].periodo
-            })
+              this.editTesisForm.patchValue({
+                  periodo : this.periods[this.periods.length - 1].periodo
+              })
             }
         }
         });

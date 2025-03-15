@@ -1,5 +1,9 @@
 section{ width: 100%; }
-article{ width: 400px; }
+article{ 
+    min-width: 250px;
+    width: 55%;
+    max-width: 600px;
+}
 h3{ color: var(--blue);  width: 100%; text-align: left; }
 span { width: 100%; text-align: left; }
 .btn-prim svg{
@@ -11,18 +15,16 @@ span { width: 100%; text-align: left; }
 
 .actions{ 
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex-direction: row;
 }
-.actions .input-search{ min-width: 400px; }
 .actions .btn-actions{
+    width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
 }
 .actions .btn-actions button:nth-child(2){
-    margin: 0 16px;
+    margin-top: 16px;
 }
 
 form{
@@ -64,4 +66,20 @@ form{
     .btn-options{ flex-direction: column-reverse; }
     .btn-options button{ width: 100%; }
     .btn-options button:nth-child(2){ margin-bottom: 24px; }
+}
+
+@media(min-width : 501px) and (max-width : 700px){
+    article{ 
+        min-width: 350px;
+        width: 80%;
+        max-width: 600px;
+    }
+}
+
+@media(min-width : 701px) and (max-width : 900px){
+    article{ 
+        min-width: 350px;
+        width: 70%;
+        max-width: 600px;
+    }
 }

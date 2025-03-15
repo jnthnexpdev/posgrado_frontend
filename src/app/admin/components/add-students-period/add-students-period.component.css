@@ -1,0 +1,50 @@
+article{
+    width: 100%;
+    background-color: var(--white);
+}
+
+h3{ color: var(--blue); text-align: left; width: 100%; }
+form{
+    width: 100%;
+}
+.label-form, .input-form, .invalid-field{ width: 100%; }
+.label-form svg, .invalid-field svg{
+    margin-right: 4px;
+    width: 20px;
+    height: 20px;
+}
+.label-form svg{ fill: var(--blue); }
+.invalid-field svg{ fill: var(--red); }
+.invalid-field label{ color: var(--red); }
+
+.dropzone{
+    position: relative;
+    padding: 16px;
+    border-radius: 8px;
+    border: 2px dashed var(--blue);
+}
+.dropzone svg{
+    width: 64px;
+    height: 64px;
+    fill: var(--blue);
+}
+.dropzone input{
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.dropzone .message{ color: var(--blue); }
+.dropzone .message-error{ color: var(--red); }
+.dropzone p, .dropzone span{ text-align: center; }
+
+.btn-options{ width: 100%; }
+
+@media(min-width : 300px) and (max-width : 500px){
+    article{ width: 100%; }
+    .btn-options{ flex-direction: column-reverse; }
+    .btn-options button{ width: 100%; }
+    .btn-options button:nth-child(2){ margin-bottom: 24px; }
+}
