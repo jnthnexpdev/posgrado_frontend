@@ -7,6 +7,7 @@ import { AssignmentService } from '../../../shared/services/assignments/assignme
 import { Assignment } from '../../../shared/interfaces/assignments.interface';
 import { Period } from '../../../shared/interfaces/periods.interface';
 import { PeriodService } from '../../../shared/services/periods/period.service';
+import { AlertService } from '../../../shared/services/alerts/alert.service';
 
 @Component({
   selector: 'app-assignments',
@@ -27,16 +28,13 @@ export class AssignmentsComponent implements OnInit{
   constructor(
     private router : Router,
     private _assignmentService : AssignmentService,
-    private _periodService : PeriodService
+    private _periodService : PeriodService,
+    private _alertService : AlertService,
   ){}
 
   ngOnInit(): void {
     this.getAssignments();
     this.getPeriodList();
-  }
-
-  public expandCard() : void{
-    this.expandDetails.set(!this.expandDetails());
   }
 
   // Obtener el listado de periodos para filtrar las asignaciones
@@ -51,10 +49,17 @@ export class AssignmentsComponent implements OnInit{
     });
   }
 
-  viewDetails(id : string) : void{
+  // Ver mas detalles de una asignacion
+  viewDetails(id : string, available : boolean) : void{
+    if(available === false){
+      this._alertService.alertError('La fecha limite de entrega ha pasado', 5000);
+      return;
+    }
+
     this.router.navigate([`/alumno/detalles-asignacion/${id}`]).then(() => {});
   }
 
+  // Obtener todas las asignaciones del alumno
   public getAssignments() : void{
     this._assignmentService.getAssignmentsOfStudent(this.period).subscribe({
       next : (response) => {
@@ -64,6 +69,7 @@ export class AssignmentsComponent implements OnInit{
     })
   }
 
+  // Filtrar las asignaciones por estatus
   applyFilter(filter: string) {
     this.selectedFilter = filter;
 

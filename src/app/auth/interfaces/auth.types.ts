@@ -8,6 +8,6 @@ export interface LoginRequest {
 export interface LoginResponse {
     success: boolean;
     httpCode: number;
-    token?: string;
-    message?: string;
+    token: string;
+    message: string;
 }

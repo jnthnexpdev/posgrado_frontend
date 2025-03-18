@@ -39,7 +39,7 @@
         @defer(on timer(2000ms)){
             <article>
                 @for (assignment of filteredAssignments; track $index){
-                    <div class="assignment container hover pd-16" (click)="viewDetails(assignment._id)">
+                    <div class="assignment container hover pd-16" (click)="viewDetails(assignment._id, assignment.permitirEntrega)">
                         <div class="header-assignment mb-16">
                             <h4 class="title-4"> {{assignment.nombre}} </h4>
                             <span class="text-small center-end-row date"> 
@@ -55,19 +55,22 @@
                         </div>
     
                         <div class="footer-assignment">
-                            @switch(assignment.estatusEntrega){
-                                @case('Calificada'){
-                                    <p class="text-small status status-qualified"> {{assignment.estatusEntrega}} </p>
-                                }
-                                @case('Entregada'){
-                                    <p class="text-small status status-delivered"> {{assignment.estatusEntrega}} </p>
-                                }
-                                @case('Pendiente'){
-                                    <p class="text-small status status-pending"> {{assignment.estatusEntrega}} </p>
+                            @if(assignment.permitirEntrega === false){
+                                <p class="text-small status status-expired"> No entregada </p>
+                            }@else{
+                                @switch(assignment.estatusEntrega){
+                                    @case('Calificada'){
+                                        <p class="text-small status status-qualified"> {{assignment.estatusEntrega}} </p>
+                                    }
+                                    @case('Entregada'){
+                                        <p class="text-small status status-delivered"> {{assignment.estatusEntrega}} </p>
+                                    }
+                                    @case('Pendiente'){
+                                        <p class="text-small status status-pending"> {{assignment.estatusEntrega}} </p>
+                                    }
+                                    
                                 }
                             }
-    
-                            <!-- <button class="btn-sec hover" (click)="viewDetails(assignment._id)"> Ver mas </button> -->
                         </div>
                     </div>
                 }

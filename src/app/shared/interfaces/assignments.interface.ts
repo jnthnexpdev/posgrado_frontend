@@ -27,6 +27,7 @@ export interface Assignment {
     estatusEntrega : string;
     fechaEntrega : string;
     calificacion : number;
+    permitirEntrega : boolean;
 }
 
 export interface AsesorAssignment {
